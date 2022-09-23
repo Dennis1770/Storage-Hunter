@@ -16,6 +16,6 @@ public class MonsterPatrolState : MonsterBaseState
 
     public override void OnCollisionEnter(MonsterStateManager monster)
     {
-
+        //monster.switchState(monster.chase);
     }
 }

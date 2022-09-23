@@ -4,10 +4,10 @@ public class MonsterStateManager : MonoBehaviour
 {
     MonsterBaseState currentState;
 
-    public MonsterIdleState idle;
-    public MonsterPatrolState patrol;
-    public MonsterHuntState hunt;
-    public MonsterChaseState chase;
+    MonsterIdleState idle = new MonsterIdleState();
+    MonsterPatrolState patrol = new MonsterPatrolState();
+    MonsterHuntState hunt = new MonsterHuntState();
+    MonsterChaseState chase = new MonsterChaseState();
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class MonsterStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    private void switchState(MonsterBaseState state)
+    public void switchState(MonsterBaseState state)
     {
         currentState = state;
         state.EnterState(this);
