@@ -4,10 +4,10 @@ public class MonsterStateManager : MonoBehaviour
 {
     MonsterBaseState currentState;
 
-    MonsterIdleState idle = new MonsterIdleState();
-    MonsterPatrolState patrol = new MonsterPatrolState();
-    MonsterHuntState hunt = new MonsterHuntState();
-    MonsterChaseState chase = new MonsterChaseState();
+    public MonsterIdleState idle = new MonsterIdleState();
+    public MonsterPatrolState patrol = new MonsterPatrolState();
+    public MonsterHuntState hunt = new MonsterHuntState();
+    public MonsterChaseState chase = new MonsterChaseState();
 
     private void Start()
     {
