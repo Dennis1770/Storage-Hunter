@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/* This is the context for our finite state machine
+ * this script creates instances of concrete states (idle, patrol, hunt, and chase)
+ * it determines which state is the active state at any given time
+*/
 public class MonsterStateManager : MonoBehaviour
 {
     MonsterBaseState currentState;

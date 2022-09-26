@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/*This is one of the concrete states
+ * it is self-contained
+ * can have its own unique properties and methods
+*/
 public class MonsterPatrolState : MonsterBaseState
 {
     GameObject monster;

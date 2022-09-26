@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/*This script is the abstract state
+ * its methods are used in each concrete state which reference it
+*/
+
 public abstract class MonsterBaseState
 {
     public abstract void EnterState(MonsterStateManager monster);
