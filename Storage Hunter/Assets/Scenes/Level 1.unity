@@ -2058,6 +2058,8 @@ MonoBehaviour:
   controller: {fileID: 726567094}
   speed: 10
   sprint: 10
+  crouchSpeed: 5
+  crouchYScale: 0.5
 --- !u!143 &726567094
 CharacterController:
   m_ObjectHideFlags: 0

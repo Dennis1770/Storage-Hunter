@@ -14,9 +14,19 @@ public class playerMovement : MonoBehaviour
     public float sprint = 10f; //sprint increase
 
     //crouch
-    
+    public float crouchSpeed; //crouch speed
+    public float crouchYScale; //crouching height
+    private float startYScale; //starting y position
+    private KeyCode crouchKey = KeyCode.LeftControl; //key board key for crouching
 
-    
+    private void Start()
+    {
+
+        startYScale = transform.localScale.y; //starting y position
+
+    }
+
+
 
 
     // Update is called once per frame
@@ -45,8 +55,19 @@ public class playerMovement : MonoBehaviour
         }
 
         
-        
+        if(Input.GetKeyDown(crouchKey)) //if left control is pressed, player will crouch
+        {
 
+            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z); //changes y scale of the player
+            //Rigidbody.AddForce(Vector3.down * 5f, ForceMode.Impulse); //pushes player model down
+
+        }
+        else if(Input.GetKeyUp(crouchKey)) //if left control key is lifted, player will stand
+        {
+
+            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
+
+        }
         
 
     }
