@@ -11,7 +11,7 @@ public class MonsterPatrolState : MonsterBaseState
     GameObject[] waypoints; //waypoints for the monster to patrol between
     //Transform[] wpTransforms; //we need the transforms of each waypoint
 
-    private float minDistance;
+    private float minDistance = 1f;
     private float moveSpeed = 5f;
     public Transform currentWaypoint;
     public int currentIndex;
@@ -22,6 +22,11 @@ public class MonsterPatrolState : MonsterBaseState
         Debug.Log("Monster is now in the patrol state");
         monsterGameObject = GameObject.FindGameObjectWithTag("monster");
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
+        
+        for (int i=0; i< waypoints.Length; i++)
+        {
+            Debug.Log(waypoints[i].transform);
+        }
         //wpTransforms = new Transform[waypoints.Length];
 
         /*
