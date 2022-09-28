@@ -23,21 +23,13 @@ public class MonsterPatrolState : MonsterBaseState
         monsterGameObject = GameObject.FindGameObjectWithTag("monster");
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
         
+        /*
         for (int i=0; i< waypoints.Length; i++)
         {
             Debug.Log(waypoints[i].transform);
         }
-        //wpTransforms = new Transform[waypoints.Length];
-
-        /*
-        for(int i=0; i < waypoints.Length; i++)
-        {
-            //get the transform values of each waypoint in our array
-            wpTransforms[i] = waypoints[i].transform;
-        }
         */
 
-        //currentWaypoint = wpTransforms[0];
         currentWaypoint = waypoints[0].transform;
     }
 
@@ -49,13 +41,22 @@ public class MonsterPatrolState : MonsterBaseState
 
         if(Vector3.Distance(currentWaypoint.transform.position, monsterGameObject.transform.position) < minDistance)
         {
+            /*
             ++currentIndex;
             if(currentIndex > waypoints.Length - 1)
             {
                 currentIndex = 0;
             }
+
+            currentWaypoint = waypoints[currentIndex].transform;
+            */
+
+            int number = Random.Range(0, waypoints.Length);
+            currentIndex = number;
+            Debug.Log(number);
             currentWaypoint = waypoints[currentIndex].transform;
         }
+        
     }
 
     public override void OnCollisionEnter(MonsterStateManager monster)
