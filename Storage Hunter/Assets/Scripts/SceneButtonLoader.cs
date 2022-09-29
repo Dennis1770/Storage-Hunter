@@ -24,6 +24,22 @@ public class SceneButtonLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Settings Menu");
     }
+
+    public void GameplayMenu()
+    {
+        SceneManager.LoadScene("Gameplay Menu");
+    }
+
+    public void GraphicsMenu()
+    {
+        SceneManager.LoadScene("Graphics Menu");
+    }
+
+    public void VolumeMenu()
+    {
+        SceneManager.LoadScene("Volume Menu");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
