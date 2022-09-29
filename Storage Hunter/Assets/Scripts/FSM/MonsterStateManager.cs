@@ -30,4 +30,9 @@ public class MonsterStateManager : MonoBehaviour
         currentState = state;
         state.EnterState(this);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        currentState.OnCollisionEnter(this, collision);
+    }
 }

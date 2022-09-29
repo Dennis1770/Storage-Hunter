@@ -20,8 +20,8 @@ public class MonsterPatrolState : MonsterBaseState
     public override void EnterState(MonsterStateManager monster)
     {
         Debug.Log("Monster is now in the patrol state");
-        monsterGameObject = GameObject.FindGameObjectWithTag("monster");
-        waypoints = GameObject.FindGameObjectsWithTag("waypoint");
+        monsterGameObject = GameObject.FindGameObjectWithTag("Monster");
+        waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
         
         /*
         for (int i=0; i< waypoints.Length; i++)
@@ -42,6 +42,8 @@ public class MonsterPatrolState : MonsterBaseState
         if(Vector3.Distance(currentWaypoint.transform.position, monsterGameObject.transform.position) < minDistance)
         {
             /*
+            //go to every waypoint in order
+
             ++currentIndex;
             if(currentIndex > waypoints.Length - 1)
             {
@@ -51,16 +53,21 @@ public class MonsterPatrolState : MonsterBaseState
             currentWaypoint = waypoints[currentIndex].transform;
             */
 
+            //pick a random waypoint each time
             int number = Random.Range(0, waypoints.Length);
             currentIndex = number;
-            Debug.Log(number);
             currentWaypoint = waypoints[currentIndex].transform;
         }
         
     }
 
-    public override void OnCollisionEnter(MonsterStateManager monster)
+    public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
     {
-        //monster.switchState(monster.chase);
+        GameObject other = collision.gameObject;
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("game over");
+            //the player has been caught
+        }
     }
 }

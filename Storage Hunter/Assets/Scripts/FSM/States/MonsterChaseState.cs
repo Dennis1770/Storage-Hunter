@@ -18,8 +18,13 @@ public class MonsterChaseState : MonsterBaseState
 
     }
 
-    public override void OnCollisionEnter(MonsterStateManager monster)
+    public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
     {
-        //monster.switchState(monster.chase);
+        GameObject other = collision.gameObject;
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("game over");
+            //the player has been caught
+        }
     }
 }
