@@ -7,9 +7,13 @@ using UnityEngine;
 public class MonsterPatrolState : MonsterBaseState
 {
     GameObject monster;
+
     GameObject monsterGameObject;
+
+    //MonsterStateManager stateManager;
+
     GameObject[] waypoints; //waypoints for the monster to patrol between
-    //Transform[] wpTransforms; //we need the transforms of each waypoint
+
 
     private float minDistance = 1f;
     private float moveSpeed = 5f;
@@ -20,7 +24,9 @@ public class MonsterPatrolState : MonsterBaseState
     public override void EnterState(MonsterStateManager monster)
     {
         Debug.Log("Monster is now in the patrol state");
+
         monsterGameObject = GameObject.FindGameObjectWithTag("Monster");
+
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
         
         /*
@@ -37,7 +43,8 @@ public class MonsterPatrolState : MonsterBaseState
     {
         Vector3 direction = currentWaypoint.transform.position - monsterGameObject.transform.position;
         Vector3 moveVector = direction.normalized * moveSpeed * Time.deltaTime;
-        monsterGameObject.transform.position += moveVector;
+        monsterGameObject.transform.position += moveVector; //walk to the waypoint
+        monsterGameObject.transform.LookAt(currentWaypoint.transform); //the monster should face where it's walking
 
         if(Vector3.Distance(currentWaypoint.transform.position, monsterGameObject.transform.position) < minDistance)
         {

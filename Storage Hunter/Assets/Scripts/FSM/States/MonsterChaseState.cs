@@ -8,6 +8,8 @@ public class MonsterChaseState : MonsterBaseState
 {
     GameObject monster;
 
+    //MonsterStateManager stateManager;
+
     public override void EnterState(MonsterStateManager monster)
     {
         Debug.Log("Monster is now in the chase state");
