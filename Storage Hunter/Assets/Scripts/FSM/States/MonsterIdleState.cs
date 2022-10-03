@@ -8,13 +8,20 @@ public class MonsterIdleState : MonsterBaseState
 {
     GameObject monster;
 
+    GameObject monsterGameObject;
+
+    //MonsterStateManager stateManager;
+
     private float elapsedTime;
     private float delay = 3.0f; //the monster will wait this many seconds before changing from idle to patrol
-
 
     public override void EnterState(MonsterStateManager monster)
     {
         Debug.Log("Monster is now in the idle state");
+
+        //stateManager = stateManager.GetComponent<MonsterStateManager>();
+
+        monsterGameObject = GameObject.FindGameObjectWithTag("Monster");
     }
 
     public override void UpdateState(MonsterStateManager monster)
