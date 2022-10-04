@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 /*This is one of the concrete states
  * it is self-contained
@@ -8,7 +9,9 @@ public class MonsterPatrolState : MonsterBaseState
 {
     GameObject monster;
 
-    GameObject monsterGameObject;
+    //GameObject monsterGameObject;
+
+    NavMeshAgent agent;
 
     //MonsterStateManager stateManager;
 
@@ -16,7 +19,7 @@ public class MonsterPatrolState : MonsterBaseState
 
 
     private float minDistance = 1f;
-    private float moveSpeed = 5f;
+    //private float moveSpeed = 5f;
     public Transform currentWaypoint;
     public int currentIndex;
 
@@ -25,7 +28,7 @@ public class MonsterPatrolState : MonsterBaseState
     {
         Debug.Log("Monster is now in the patrol state");
 
-        monsterGameObject = GameObject.FindGameObjectWithTag("Monster");
+        agent = GameObject.FindObjectOfType<NavMeshAgent>();
 
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
         
@@ -41,12 +44,18 @@ public class MonsterPatrolState : MonsterBaseState
 
     public override void UpdateState(MonsterStateManager monster)
     {
-        Vector3 direction = currentWaypoint.transform.position - monsterGameObject.transform.position;
+        /*
+        Vector3 direction = currentWaypoint.transform.position - agent.transform.position;
         Vector3 moveVector = direction.normalized * moveSpeed * Time.deltaTime;
-        monsterGameObject.transform.position += moveVector; //walk to the waypoint
-        monsterGameObject.transform.LookAt(currentWaypoint.transform); //the monster should face where it's walking
+        agent.transform.position += moveVector; //walk to the waypoint
+        agent.transform.LookAt(currentWaypoint.transform); //the monster should face where it's walking
+        */
 
-        if(Vector3.Distance(currentWaypoint.transform.position, monsterGameObject.transform.position) < minDistance)
+        Vector3 direction = currentWaypoint.transform.position;
+        agent.SetDestination(direction);
+        Debug.Log(currentWaypoint);
+
+        if(Vector3.Distance(currentWaypoint.transform.position, agent.transform.position) < minDistance)
         {
             /*
             //go to every waypoint in order

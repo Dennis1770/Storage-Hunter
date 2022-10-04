@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 /* This is the context for our finite state machine
  * this script creates instances of concrete states (idle, patrol, hunt, and chase)
@@ -13,8 +12,6 @@ public class MonsterStateManager : MonoBehaviour
     public MonsterPatrolState patrol = new MonsterPatrolState();
     public MonsterHuntState hunt = new MonsterHuntState();
     public MonsterChaseState chase = new MonsterChaseState();
-
-    public NavMeshAgent agent;
 
     /*
     //patrol state

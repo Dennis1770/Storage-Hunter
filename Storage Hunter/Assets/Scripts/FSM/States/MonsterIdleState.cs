@@ -10,6 +10,8 @@ public class MonsterIdleState : MonsterBaseState
 
     GameObject monsterGameObject;
 
+    
+
     //MonsterStateManager stateManager;
 
     private float elapsedTime;
