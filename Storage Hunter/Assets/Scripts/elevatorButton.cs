@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class elevator : MonoBehaviour
+public class elevatorButton : MonoBehaviour
 {
 
 
     private bool playerInZone; //player is in button range
+    public GameObject elevator; //elevator game object
+    private bool buttonPressed; //is the elevator button pressed
+   
     
     
     // Start is called before the first frame update
@@ -14,6 +17,8 @@ public class elevator : MonoBehaviour
     {
 
         playerInZone = false; //player isn't in button range
+        buttonPressed = false; //button isn't pressed
+       
 
     }
 
@@ -25,10 +30,20 @@ public class elevator : MonoBehaviour
         {
 
             gameObject.GetComponent<Animator>().Play("pushButton");
+            buttonPressed = true; //button is pressed
             
             
 
         }
+
+       if(buttonPressed == true) //if button is pressed, play animation
+        {
+
+            elevator.GetComponent<Animator>().Play("openElevator");
+            //buttonPressed = false;
+
+        }
+
 
     }
 
@@ -36,7 +51,7 @@ public class elevator : MonoBehaviour
     private void OnTriggerEnter(Collider other) //if player is in zone
     {
         
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player") //if collider detects player tag, player is in zone
         {
 
             playerInZone = true;
@@ -48,7 +63,7 @@ public class elevator : MonoBehaviour
     private void OnTriggerExit(Collider other) //if player exits zone
     {
         
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player") //if collider doesn't detect player, player isn't in zone
         {
 
             playerInZone = false;
