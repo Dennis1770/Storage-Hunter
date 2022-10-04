@@ -6,23 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu Scenes/Main Menu.unity
-    guid: 2e5db6b675a8f314e855312f3ea8aa36
-  - enabled: 1
-    path: Assets/Scenes/Menu Scenes/Controls Menu.unity
-    guid: fd4278875133d904fbe55664d9598de9
-  - enabled: 1
-    path: Assets/Scenes/Menu Scenes/Settings Menu.unity
-    guid: 5e061573426e90c4da1e4853c7c04ad5
-  - enabled: 1
-    path: Assets/Scenes/Menu Scenes/Gameplay Menu.unity
-    guid: 0cdfbbe473f558640999bbf95b007c61
-  - enabled: 1
-    path: Assets/Scenes/Menu Scenes/Graphics Menu.unity
-    guid: 41e0b219bc8f3804a8fa3e2d29272133
-  - enabled: 1
-    path: Assets/Scenes/Menu Scenes/Volume Menu.unity
-    guid: a2ff2f733aa7e8d4a916f8253a1766bf
+    path: Assets/Scenes/Menu Scenes/MainMenu.unity
+    guid: c5fd2c13ef974194a8911ae996e65bfb
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: e11f52f39cc23bd468942d2f211f31b0
