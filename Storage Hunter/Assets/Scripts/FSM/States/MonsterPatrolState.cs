@@ -9,20 +9,13 @@ public class MonsterPatrolState : MonsterBaseState
 {
     GameObject monster;
 
-    //GameObject monsterGameObject;
-
-    NavMeshAgent agent;
-
-    //MonsterStateManager stateManager;
+    NavMeshAgent agent; //the monster is a navmesh agent, used for A* pathfinding
 
     GameObject[] waypoints; //waypoints for the monster to patrol between
 
-
-    private float minDistance = 1f;
-    //private float moveSpeed = 5f;
+    float minDistance = 1f;
     public Transform currentWaypoint;
     public int currentIndex;
-
 
     public override void EnterState(MonsterStateManager monster)
     {
@@ -31,50 +24,33 @@ public class MonsterPatrolState : MonsterBaseState
         agent = GameObject.FindObjectOfType<NavMeshAgent>();
 
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
-        
-        /*
-        for (int i=0; i< waypoints.Length; i++)
-        {
-            Debug.Log(waypoints[i].transform);
-        }
-        */
 
         currentWaypoint = waypoints[0].transform;
     }
 
     public override void UpdateState(MonsterStateManager monster)
     {
-        /*
-        Vector3 direction = currentWaypoint.transform.position - agent.transform.position;
-        Vector3 moveVector = direction.normalized * moveSpeed * Time.deltaTime;
-        agent.transform.position += moveVector; //walk to the waypoint
-        agent.transform.LookAt(currentWaypoint.transform); //the monster should face where it's walking
-        */
-
         Vector3 direction = currentWaypoint.transform.position;
         agent.SetDestination(direction);
-        Debug.Log(currentWaypoint);
 
         if(Vector3.Distance(currentWaypoint.transform.position, agent.transform.position) < minDistance)
         {
-            /*
-            //go to every waypoint in order
-
-            ++currentIndex;
-            if(currentIndex > waypoints.Length - 1)
-            {
-                currentIndex = 0;
-            }
-
-            currentWaypoint = waypoints[currentIndex].transform;
-            */
-
             //pick a random waypoint each time
             int number = Random.Range(0, waypoints.Length);
             currentIndex = number;
             currentWaypoint = waypoints[currentIndex].transform;
         }
-        
+
+        LayerMask playerMask = LayerMask.GetMask("playerLayer");
+
+        RaycastHit hit;
+        if (Physics.Raycast(agent.transform.position, agent.transform.TransformDirection(Vector3.forward), out hit, 14f, playerMask))
+        {
+            Debug.Log("Player has been spotted");
+            Debug.DrawRay(agent.transform.position, agent.transform.TransformDirection(Vector3.forward) * 14f, Color.red);
+            monster.switchState(monster.chase);
+        }
+        else Debug.DrawRay(agent.transform.position, agent.transform.TransformDirection(Vector3.forward) * 14f, Color.blue);
     }
 
     public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
@@ -82,8 +58,7 @@ public class MonsterPatrolState : MonsterBaseState
         GameObject other = collision.gameObject;
         if (other.CompareTag("Player"))
         {
-            Debug.Log("game over");
-            //the player has been caught
+            Debug.Log("game over"); //the player has been caught
         }
     }
 }
