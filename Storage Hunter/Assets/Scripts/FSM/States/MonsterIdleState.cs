@@ -18,7 +18,7 @@ public class MonsterIdleState : MonsterBaseState
         Debug.Log("Monster is now in the idle state");
 
         delay = Random.Range(1,4); //wait 1-3 seconds
-        Debug.Log(delay);
+        Debug.Log("The monster will wait " + delay + " seconds before patrolling");
     }
 
     public override void UpdateState(MonsterStateManager monster)

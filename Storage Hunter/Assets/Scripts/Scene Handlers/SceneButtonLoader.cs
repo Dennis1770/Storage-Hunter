@@ -7,7 +7,7 @@ public class SceneButtonLoader : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Desk Intro");
     }
 
     public void MainMenu()
@@ -38,6 +38,21 @@ public class SceneButtonLoader : MonoBehaviour
     public void VolumeMenu()
     {
         SceneManager.LoadScene("Volume Menu");
+    }
+
+    public void DockScene()
+    {
+        SceneManager.LoadScene("Dock");
+    }
+
+    public void StorageScene()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void ParkScene()
+    {
+        SceneManager.LoadScene("Park");
     }
 
     public void QuitGame()
