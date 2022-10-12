@@ -30,10 +30,6 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Toggle fullscreenToggle;
 
 
-    [Header("Confirmation")]
-    [SerializeField] private GameObject confirmationPrompt = null;
-
-
     [Header("Resolution Dropdowns")]
     public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
@@ -76,40 +72,39 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
 
-    public void SetVolume(float volume)
+    public void SetVolume(float volume) // connecting text with AudioListener volume value
     {
         AudioListener.volume = volume;
         volumeTextValue.text = volume.ToString("0.0");
     }
 
 
-    public void SetControllerSen(float sensitivity)
+    public void SetControllerSen(float sensitivity) // connecting text with sensitivty value
     {
         mainControllerSen = Mathf.RoundToInt(sensitivity);
         controllerSenTextValue.text = sensitivity.ToString("0");
     }
 
 
-    public void SetFullScreen(bool isFullscreen)
+    public void SetFullScreen(bool isFullscreen) // if true, set game to fullscreen
     {
         _isFullscreen = isFullscreen;
     }
 
-    public void SetQuality(int qualityIndex)
+    public void SetQuality(int qualityIndex) // selecting quality for the game
     {
         qualityLevel = qualityIndex;
     }
 
-    public void GameplayApply()
+    public void GameplayApply() // applying changes with fullscreen
     {
         PlayerPrefs.SetInt("masterFullscreen", (_isFullscreen ? 1 : 0));
         Screen.fullScreen = _isFullscreen;
 
-        StartCoroutine(ConfirmationBox());
     }
 
 
-    public void ResetButton(string MenuType)
+    public void ResetButton(string MenuType) // resetting settings to default choices
     {
         if (MenuType == "Gameplay")
         {
@@ -128,15 +123,4 @@ public class MenuController : MonoBehaviour
         }
 
     }
-
-
-
-    public IEnumerator ConfirmationBox()
-    {
-        confirmationPrompt.SetActive(true);
-        yield return new WaitForSeconds(2);
-        confirmationPrompt.SetActive(false);
-    }
-
-
 }
