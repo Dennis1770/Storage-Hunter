@@ -12,7 +12,7 @@ public class SceneButtonLoader : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void ControlsMenu()
@@ -43,16 +43,19 @@ public class SceneButtonLoader : MonoBehaviour
     public void DockScene()
     {
         SceneManager.LoadScene("Dock");
+        Time.timeScale = 1;
     }
 
     public void StorageScene()
     {
         SceneManager.LoadScene("Level 1");
+        Time.timeScale = 1;
     }
 
     public void ParkScene()
     {
         SceneManager.LoadScene("Park");
+        Time.timeScale = 1;
     }
 
     public void QuitGame()

@@ -12,7 +12,7 @@ public class MenuController : MonoBehaviour
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
-    [SerializeField] private float defaultVolume = 0.5f;
+    [SerializeField] private float defaultVolume = 0.2f;
 
 
     [Header("Controls Settings")]
@@ -25,7 +25,6 @@ public class MenuController : MonoBehaviour
     [Header("Gameplay Settings")]
     private int qualityLevel;
     private bool _isFullscreen;
-
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private Toggle fullscreenToggle;
 
@@ -38,6 +37,7 @@ public class MenuController : MonoBehaviour
     {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
+
 
 
         List<string> options = new List<string>();
@@ -75,9 +75,9 @@ public class MenuController : MonoBehaviour
     public void SetVolume(float volume) // connecting text with AudioListener volume value
     {
         AudioListener.volume = volume;
+        defaultVolume = volume;
         volumeTextValue.text = volume.ToString("0.0");
     }
-
 
     public void SetControllerSen(float sensitivity) // connecting text with sensitivty value
     {
