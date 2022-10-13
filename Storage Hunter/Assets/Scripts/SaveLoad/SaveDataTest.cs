@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveDataTest : MonoBehaviour//, ISaveable //we have to inherit from ISaveable
+public class SaveDataTest : MonoBehaviour, ISaveable //we have to inherit from ISaveable
 //we're going to see if these floats can be saved to and read from our save file
 {
     public float healthFloat, maxHealthFloat;

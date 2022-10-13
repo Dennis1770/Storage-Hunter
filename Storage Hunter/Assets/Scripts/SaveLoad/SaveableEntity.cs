@@ -35,7 +35,7 @@ public class SaveableEntity : MonoBehaviour
             string typeName = saveable.GetType().ToString();
             if(stateDictionary.TryGetValue(typeName, out object savedState))
             {
-                //saveable.LoadState(savedState);
+                saveable.LoadState(savedState);
             }
         }
     }

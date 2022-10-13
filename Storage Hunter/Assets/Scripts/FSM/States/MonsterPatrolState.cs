@@ -19,7 +19,7 @@ public class MonsterPatrolState : MonsterBaseState
 
     public override void EnterState(MonsterStateManager monster)
     {
-        Random.InitState(2); //set the seed for rng
+        Random.InitState(System.DateTime.Now.Millisecond); //set the seed for rng
 
         Debug.Log("Monster is now in the patrol state");
 
@@ -34,7 +34,7 @@ public class MonsterPatrolState : MonsterBaseState
     {
         Vector3 direction = currentWaypoint.transform.position;
         agent.SetDestination(direction);
-        Debug.Log(currentWaypoint);
+        //Debug.Log(currentWaypoint);
 
         if(Vector3.Distance(currentWaypoint.transform.position, agent.transform.position) < minDistance)
         {
@@ -44,19 +44,18 @@ public class MonsterPatrolState : MonsterBaseState
             currentWaypoint = waypoints[currentIndex].transform;
         }
 
-        //LayerMask playerMask = LayerMask.GetMask("playerLayer");
-
         RaycastHit hit;
         Ray sightRay = new Ray(agent.transform.position, agent.transform.TransformDirection(Vector3.forward));
+        Debug.DrawRay(agent.transform.position, agent.transform.TransformDirection(Vector3.forward) * 14f, Color.blue);
         if (Physics.Raycast(sightRay, out hit))
         {
-            if(hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player")
             {
                 Debug.Log("Player has been spotted");
                 monster.switchState(monster.chase);
             }
+            //else Debug.Log("Nothing spotted");
         }
-        else Debug.DrawRay(agent.transform.position, agent.transform.TransformDirection(Vector3.forward) *14f, Color.blue);
     }
 
     public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
