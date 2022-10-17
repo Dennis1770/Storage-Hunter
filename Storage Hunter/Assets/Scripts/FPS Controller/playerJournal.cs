@@ -12,6 +12,7 @@ public class playerJournal : MonoBehaviour
 
     private void Awake()
     {
+        // journal = GetComponent<GameObject>(); 
         journal.SetActive(false);
         showJournal = false;
     }
