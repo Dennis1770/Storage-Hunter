@@ -8,11 +8,13 @@ public class SceneButtonLoader : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("Desk Intro");
+        Time.timeScale = 1;
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 
     public void ControlsMenu()
@@ -43,18 +45,28 @@ public class SceneButtonLoader : MonoBehaviour
     public void DockScene()
     {
         SceneManager.LoadScene("Dock");
+        Time.timeScale = 1;
     }
 
     public void StorageScene()
     {
         SceneManager.LoadScene("Level 1");
+        Time.timeScale = 1;
     }
 
     public void ParkScene()
     {
         SceneManager.LoadScene("Park");
+        Time.timeScale = 1;
     }
 
+
+
+    public void ReturnButton()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     public void QuitGame()
     {
         Application.Quit();
