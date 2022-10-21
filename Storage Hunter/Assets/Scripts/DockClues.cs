@@ -85,7 +85,7 @@ public class DockClues : MonoBehaviour
 
     IEnumerator ClueAcquired()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         UIClueConfirmation.SetActive(false);
 
     }

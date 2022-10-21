@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Waypoint
   - Monster
+  - DockClue2
+  - DockClue1
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Water
   - UI
   - playerLayer
-  - 
+  - Pickable
   - 
   - 
   - 
