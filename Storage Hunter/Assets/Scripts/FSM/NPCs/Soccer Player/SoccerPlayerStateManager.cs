@@ -21,9 +21,4 @@ public class SoccerPlayerStateManager : MonoBehaviour
     {
 
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-    }
 }

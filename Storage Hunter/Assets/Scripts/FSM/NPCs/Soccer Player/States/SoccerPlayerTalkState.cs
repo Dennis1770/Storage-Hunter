@@ -11,9 +11,4 @@ public class SoccerPlayerTalkState : SoccerPlayerBaseState
     {
         throw new System.NotImplementedException();
     }
-
-    public override void OnCollisionEnter(SoccerPlayerStateManager soccer, Collision collision)
-    {
-        throw new System.NotImplementedException();
-    }
 }
