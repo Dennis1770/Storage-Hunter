@@ -9,7 +9,8 @@ public class JoggerStateManager : MonoBehaviour
 
     private void Start()
     {
-
+        currentState = jogging;
+        currentState.EnterState(this);
     }
 
     private void Update()
@@ -19,11 +20,12 @@ public class JoggerStateManager : MonoBehaviour
 
     public void switchState(JoggerBaseState state)
     {
-
+        currentState = state;
+        state.EnterState(this);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        currentState.OnCollisionEnter(this, collision);
     }
 }
