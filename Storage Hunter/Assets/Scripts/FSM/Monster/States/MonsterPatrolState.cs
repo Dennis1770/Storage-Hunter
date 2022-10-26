@@ -9,7 +9,9 @@ public class MonsterPatrolState : MonsterBaseState
 {
     GameObject monster;
 
-    NavMeshAgent agent; //the monster is a navmesh agent, used for A* pathfinding
+    GameObject monsterObject;
+
+    NavMeshAgent monsterAgent; //the monster is a navmesh agent, used for A* pathfinding
 
     GameObject[] waypoints; //waypoints for the monster to patrol between
 
@@ -23,7 +25,9 @@ public class MonsterPatrolState : MonsterBaseState
 
         Debug.Log("Monster is now in the patrol state");
 
-        agent = GameObject.FindObjectOfType<NavMeshAgent>();
+        monsterObject = GameObject.FindGameObjectWithTag("Monster");
+
+        monsterAgent = monsterObject.GetComponent<NavMeshAgent>();
 
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
 
@@ -33,10 +37,10 @@ public class MonsterPatrolState : MonsterBaseState
     public override void UpdateState(MonsterStateManager monster)
     {
         Vector3 direction = currentWaypoint.transform.position;
-        agent.SetDestination(direction);
+        monsterAgent.SetDestination(direction);
         //Debug.Log(currentWaypoint);
 
-        if(Vector3.Distance(currentWaypoint.transform.position, agent.transform.position) < minDistance)
+        if(Vector3.Distance(currentWaypoint.transform.position, monsterAgent.transform.position) < minDistance)
         {
             //pick a random waypoint each time
             int number = Random.Range(0, waypoints.Length);
@@ -45,8 +49,8 @@ public class MonsterPatrolState : MonsterBaseState
         }
 
         RaycastHit hit;
-        Ray sightRay = new Ray(agent.transform.position, agent.transform.TransformDirection(Vector3.forward));
-        Debug.DrawRay(agent.transform.position, agent.transform.TransformDirection(Vector3.forward) * 14f, Color.blue);
+        Ray sightRay = new Ray(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward));
+        Debug.DrawRay(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward) * 14f, Color.blue);
         if (Physics.Raycast(sightRay, out hit))
         {
             if (hit.collider.tag == "Player")

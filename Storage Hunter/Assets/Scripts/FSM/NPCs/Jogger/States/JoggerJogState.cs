@@ -5,7 +5,7 @@ public class JoggerJogState : JoggerBaseState
 {
     GameObject jogger;
 
-    Object[] agents;
+    GameObject jogObject;
 
     NavMeshAgent jogAgent;
 
@@ -19,22 +19,10 @@ public class JoggerJogState : JoggerBaseState
     {
         Debug.Log("Jogger is now in the jogging state");
 
-        //jogAgent = GameObject.FindGameObjectWithTag("Jogger");
+        jogObject = GameObject.FindGameObjectWithTag("Jogger");
 
-        agents = Object.FindObjectsOfType<NavMeshAgent>();
+        jogAgent = jogObject.GetComponent<NavMeshAgent>();
 
-        foreach(object NavMeshAgent in agents)
-        {
-            Debug.Log(NavMeshAgent);
-           
-        }
-
-        for(int i = 0; i < agents.Length; i++)
-        {
-            //GameObject.FindGameObjectsWithTag("Jogger");
-
-
-        }
     }
 
     public override void UpdateState(JoggerStateManager jogger)
