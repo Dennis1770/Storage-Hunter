@@ -4634,7 +4634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers:
   - {fileID: 1551856873}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0.7254902, g: 0.7254902, b: 0.7254902, a: 1}
 --- !u!54 &1551856871
 Rigidbody:
   m_ObjectHideFlags: 0
