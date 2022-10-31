@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -19,10 +20,14 @@ public class playerMovement : MonoBehaviour
     private float startYScale; //starting y position
     private KeyCode crouchKey = KeyCode.LeftControl; //key board key for crouching
 
+    private int currentSceneIndex; //current scene save
+
     private void Start()
     {
 
         startYScale = transform.localScale.y; //starting y position
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //collects information on active scene
+        PlayerPrefs.SetInt("SavedScene", currentSceneIndex); //saves active scene
 
     }
 
