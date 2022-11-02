@@ -83,6 +83,8 @@ public class MenuController : MonoBehaviour
     {
         mainControllerSen = Mathf.RoundToInt(sensitivity);
         controllerSenTextValue.text = sensitivity.ToString("0");
+
+        PlayerPrefs.SetFloat("masterSen", mainControllerSen);
     }
 
 
@@ -100,6 +102,8 @@ public class MenuController : MonoBehaviour
     {
         PlayerPrefs.SetInt("masterFullscreen", (_isFullscreen ? 1 : 0));
         Screen.fullScreen = _isFullscreen;
+
+        PlayerPrefs.SetFloat("masterSen", mainControllerSen);
 
     }
 
