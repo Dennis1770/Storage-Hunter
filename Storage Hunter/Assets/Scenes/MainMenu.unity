@@ -5108,6 +5108,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5181,6 +5182,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19c26d6a67b1ac4a98353b8743f7817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensTextValue: {fileID: 1876909055}
+  slider: {fileID: 971989692}
+  sliderSenseValue: 0
+  player: {fileID: 519420032}
 --- !u!1 &536375069
 GameObject:
   m_ObjectHideFlags: 0
@@ -7422,15 +7439,15 @@ MonoBehaviour:
   m_HandleRect: {fileID: 296127470}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 8
-  m_WholeNumbers: 0
-  m_Value: 4
+  m_MaxValue: 1000
+  m_WholeNumbers: 1
+  m_Value: 300
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 559922075}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: SetControllerSen
+      - m_Target: {fileID: 519420033}
+        m_TargetAssemblyTypeName: sight, Assembly-CSharp
+        m_MethodName: AdjustSensitivity
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
