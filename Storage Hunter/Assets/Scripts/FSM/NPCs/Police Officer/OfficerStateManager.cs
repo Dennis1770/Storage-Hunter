@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class OfficerStateManager : MonoBehaviour
 {
-    OfficerBaseState currentState;
+    public OfficerBaseState currentState;
 
     public OfficerInvestigateState investigating = new OfficerInvestigateState();
     public OfficerTalkState talking = new OfficerTalkState();
+    public bool isInvestigating = false;
+    public bool isTalking = false;
 
     private void Start()
     {

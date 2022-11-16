@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class OfficerInvestigateState : OfficerBaseState
 {
@@ -7,28 +6,28 @@ public class OfficerInvestigateState : OfficerBaseState
 
     GameObject officerObject;
 
-    NavMeshAgent officerAgent;
+    GameObject player;
 
-    GameObject Player;
-
-    float interactRange; //how close you must be to talk to the npc
+    int interactRange = 4; //how close you must be to talk to the npc
 
     public override void EnterState(OfficerStateManager officer)
     {
         Debug.Log("The Police Officer is now in the investigation state");
 
+        officer.isInvestigating = true;
+
         officerObject = GameObject.FindGameObjectWithTag("Officer");
 
-        officerAgent = officerObject.GetComponent<NavMeshAgent>();
-
-        Player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public override void UpdateState(OfficerStateManager officer)
     {
-        Vector3 distanceToPlayer = Player.transform.position - officerObject.transform.position;
-        if(distanceToPlayer.magnitude <= interactRange && Input.GetKeyDown(KeyCode.E))
+        Vector3 distanceToPlayer = player.transform.position - officerObject.transform.position;
+        //Debug.Log(distanceToPlayer.magnitude);
+        if (distanceToPlayer.magnitude <= interactRange && !DialogueManager.GetInstance().dialogueIsPlaying && Input.GetKeyDown(KeyCode.E))
         {
+            officer.isInvestigating = false;
             officer.switchState(officer.talking);
         }
     }

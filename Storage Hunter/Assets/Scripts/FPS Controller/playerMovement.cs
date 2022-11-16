@@ -37,6 +37,11 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying) //freeze the player while they talk to npc's
+        {
+            return;
+        }
+
         //player movement
         float x = Input.GetAxis("Horizontal"); //input movement on x-axis
         float z = Input.GetAxis("Vertical"); //input movement on z-axis

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class OfficerTalkState : OfficerBaseState
 {
@@ -7,26 +6,32 @@ public class OfficerTalkState : OfficerBaseState
 
     GameObject officerObject;
 
-    NavMeshAgent officerAgent;
-
     GameObject player;
 
-    GameObject officerCanvas;
+    //GameObject officerCanvas;
 
     public override void EnterState(OfficerStateManager officer)
     {
         Debug.Log("The Police Officer is now in the talk state");
 
-        officerObject.transform.LookAt(player.transform); //npc will face the player
+        officer.isTalking = true;
 
-        officerCanvas = GameObject.FindGameObjectWithTag("OfficerCanvas");
+        officerObject = GameObject.FindGameObjectWithTag("Officer");
 
-        officerCanvas.SetActive(true); //start the inky dialogue
+        //officerObject.transform.LookAt(player.transform); //npc should turn to face the player
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        
     }
 
     public override void UpdateState(OfficerStateManager officer)
     {
-        return;
+        if (!DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            officer.isTalking = false;
+            officer.switchState(officer.investigating);
+        }
     }
 
     /*
@@ -35,4 +40,7 @@ public class OfficerTalkState : OfficerBaseState
         throw new System.NotImplementedException();
     }
     */
+
 }
+
+
