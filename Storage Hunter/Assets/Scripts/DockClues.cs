@@ -15,7 +15,7 @@ public class DockClues : MonoBehaviour
     public GameObject UIClue1Revealed;
     public GameObject UIClue2Revealed;
 
-
+    public GameObject pickableObject1;
     private void Update()
     {
         if (dockClue1Achieved == true)
@@ -29,10 +29,10 @@ public class DockClues : MonoBehaviour
             // Making the UI Clue Text visible
             UIClue2Revealed.SetActive(true);
         }
-    }
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == "DockClue1")
+
+
+        // Checking to see if PickableObject1 doesn't exist in the scene 
+        if (pickableObject1 == null)
         {
             Debug.Log("Interacted with DockClue1");
 
@@ -56,6 +56,12 @@ public class DockClues : MonoBehaviour
             }
 
         }
+    }
+
+
+    private void OnTriggerEnter(Collider collider)
+    {
+
 
 
         if (collider.gameObject.tag == "DockClue2")
