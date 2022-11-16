@@ -9,7 +9,8 @@ public class OfficerStateManager : MonoBehaviour
 
     private void Start()
     {
-
+        currentState = investigating;
+        currentState.EnterState(this);
     }
 
     private void Update()
@@ -17,13 +18,16 @@ public class OfficerStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void switchState(JoggerBaseState state)
+    public void switchState(OfficerBaseState state)
     {
-
+        currentState = state;
+        state.EnterState(this);
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
-
+        currentState.OnCollisionEnter(this, collision);
     }
+    */
 }

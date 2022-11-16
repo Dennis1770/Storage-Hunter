@@ -6,5 +6,5 @@ public abstract class OfficerBaseState
 
     public abstract void UpdateState(OfficerStateManager officer);
 
-    public abstract void OnCollisionEnter(OfficerStateManager officer, Collision collision);
+    //public abstract void OnCollisionEnter(OfficerStateManager officer, Collision collision);
 }

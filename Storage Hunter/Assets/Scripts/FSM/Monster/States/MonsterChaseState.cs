@@ -7,7 +7,7 @@ using UnityEngine.AI;
 */
 public class MonsterChaseState : MonsterBaseState
 {
-    GameObject monster;
+    //GameObject monster;
 
     GameObject player;
 

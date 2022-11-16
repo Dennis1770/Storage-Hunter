@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class JoggerJogState : JoggerBaseState
 {
-    GameObject jogger;
+    //GameObject jogger;
 
     GameObject jogObject;
 
