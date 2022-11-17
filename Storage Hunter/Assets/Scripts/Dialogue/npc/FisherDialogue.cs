@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoggerDialogue : MonoBehaviour
+public class FisherDialogue : MonoBehaviour
 {
-    JoggerStateManager joggerFSM;
-
+    FisherStateManager fisherFSM;
     [Header("Ink JSON")] [SerializeField] private TextAsset inkJSON;
 
     private int i;
@@ -13,20 +12,20 @@ public class JoggerDialogue : MonoBehaviour
     private void Start()
     {
         i = 0;
-        joggerFSM = FindObjectOfType<JoggerStateManager>();
+        fisherFSM = FindObjectOfType<FisherStateManager>();
     }
 
     private void Update()
     {
-        if(joggerFSM.isTalking == true)
+        if (fisherFSM.isTalking == true)
         {
             if (i < 1)
             {
                 i++;
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
-            }   
+            }
         }
-        if(joggerFSM.isTalking == false)
+        if (fisherFSM.isTalking == false)
         {
             i = 0;
         }

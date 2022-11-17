@@ -20,7 +20,7 @@ public class OfficerDialogue : MonoBehaviour
     {
         if(officerFSM.isTalking == true)
         {
-            while (i < 1) 
+            if (i < 1) 
             {
                 i++;
                 //Debug.Log(inkJSON.text);

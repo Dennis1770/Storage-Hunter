@@ -56,7 +56,6 @@ public class DialogueManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("continuing story");
             ContinueStory();
         }
     }
@@ -72,10 +71,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
-        //ContinueStory();
-        dialogueText.text = currentStory.Continue();
-        DisplayChoices();
-        Debug.Log("the story has started");
+        ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
@@ -91,15 +87,11 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
-            Debug.Log("story is continuing");
-            //set text for the current dialogue line
-            dialogueText.text = currentStory.Continue();
-            //display choices for this dialogue line
-            DisplayChoices();
+            dialogueText.text = currentStory.Continue(); //set text for the current dialogue line
+            DisplayChoices(); //display choices for this dialogue line
         }
         else
         {
-            Debug.Log("story is over");
             StartCoroutine(ExitDialogueMode());
         }
     }
@@ -141,6 +133,5 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
-        Debug.Log("you chose option: " + choiceIndex);
     }
 }
