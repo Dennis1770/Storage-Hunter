@@ -5,17 +5,17 @@ public class JoggerJogState : JoggerBaseState
 {
     GameObject jogObject;
 
-    //NavMeshAgent jogAgent;
+    NavMeshAgent jogAgent;
 
-    //GameObject[] waypoints;
+    GameObject[] waypoints;
 
     GameObject player;
 
     int interactRange = 4;
 
-    //float minDistance = 1f;
-    //public Transform currentWaypoint;
-    //public int currentIndex;
+    float minDistance = 1f;
+    public Transform currentWaypoint;
+    public int currentIndex;
 
     public override void EnterState(JoggerStateManager jogger)
     {
@@ -29,42 +29,40 @@ public class JoggerJogState : JoggerBaseState
         player = GameObject.FindGameObjectWithTag("Player");
 
         //navmesh
-        //jogAgent = jogObject.GetComponent<NavMeshAgent>();
+        jogAgent = jogObject.GetComponent<NavMeshAgent>();
 
-       // waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+        waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
 
-        //currentWaypoint = waypoints[0].transform;
+        currentWaypoint = waypoints[0].transform;
+
+        currentIndex = 0;
     }
 
     public override void UpdateState(JoggerStateManager jogger)
     {
-        /*
-        Vector3 direction = currentWaypoint.transform.position;
-        jogAgent.SetDestination(direction);
+        Jog();
 
-        for (int i=0; i < waypoints.Length; i++)
-        {
-            currentWaypoint = waypoints[i].transform;
-
-            if (Vector3.Distance(currentWaypoint.transform.position, jogAgent.transform.position) < minDistance)
-            {
-                i++;
-
-                if (i == waypoints.Length)
-                {
-                    i = 0;
-                }
-            }
-        }
-        */
-
-        
         Vector3 distanceToPlayer = player.transform.position - jogObject.transform.position;
         if (distanceToPlayer.magnitude <= interactRange && !DialogueManager.GetInstance().dialogueIsPlaying && Input.GetKeyDown(KeyCode.E))
         {
             jogger.isJogging = false;
             jogger.switchState(jogger.talking);
         }
-        
+    }
+
+    private void Jog()
+    {
+        Vector3 direction = currentWaypoint.transform.position;
+        jogAgent.SetDestination(direction);
+
+        if(Vector3.Distance(currentWaypoint.transform.position, jogObject.transform.position) < minDistance)
+        {
+            ++currentIndex;
+            if (currentIndex > waypoints.Length - 1)
+            {
+                currentIndex = 0;
+            }
+            currentWaypoint = waypoints[currentIndex].transform;
+        }
     }
 }
