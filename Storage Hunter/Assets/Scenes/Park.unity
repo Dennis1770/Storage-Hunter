@@ -2224,7 +2224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd59dce31c5ba44aa46f0cf5e92365d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: 0ea03c6f5e952e74280d4127a61d5c80, type: 3}
+  inkJSON: {fileID: 4900000, guid: 54efddf6b344fdd468f268eb8c0dc25c, type: 3}
 --- !u!114 &660838886 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1831377292652641552, guid: 2c898cf81b58c684ea920c1c879b18cc, type: 3}
@@ -15079,7 +15079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2027200810
 MonoBehaviour:
   m_ObjectHideFlags: 0
