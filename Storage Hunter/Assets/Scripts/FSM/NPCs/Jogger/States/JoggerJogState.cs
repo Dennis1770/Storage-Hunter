@@ -33,9 +33,7 @@ public class JoggerJogState : JoggerBaseState
 
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
 
-        currentWaypoint = waypoints[0].transform;
-
-        currentIndex = 0;
+        currentWaypoint = waypoints[currentIndex].transform;
     }
 
     public override void UpdateState(JoggerStateManager jogger)
@@ -53,6 +51,7 @@ public class JoggerJogState : JoggerBaseState
 
     private void Jog()
     {
+        
         Vector3 direction = currentWaypoint.transform.position;
         jogAgent.SetDestination(direction);
 
