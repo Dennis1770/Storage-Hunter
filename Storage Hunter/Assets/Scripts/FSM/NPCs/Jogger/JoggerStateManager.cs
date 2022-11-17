@@ -6,6 +6,8 @@ public class JoggerStateManager : MonoBehaviour
 
     public JoggerJogState jogging = new JoggerJogState();
     public JoggerTalkState talking = new JoggerTalkState();
+    public bool isJogging = false;
+    public bool isTalking = false;
 
     private void Start()
     {
@@ -22,10 +24,5 @@ public class JoggerStateManager : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        currentState.OnCollisionEnter(this, collision);
     }
 }

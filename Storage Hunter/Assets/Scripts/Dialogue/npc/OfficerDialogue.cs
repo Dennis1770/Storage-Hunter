@@ -32,4 +32,5 @@ public class OfficerDialogue : MonoBehaviour
             i = 0; //resetting this allows us to talk to the npc again
         }
     }
+
 }

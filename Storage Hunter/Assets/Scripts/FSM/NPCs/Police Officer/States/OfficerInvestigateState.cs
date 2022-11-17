@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class OfficerInvestigateState : OfficerBaseState
 {
-    //GameObject officer;
-
     GameObject officerObject;
 
     GameObject player;
@@ -24,18 +22,10 @@ public class OfficerInvestigateState : OfficerBaseState
     public override void UpdateState(OfficerStateManager officer)
     {
         Vector3 distanceToPlayer = player.transform.position - officerObject.transform.position;
-        //Debug.Log(distanceToPlayer.magnitude);
         if (distanceToPlayer.magnitude <= interactRange && !DialogueManager.GetInstance().dialogueIsPlaying && Input.GetKeyDown(KeyCode.E))
         {
             officer.isInvestigating = false;
             officer.switchState(officer.talking);
         }
     }
-
-    /*
-    public override void OnCollisionEnter(OfficerStateManager officer, Collision collision)
-    {
-        throw new System.NotImplementedException();
-    }
-    */
 }
