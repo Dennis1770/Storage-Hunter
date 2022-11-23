@@ -8,6 +8,12 @@ TagManager:
   - Monster
   - DockClue2
   - DockClue1
+  - Jogger
+  - ParkClue2
+  - Officer
+  - Fisherman
+  - OfficeDoorTrigger
+  - Keypad
   layers:
   - Default
   - TransparentFX
@@ -17,7 +23,7 @@ TagManager:
   - UI
   - playerLayer
   - Pickable
-  - 
+  - Touchable
   - 
   - 
   - 

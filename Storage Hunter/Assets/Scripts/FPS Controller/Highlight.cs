@@ -31,7 +31,8 @@ public class Highlight : MonoBehaviour
             foreach (var material in materials)
             {
                 material.EnableKeyword("_EMISSION");
-                material.SetColor("_EmissionColor", color);            }
+                material.SetColor("_EmissionColor", color);           
+            }
         }
         else
         {
