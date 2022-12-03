@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level1Clues : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class Level1Clues : MonoBehaviour
 
     [SerializeField]
     private GameObject crumbledPaperUI;
+
+    [SerializeField]
+    private GameObject noElevatorCardUI;
+
+    [SerializeField]
+    private GameObject obtainedElevatorCardUI;
 
     [SerializeField]
     [Min(1)]
@@ -65,6 +72,8 @@ public class Level1Clues : MonoBehaviour
 
                     //Obtained elevatorCard
                     elevatorCardObtained = true;
+
+                    ObtainedElevatorCardIEnumerator();
                 }
 
             }
@@ -80,4 +89,34 @@ public class Level1Clues : MonoBehaviour
         playerMovement.enabled = true;
         Sight.enabled = true;
     }
+
+
+    public void NoElevatorCardIEnumerator()
+    {
+        StartCoroutine(NoElevatorCard());
+    }
+
+    public void ObtainedElevatorCardIEnumerator()
+    {
+        StartCoroutine(ObtainedElevatorCard());
+    }
+    IEnumerator NoElevatorCard()
+    {
+        noElevatorCardUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        noElevatorCardUI.SetActive(false);
+
+    }
+
+    IEnumerator ObtainedElevatorCard()
+    {
+        obtainedElevatorCardUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        obtainedElevatorCardUI.SetActive(false);
+
+    }
+
+
+
+
 }
