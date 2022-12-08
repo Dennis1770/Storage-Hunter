@@ -10,6 +10,9 @@ public class playerMovement : MonoBehaviour
 
     //basic movement
     public float speed = 10f; //player speed
+    public float gravity = -9.81f; //gravity of earth;
+
+    Vector3 velocity; //stores current velocity
 
     //sprint
     public float sprint = 10f; //sprint increase
@@ -50,6 +53,9 @@ public class playerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime); //player movement * player speed * every updated frame
 
+        velocity.y += gravity * Time.deltaTime; //velocity = gravity * time delta time
+        controller.Move(velocity * Time.deltaTime); //velocity * time delta time
+
         //sprinting
         if (Input.GetKeyDown(KeyCode.LeftShift)) //if left shift is pressed down, add sprint to speed
         {
@@ -81,6 +87,7 @@ public class playerMovement : MonoBehaviour
         
 
     }
+
 
     void OnCollisionEnter(Collision collisionInfo)
     {
