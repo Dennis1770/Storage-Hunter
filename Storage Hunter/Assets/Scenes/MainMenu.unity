@@ -8737,6 +8737,7 @@ GameObject:
   - component: {fileID: 1236655302}
   - component: {fileID: 1236655301}
   - component: {fileID: 1236655305}
+  - component: {fileID: 1236655306}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8926,6 +8927,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1236655306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236655300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29692c403ece2344a0c45de33b6de84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qualityLevels:
+  - {fileID: 11400000, guid: c53dcc61347d4df4fbfd9d9207e3021f, type: 2}
+  - {fileID: 11400000, guid: acd08f7501131424d89671fa06150f3e, type: 2}
+  - {fileID: 11400000, guid: 74cbb3344a1feb84e8de3f2c7d641f73, type: 2}
+  - {fileID: 11400000, guid: c4cfac7198be81340b7a4f20b8b6470b, type: 2}
+  dropdown: {fileID: 1896070762}
 --- !u!1 &1237613538
 GameObject:
   m_ObjectHideFlags: 0
