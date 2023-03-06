@@ -8939,12 +8939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29692c403ece2344a0c45de33b6de84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qualityLevels:
-  - {fileID: 11400000, guid: c53dcc61347d4df4fbfd9d9207e3021f, type: 2}
-  - {fileID: 11400000, guid: acd08f7501131424d89671fa06150f3e, type: 2}
-  - {fileID: 11400000, guid: 74cbb3344a1feb84e8de3f2c7d641f73, type: 2}
-  - {fileID: 11400000, guid: c4cfac7198be81340b7a4f20b8b6470b, type: 2}
-  dropdown: {fileID: 1896070762}
 --- !u!1 &1237613538
 GameObject:
   m_ObjectHideFlags: 0
@@ -11361,7 +11355,7 @@ MonoBehaviour:
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 1688086334}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 1
   m_Options:
     m_Options:
     - m_Text: Low
@@ -11375,8 +11369,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+      - m_Target: {fileID: 1236655306}
+        m_TargetAssemblyTypeName: qualitySettings, Assembly-CSharp
         m_MethodName: SetQuality
         m_Mode: 0
         m_Arguments:
