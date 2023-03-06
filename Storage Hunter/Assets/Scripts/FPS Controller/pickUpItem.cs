@@ -61,7 +61,7 @@ public class pickUpItem : MonoBehaviour
         //sets objects transform position to the hand object
         transform.SetParent(hand);
         transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.Euler(Vector3.zero);
+        transform.localRotation = Quaternion.Euler(new Vector3(-8,10,5));
         transform.localScale = Vector3.one;
 
         flashlightScript.enabled = true; //flashlight works when in players hand
