@@ -12,6 +12,8 @@ public class playerMovement : MonoBehaviour
     public float speed = 10f; //player speed
     public float gravity = -9.81f; //gravity of earth;
 
+    public float resetSpeed = 10f;
+    public float resetSprint = 10f;
     Vector3 velocity; //stores current velocity
 
     //sprint
@@ -66,7 +68,7 @@ public class playerMovement : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftShift)) //if left shift is released, subtract sprint from speed
         {
 
-            speed -= sprint;
+            speed = resetSpeed;
 
         }
 
