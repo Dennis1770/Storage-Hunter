@@ -23,7 +23,6 @@ public class HidableStorageRoom : MonoBehaviour
 
     public bool BlueDoorClosed = true;
 
-
     void Start()
     {
         StorageRoomAnim = GetComponent<Animator>();
