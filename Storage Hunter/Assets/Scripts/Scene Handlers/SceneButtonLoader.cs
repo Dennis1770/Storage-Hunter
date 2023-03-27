@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class SceneButtonLoader : MonoBehaviour
 {
 
+    public Animator animator; //fade in animation
+    private int levelToLoad;
+    
     public void PlayGame()
     {
         SceneManager.LoadScene("Desk Intro");
@@ -15,6 +18,7 @@ public class SceneButtonLoader : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
+
     }
 
     public void ControlsMenu()
@@ -44,20 +48,21 @@ public class SceneButtonLoader : MonoBehaviour
 
     public void DockScene()
     {
-        SceneManager.LoadScene("Dock");
-        Time.timeScale = 1;
+        FadeToLevel(3);
+        Debug.Log("Loading Dock");
+        
     }
 
     public void StorageScene()
     {
-        SceneManager.LoadScene("Level 1");
-        Time.timeScale = 1;
+        FadeToLevel(4);
+        
     }
 
     public void ParkScene()
-    {
-        SceneManager.LoadScene("Park");
-        Time.timeScale = 1;
+    {    
+        FadeToLevel(2);
+              
     }
 
 
@@ -72,5 +77,20 @@ public class SceneButtonLoader : MonoBehaviour
         Application.Quit();
     }
 
+
+    public void FadeToLevel(int levelIndex)
+    {
+
+        levelToLoad = levelIndex;
+        animator.SetTrigger("FadeOut"); //triggers the animator
+
+    }
+
+    public void OnFadeComplete()
+    {
+
+        SceneManager.LoadScene(levelToLoad);
+
+    }
 
 }
