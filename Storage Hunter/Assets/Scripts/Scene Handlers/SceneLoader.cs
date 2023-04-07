@@ -6,20 +6,53 @@ using UnityEngine.SceneManagement;
 public class SceneLoader: MonoBehaviour
 {
 
-    public string LevelName;
+    private bool playerInElevator; //is the player in the elevator
+    private bool doorsClosed; //are the doors closed
+    public Animator elevator; //elevator animator
 
-    //public int LevelIndex;
+    private void OnTriggerEnter(Collider other) //if player is in zone
+    {
 
-    // Start is called before the first frame update
-    void Start()
+        if (other.gameObject.tag == "Player") //if collider detects player tag, player is in the elevator
+        {
+
+            playerInElevator = true; //player is in the elevator
+            Debug.Log("Player is in elevator");
+
+        }
+
+    }
+
+    void Update()
     {
         
+        if(playerInElevator == true) //if the player is in the elevator, close the doors
+        {
+
+            elevator.SetBool("isClosed", true);
+            elevator.Play("closeElevator");
+            Invoke("DoorsClosed", 3); //wait 5 seconds after the doors are closed
+            
+
+        }
+
+        if(doorsClosed == true) //if the doors are closed, load the next level
+        {
+
+            SceneManager.LoadScene("Level 2");
+
+        }
+
     }
 
-    // Update is called once per frame
-
-    void OnTriggerEnter()
+    void DoorsClosed()
     {
-        SceneManager.LoadScene(LevelName);
+
+        doorsClosed = true; //the doors are closed
+        Debug.Log("Doors are closed");
+
     }
+
+
+
 }
