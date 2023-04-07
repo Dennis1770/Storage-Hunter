@@ -26,6 +26,7 @@ public class GenSwitch3 : MonoBehaviour
     public Material NeonYellow;
     public GameObject Lightning3;
 
+    public Generator generator;
     void Start()
     {
         GenSwitchAnim = GetComponent<Animator>();
@@ -53,7 +54,7 @@ public class GenSwitch3 : MonoBehaviour
                 Lightning3.GetComponent<MeshRenderer>().material = NeonYellow;
                 GenSwitchAnim.SetTrigger("SwitchedOff");
 
-
+                generator.GeneratorSwitch();
             }
 
         }
