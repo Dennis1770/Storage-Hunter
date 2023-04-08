@@ -15,6 +15,8 @@ public class MonsterPatrolState : MonsterBaseState
 
     GameObject[] waypoints; //waypoints for the monster to patrol between
 
+    private playerMovement movement;
+
     //waypoints
     float minDistance = 1f;
     public Transform currentWaypoint;
@@ -54,8 +56,7 @@ public class MonsterPatrolState : MonsterBaseState
             currentWaypoint = waypoints[currentIndex].transform;
         }
 
-        //The single raycast doesn't allow the player to be seen through walls.  Consider using several of these instead of the capsulecast 
-        /*
+        //Monster Eyesight
         RaycastHit hit;
         Ray sightRay = new Ray(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward));
         Debug.DrawRay(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward) * 14f, Color.blue);
@@ -66,12 +67,11 @@ public class MonsterPatrolState : MonsterBaseState
                 Debug.Log("Player has been spotted");
                 monster.switchState(monster.chase);
             }
-            //else Debug.Log("Nothing spotted");
         }
-        */
         
 
-        
+        //Monster Hearing
+
         //calculate capsule raycast's start and end points
         Vector3 capsuleDirection = monsterAgent.transform.forward;
         Vector3 startPoint = monsterAgent.transform.position;
@@ -87,25 +87,40 @@ public class MonsterPatrolState : MonsterBaseState
         //perform the capsule cast
         RaycastHit[] hits = Physics.CapsuleCastAll(startPoint, endPoint, capsuleRadius, capsuleDirection, capsuleDistance);
 
-        foreach(RaycastHit hit in hits)
+        foreach(RaycastHit hit2 in hits)
         {
-            if(hit.collider.tag == "Player")
+            if(hit2.collider.tag == "Player")
             {
-                Debug.Log("Player has been spotted");
-                monster.switchState(monster.chase);
-                break;
-            }
-            
+                float playerNoise_value = hit2.collider.GetComponent<playerMovement>().noiseValue;
+                if(playerNoise_value == 0)
+                {
+                    Debug.Log("the monster doesn't hear you");
+                    break;
+                }
+                else if (playerNoise_value == 1)
+                {
+                    Debug.Log("the monster can kinda hear you");
+                    //play audio for to let the player know the monster is close?
+                    break;
+                }
+                else if (playerNoise_value == 2)
+                {
+                    Debug.Log("the monster can hear you");
+                    monster.switchState(monster.chase);
+                    break;
+                }
+                else break;
+            } 
         }
+                //access the noise value from the playerMovement script
+                //if noise is 0 do nothing/ return;
+                //if noise is 1 play some audio to let the player know the monster is nearby
+                //if noise is 2 or greater, enter the chase state
 
         //draw the capsule cast
         Debug.DrawRay(startPoint, capsuleDirection * capsuleDistance, Color.blue);
         Debug.DrawRay(startPoint + capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.blue);
-        Debug.DrawRay(startPoint - capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.blue);
-
-        //I don't think drawwirecapsule exists in unity gizmos.. strange
-        //Gizmos.DrawWireCapsule(startPoint + capsuleDirection * capsuleDistance * .5f, endPoint - capsuleDirection * capsuleDistance * .5f, capsuleRadius, capsuleAxis, Color.blue);
-    
+        Debug.DrawRay(startPoint - capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.blue);    
     }
 
     void OnDrawGizmos() 
