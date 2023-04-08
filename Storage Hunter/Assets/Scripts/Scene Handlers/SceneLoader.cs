@@ -29,10 +29,8 @@ public class SceneLoader: MonoBehaviour
         if(playerInElevator == true) //if the player is in the elevator, close the doors
         {
 
-            elevator.SetBool("isClosed", true);
             elevator.Play("closeElevator");
             Invoke("DoorsClosed", 3); //wait 5 seconds after the doors are closed
-            
 
         }
 

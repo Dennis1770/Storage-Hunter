@@ -22,6 +22,8 @@ public class elevatorButton : MonoBehaviour
 
     public Level1Clues level1Clues; // calling from the Level1Clues script
 
+    private bool doorsOpen; //are the doors open
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +91,14 @@ public class elevatorButton : MonoBehaviour
         {
 
             elevator.GetComponent<Animator>().Play("openElevator");
+            doorsOpen = true;
+
+        }
+
+       if(doorsOpen == true) //if the doors are open, destroy this script
+        {
+
+            Destroy(GetComponent<elevatorButton>());
 
         }
 
