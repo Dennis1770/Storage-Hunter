@@ -14,6 +14,9 @@ public class playerMovement : MonoBehaviour
 
     public float resetSpeed = 10f;
     public float resetSprint = 10f;
+
+    public float noiseValue = 0; //this is used by the monster to find the player
+
     Vector3 velocity; //stores current velocity
 
     //sprint
@@ -29,7 +32,6 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
-
         startYScale = transform.localScale.y; //starting y position
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //collects information on active scene
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex); //saves active scene
@@ -58,52 +60,41 @@ public class playerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime; //velocity = gravity * time delta time
         controller.Move(velocity * Time.deltaTime); //velocity * time delta time
 
+        float currentSpeed = move.magnitude * speed; //calculate the current speed of the player
+        noiseValue = currentSpeed < resetSpeed ? 0f: (currentSpeed >= (resetSpeed + sprint) ? 2f:1f); //this is a nested ternary operator.  it changes the noiseValue depending on how fast the player is moving.
+
         //sprinting
         if (Input.GetKeyDown(KeyCode.LeftShift)) //if left shift is pressed down, add sprint to speed
         {
-
             speed += sprint;
 
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift)) //if left shift is released, subtract sprint from speed
         {
-
             speed = resetSpeed;
-
         }
 
         
         if(Input.GetKeyDown(crouchKey)) //if left control is pressed, player will crouch
         {
-
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z); //changes y scale of the player
             //Rigidbody.AddForce(Vector3.down * 5f, ForceMode.Impulse); //pushes player model down
 
         }
         else if(Input.GetKeyUp(crouchKey)) //if left control key is lifted, player will stand
         {
-
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
-
-        }
-        
-
+        }        
     }
 
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        
         if(collisionInfo.collider.tag == "Monster") //if player makes contact with the monster game object, call on the EndGame function
         {
 
             FindObjectOfType<gameManager>().EndGame(); //calls on EndGame funcation
 
         }
-
-
     }
-
-
-
 }
