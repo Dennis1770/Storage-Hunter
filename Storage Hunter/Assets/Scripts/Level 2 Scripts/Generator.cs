@@ -46,6 +46,8 @@ public class Generator : MonoBehaviour
 
     public bool SwitchLightsAllOn = false;
 
+    public GameObject closeDoors;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,6 +119,7 @@ public class Generator : MonoBehaviour
                     {
                         SwitchLightsAllOn = true;
                         SwitchLightCheck.GetComponent<MeshRenderer>().material = NeonGreen;
+                    closeDoors.SetActive(true);
                     }
 
                 if (SwitchLightsAllOn == false)

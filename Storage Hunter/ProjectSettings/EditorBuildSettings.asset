@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Storage Facility Scenes/Level 2.unity
     guid: 5e5a988edc3a929418a4d3b019b41ecc
   - enabled: 1
+    path: Assets/Scenes/Storage Facility Scenes/Level 3.unity
+    guid: c7b886b4918f96a4d9ebbde48c201f61
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 1bb9d96898c979f4080c176f496ea42e
   m_configObjects: {}
