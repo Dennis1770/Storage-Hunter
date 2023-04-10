@@ -11,15 +11,17 @@ public class MonsterChaseState : MonsterBaseState
 
     GameObject player;
 
-    NavMeshAgent agent;
+    NavMeshAgent monsterAgent;
 
     float escapeDistance = 15f;
+    private float elapsedTime;
+    private float delay = 10; //the monster will wait this many seconds before changing from chase to idle
 
     public override void EnterState(MonsterStateManager monster)
     {
         Debug.Log("Monster is now in the chase state");
 
-        agent = GameObject.FindObjectOfType<NavMeshAgent>();
+        monsterAgent = GameObject.FindObjectOfType<NavMeshAgent>();
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -27,11 +29,35 @@ public class MonsterChaseState : MonsterBaseState
     public override void UpdateState(MonsterStateManager monster)
     {
         Vector3 direction = player.transform.position;
-        agent.SetDestination(direction);
+        monsterAgent.SetDestination(direction);
 
-        if (Vector3.Distance(player.transform.position, agent.transform.position) >= escapeDistance)
+        if (Vector3.Distance(player.transform.position, monsterAgent.transform.position) >= escapeDistance) //If the player runs far enough away from the monster, it will lose interest
         {
-            monster.switchState(monster.idle);
+            elapsedTime += Time.deltaTime;
+            Debug.Log("distance: " + elapsedTime);
+            if(elapsedTime >= delay)
+            {
+                elapsedTime = 0f;
+                monster.switchState(monster.idle);
+            }
+        }
+
+        //Monster Eyesight
+        RaycastHit hit;
+        Ray sightRay = new Ray(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward));
+        Debug.DrawRay(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward) * 14f, Color.green);
+        if (Physics.Raycast(sightRay, out hit))
+        {
+            if (hit.collider.tag != "Player") //When the player is in a storage locker, the monster will lose interest.
+            {
+                elapsedTime += Time.deltaTime;
+                Debug.Log("LOS: " + elapsedTime);
+                if(elapsedTime >= delay)
+                {
+                    elapsedTime = 0f;
+                    monster.switchState(monster.idle);
+                }
+            }
         }
     }
 
