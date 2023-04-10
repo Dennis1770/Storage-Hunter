@@ -34,7 +34,7 @@ public class MonsterChaseState : MonsterBaseState
         if (Vector3.Distance(player.transform.position, monsterAgent.transform.position) >= escapeDistance) //If the player runs far enough away from the monster, it will lose interest
         {
             elapsedTime += Time.deltaTime;
-            Debug.Log("distance: " + elapsedTime);
+            //Debug.Log("distance: " + elapsedTime);
             if(elapsedTime >= delay)
             {
                 elapsedTime = 0f;
@@ -51,7 +51,7 @@ public class MonsterChaseState : MonsterBaseState
             if (hit.collider.tag != "Player") //When the player is in a storage locker, the monster will lose interest.
             {
                 elapsedTime += Time.deltaTime;
-                Debug.Log("LOS: " + elapsedTime);
+                //Debug.Log("LOS: " + elapsedTime);
                 if(elapsedTime >= delay)
                 {
                     elapsedTime = 0f;

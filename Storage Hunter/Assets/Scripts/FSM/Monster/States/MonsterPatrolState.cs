@@ -27,6 +27,9 @@ public class MonsterPatrolState : MonsterBaseState
     private float capsuleDistance = 14f;
     private float capsuleAngle = 30f; //30 degrees
 
+    //audio
+    private AudioPlayer audioPlayer;
+
     public override void EnterState(MonsterStateManager monster)
     {
         Random.InitState(System.DateTime.Now.Millisecond); //set the seed for rng
@@ -38,6 +41,8 @@ public class MonsterPatrolState : MonsterBaseState
         monsterAgent = monsterObject.GetComponent<NavMeshAgent>();
 
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+
+        audioPlayer = GameObject.Find("Main Camera").GetComponent<AudioPlayer>();
 
         currentWaypoint = waypoints[Random.Range(0, waypoints.Length)].transform;
     }
@@ -65,6 +70,8 @@ public class MonsterPatrolState : MonsterBaseState
             if (hit.collider.tag == "Player")
             {
                 Debug.Log("Player has been spotted");
+                audioPlayer.cuedSound = 1;
+                audioPlayer.playAudio();
                 monster.switchState(monster.chase);
             }
         }
@@ -76,7 +83,7 @@ public class MonsterPatrolState : MonsterBaseState
         Vector3 capsuleDirection = monsterAgent.transform.forward;
         Vector3 startPoint = monsterAgent.transform.position;
         Vector3 endPoint = monsterAgent.transform.position + direction * capsuleDistance;
-
+        
         //calculate the axis of the capsule cast
         Vector3 capsuleAxis = Vector3.Cross(capsuleDirection, Vector3.up).normalized;
 
@@ -95,17 +102,24 @@ public class MonsterPatrolState : MonsterBaseState
                 if(playerNoise_value == 0)
                 {
                     Debug.Log("the monster doesn't hear you");
+                    
+                    audioPlayer.cuedSound = 0;
+                    audioPlayer.playAudio_oneShot();
                     break;
                 }
                 else if (playerNoise_value == 1)
                 {
                     Debug.Log("the monster can kinda hear you");
+                    audioPlayer.cuedSound = 0;
+                    audioPlayer.playAudio_oneShot();
                     //play audio for to let the player know the monster is close?
                     break;
                 }
                 else if (playerNoise_value == 2)
                 {
-                    Debug.Log("the monster can hear you");
+                    Debug.Log("it heard you");
+                    audioPlayer.cuedSound = 1;
+                    audioPlayer.playAudio();
                     monster.switchState(monster.chase);
                     break;
                 }
