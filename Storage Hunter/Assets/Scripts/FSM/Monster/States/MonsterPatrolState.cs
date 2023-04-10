@@ -25,7 +25,7 @@ public class MonsterPatrolState : MonsterBaseState
     public int currentIndex;
 
     //conecast
-    private float capsuleRadius = 6f;
+    private float capsuleRadius = 3f;
     private float capsuleDistance = 10f;
     private float capsuleAngle = 30f; //30 degrees
 
@@ -54,7 +54,7 @@ public class MonsterPatrolState : MonsterBaseState
     public override void UpdateState(MonsterStateManager monster)
     {
         Vector3 direction = currentWaypoint.transform.position;
-        Vector3 playerDirection = player.transform.position;
+        Vector3 playerDirection = (player.transform.position - monsterAgent.transform.position).normalized;
         monsterAgent.SetDestination(direction);
         //Debug.Log(currentWaypoint);
 
@@ -68,8 +68,8 @@ public class MonsterPatrolState : MonsterBaseState
 
         //Monster Eyesight
         RaycastHit hit;
-        Ray sightRay = new Ray(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward));
-        Debug.DrawRay(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward) * 14f, Color.blue);
+        Ray sightRay = new Ray(monsterAgent.transform.position, playerDirection/*monsterAgent.transform.TransformDirection(Vector3.forward)*/);
+        Debug.DrawRay(monsterAgent.transform.position, playerDirection/*monsterAgent.transform.TransformDirection(Vector3.forward)*/ * 14f, Color.blue);
         if (Physics.Raycast(sightRay, out hit))
         {
             if (hit.collider.tag == "Player")
@@ -85,9 +85,9 @@ public class MonsterPatrolState : MonsterBaseState
         //Monster Hearing
 
         //calculate capsule raycast's start and end points
-        Vector3 capsuleDirection = monsterAgent.transform.forward;
+        Vector3 capsuleDirection = /*monsterAgent.transform.forward*/ playerDirection;
         Vector3 startPoint = monsterAgent.transform.position;
-        Vector3 endPoint = monsterAgent.transform.position + direction * capsuleDistance;
+        Vector3 endPoint = monsterAgent.transform.position + /*direction*/ player.transform.position * capsuleDistance;
         
         //calculate the axis of the capsule cast
         Vector3 capsuleAxis = Vector3.Cross(capsuleDirection, Vector3.up).normalized;
