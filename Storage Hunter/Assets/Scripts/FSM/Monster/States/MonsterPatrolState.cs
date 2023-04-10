@@ -15,6 +15,8 @@ public class MonsterPatrolState : MonsterBaseState
 
     GameObject[] waypoints; //waypoints for the monster to patrol between
 
+    GameObject player;
+
     private playerMovement movement;
 
     //waypoints
@@ -23,8 +25,8 @@ public class MonsterPatrolState : MonsterBaseState
     public int currentIndex;
 
     //conecast
-    private float capsuleRadius = 3f;
-    private float capsuleDistance = 14f;
+    private float capsuleRadius = 6f;
+    private float capsuleDistance = 10f;
     private float capsuleAngle = 30f; //30 degrees
 
     //audio
@@ -45,11 +47,14 @@ public class MonsterPatrolState : MonsterBaseState
         audioPlayer = GameObject.Find("Main Camera").GetComponent<AudioPlayer>();
 
         currentWaypoint = waypoints[Random.Range(0, waypoints.Length)].transform;
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public override void UpdateState(MonsterStateManager monster)
     {
         Vector3 direction = currentWaypoint.transform.position;
+        Vector3 playerDirection = player.transform.position;
         monsterAgent.SetDestination(direction);
         //Debug.Log(currentWaypoint);
 
@@ -132,9 +137,9 @@ public class MonsterPatrolState : MonsterBaseState
                 //if noise is 2 or greater, enter the chase state
 
         //draw the capsule cast
-        Debug.DrawRay(startPoint, capsuleDirection * capsuleDistance, Color.blue);
-        Debug.DrawRay(startPoint + capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.blue);
-        Debug.DrawRay(startPoint - capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.blue);    
+        Debug.DrawRay(startPoint, capsuleDirection * capsuleDistance, Color.red);
+        Debug.DrawRay(startPoint + capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.red);
+        Debug.DrawRay(startPoint - capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.red);    
     }
 
     void OnDrawGizmos() 
