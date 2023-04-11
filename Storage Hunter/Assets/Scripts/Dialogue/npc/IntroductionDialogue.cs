@@ -20,7 +20,7 @@ public class IntroductionDialogue : MonoBehaviour
     {
         if(introFSM.isActive == true)
         {
-            if(i > 1)
+            if(i < 1)
             {
                 i++;
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);

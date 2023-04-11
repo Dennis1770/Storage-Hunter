@@ -5,6 +5,7 @@ public class IntroductionSleepState : IntroductionBaseState
     public override void EnterState(IntroductionStateManager introduction)
     {
         Debug.Log("Introduction is in the sleep state");
+        introduction.isSleeping = true;
     }
 
     public override void UpdateState(IntroductionStateManager introduction)
