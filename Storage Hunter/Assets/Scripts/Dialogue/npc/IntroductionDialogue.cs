@@ -5,15 +5,17 @@ using UnityEngine;
 public class IntroductionDialogue : MonoBehaviour
 {
     IntroductionStateManager introFSM;
+    IntroductionDialogue inkLoader; 
+    [Header("Ink JSON")] public TextAsset[] inkJSON;
 
-    [Header("Ink JSON")] [SerializeField] private TextAsset inkJSON;
-
-    private int i;
+    [SerializeField] private int i;
 
     private void Start()
     {
         i = 0;
+        Debug.Log("start: " +i);
         introFSM = FindObjectOfType<IntroductionStateManager>();
+        inkLoader = GameObject.FindObjectOfType<IntroductionDialogue>();
     }
 
     private void Update()
@@ -23,12 +25,17 @@ public class IntroductionDialogue : MonoBehaviour
             if(i < 1)
             {
                 i++;
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON[introFSM.storyIndex]);
             }
         }
-        if(introFSM.isSleeping == false)
+        if(introFSM.isSleeping == true)
         {
-            return;
+            if(introFSM.storyIndex < inkLoader.inkJSON.Length -1)
+            {
+                i = 0;
+                Debug.Log("sleep: " + i);
+            }
+            else return;
         }
     }
 }

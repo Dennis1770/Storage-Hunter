@@ -7574,6 +7574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e63fdbc36bdb14f9f6344491ae956e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storyIndex: -1
   isSleeping: 0
   isActive: 0
 --- !u!224 &1690456462 stripped
@@ -8404,7 +8405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8422da68cfac3e4e80943e475d9a2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: b147fd7329c6c43488ed025e7ae3c9ef, type: 3}
+  inkJSON:
+  - {fileID: 4900000, guid: b147fd7329c6c43488ed025e7ae3c9ef, type: 3}
+  - {fileID: 4900000, guid: 54efddf6b344fdd468f268eb8c0dc25c, type: 3}
 --- !u!1 &1868699642
 GameObject:
   m_ObjectHideFlags: 0

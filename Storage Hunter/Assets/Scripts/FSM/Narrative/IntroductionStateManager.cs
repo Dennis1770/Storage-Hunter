@@ -3,7 +3,7 @@ using UnityEngine;
 public class IntroductionStateManager : MonoBehaviour
 {
     IntroductionBaseState currentState;
-
+    public int storyIndex;
     public IntroductionSleepState sleeping = new IntroductionSleepState();
     public IntroductionActiveState active = new IntroductionActiveState();
     public bool isSleeping = false;

@@ -83,13 +83,13 @@ public class playerMovement : MonoBehaviour
 
         if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying) //freeze the player while they talk to npc's
         {
-            Cursor.lockState = CursorLockMode.None; // Set the cursor lock state to none
-            Cursor.visible = true; // Make the cursor visible
+            Cursor.lockState = CursorLockMode.None; // unlock the cursor
+            Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked; // Set the cursor lock state to none
-            Cursor.visible = false; // Make the cursor visible
+            Cursor.lockState = CursorLockMode.Locked; // lock the cursor
+            Cursor.visible = false; // hide the cursor again
         }   
     }
 
