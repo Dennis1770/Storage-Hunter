@@ -1,6 +1,4 @@
-[BUFFER BECAUSE THERE IS A BUG]
 Nice afternoon for a run, eh?
-
  * [Yeah, I love getting out to stretch my legs.]
  -> Fitness
  * [Hey, did you see that the police are here?]

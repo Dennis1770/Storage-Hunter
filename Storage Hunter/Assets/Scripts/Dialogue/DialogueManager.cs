@@ -54,10 +54,20 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        //if there aren't any choices available, continue story when the player left clicks
+        if(currentStory.currentChoices.Count <= 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                ContinueStory();
+            }
+        }
+/*
         if (Input.GetKeyDown(KeyCode.E))
         {
             ContinueStory();
         }
+*/
     }
 
     public static DialogueManager GetInstance()
@@ -119,9 +129,10 @@ public class DialogueManager : MonoBehaviour
             choices[i].gameObject.SetActive(false);
         }
 
-        StartCoroutine(SelectFirstChoice());
+        //StartCoroutine(SelectFirstChoice());
     }
 
+/*
     private IEnumerator SelectFirstChoice()
     {
         //Event system requires we clear it first, then wait for atleast one frame before we set the current selected object
@@ -129,9 +140,11 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
     }
+*/
 
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+        ContinueStory();
     }
 }

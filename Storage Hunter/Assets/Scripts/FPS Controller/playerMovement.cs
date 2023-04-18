@@ -44,11 +44,6 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying) //freeze the player while they talk to npc's
-        {
-           return;
-        }
-
         //player movement
         float x = Input.GetAxis("Horizontal"); //input movement on x-axis
         float z = Input.GetAxis("Vertical"); //input movement on z-axis
@@ -84,7 +79,18 @@ public class playerMovement : MonoBehaviour
         else if(Input.GetKeyUp(crouchKey)) //if left control key is lifted, player will stand
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
-        }  */      
+        }  */   
+
+        if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying) //freeze the player while they talk to npc's
+        {
+            Cursor.lockState = CursorLockMode.None; // Set the cursor lock state to none
+            Cursor.visible = true; // Make the cursor visible
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked; // Set the cursor lock state to none
+            Cursor.visible = false; // Make the cursor visible
+        }   
     }
 
 
