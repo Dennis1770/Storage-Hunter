@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Title
+  m_text: The Savior
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c05e8bec23658fc4cb58c20da5c6be78, type: 2}
   m_sharedMaterial: {fileID: -8266495988983769913, guid: c05e8bec23658fc4cb58c20da5c6be78, type: 2}
@@ -8841,9 +8841,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dcbd01733d817dc428ade76c84725584, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 75ef7a6f576b0204dac0e4fbc4bc2684, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10296,6 +10296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e278f258609114abb2cc2c8077147e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!4 &1509145677
 Transform:
   m_ObjectHideFlags: 0
