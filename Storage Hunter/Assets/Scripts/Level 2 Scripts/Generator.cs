@@ -23,6 +23,7 @@ public class Generator : MonoBehaviour
     public playerMovement playerMovement;
     public sight Sight;
 
+    public GenDialogue genDialogue;
     public GenSwitch1 genSwitch1;
     public GenSwitch2 genSwitch2;
     public GenSwitch3 genSwitch3;
@@ -126,6 +127,7 @@ public class Generator : MonoBehaviour
                     {
                         Debug.Log("SwitchLightsAllOn is false");
                         StartCoroutine(SwitchStarterErrorCoroutine());
+                        StartCoroutine(genDialogue.NeedAll());
                     }
             }
 

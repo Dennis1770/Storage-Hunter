@@ -22,6 +22,12 @@ TagManager:
   - Switch4
   - Switch5
   - Switch6
+  - SwitchStarter
+  - BlueDoor2
+  - BlueDoor3
+  - BlueDoor4
+  - BlueDoor5
+  - BlueDoor6
   layers:
   - Default
   - TransparentFX
