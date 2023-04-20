@@ -414,22 +414,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Maya Models/Storage
+    - Assets/Scenes/Storage Facility Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Maya Models/Storage
+  - Assets/Scenes/Storage Facility Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Dennis\Documents\GitHub\Storage-Hunter\Storage Hunter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c0ce0000
-    m_LastClickedID: 52928
-    m_ExpandedIDs: 0000000026ca000028ca000004cc0000
+    scrollPos: {x: 0, y: 54}
+    m_SelectedIDs: f2cd0000
+    m_LastClickedID: 52722
+    m_ExpandedIDs: 00000000b4ca0000b6ca00009acc0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -457,7 +457,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000026ca000028ca0000
+    m_ExpandedIDs: 00000000b4ca0000b6ca0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -585,9 +585,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c0ce0000
+      m_SelectedIDs: 58ca0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 06fbffff
+      m_ExpandedIDs: d4d5ffff50ddffff22ebffff9af0ffff9afaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -919,11 +919,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.2926655, y: 0.3403568, z: -0.112524375, w: -0.8865943}
     speed: 2
-    m_Value: {x: -0.13635205, y: -0.021694962, z: 0.0029932489, w: -0.9904307}
+    m_Value: {x: -0.2926655, y: 0.3403568, z: -0.112524375, w: -0.8865943}
   m_Size:
     m_Target: 45.705048
     speed: 2
-    m_Value: 18.307781
+    m_Value: 45.705048
   m_Ortho:
     m_Target: 0
     speed: 2
