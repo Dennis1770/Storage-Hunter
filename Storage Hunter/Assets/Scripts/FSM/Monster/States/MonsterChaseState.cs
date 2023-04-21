@@ -13,7 +13,7 @@ public class MonsterChaseState : MonsterBaseState
 
     NavMeshAgent monsterAgent;
 
-    float escapeDistance = 15f;
+    float escapeDistance = 70f;
     private float elapsedTime;
     private float delay = 10; //the monster will wait this many seconds before changing from chase to idle
 

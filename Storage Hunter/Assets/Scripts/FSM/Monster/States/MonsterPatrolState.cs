@@ -20,14 +20,17 @@ public class MonsterPatrolState : MonsterBaseState
     private playerMovement movement;
 
     //waypoints
-    float minDistance = 1f;
+    float minDistance = 5f;
     public Transform currentWaypoint;
     public int currentIndex;
 
     //conecast
     private float capsuleRadius = 3f;
-    private float capsuleDistance = 10f;
+    private float capsuleDistance = 40f;
     private float capsuleAngle = 30f; //30 degrees
+
+    //raycast
+    private float sightDistance = 60f;
 
     //audio
     private AudioPlayer audioPlayer;
@@ -70,7 +73,7 @@ public class MonsterPatrolState : MonsterBaseState
         RaycastHit hit;
         Ray sightRay = new Ray(monsterAgent.transform.position, playerDirection/*monsterAgent.transform.TransformDirection(Vector3.forward)*/);
         Debug.DrawRay(monsterAgent.transform.position, playerDirection/*monsterAgent.transform.TransformDirection(Vector3.forward)*/ * 14f, Color.blue);
-        if (Physics.Raycast(sightRay, out hit))
+        if (Physics.Raycast(sightRay, out hit, sightDistance))
         {
             if (hit.collider.tag == "Player")
             {
