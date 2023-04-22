@@ -1,3 +1,6 @@
+EXTERNAL activateObject(selectedObject)
+EXTERNAL deactivateObject(selectedObject)
+
 Not many psychologists practice in rural areas.
 
 That's why you always do your best to help your clients!
@@ -33,7 +36,11 @@ Can I come in?
 *[Stare at the ceiling] You should probably call Sarah in soon. -> third
 *[Call Sarah in] -> fourth
 == fourth
+~activateObject(0)
 Hey Dr. Montana.
+//activate sarah's model
+//deactivate closed door
+//activate open door
 *[Good morning. How're you feeling today?] -> fifth
 
 == fifth

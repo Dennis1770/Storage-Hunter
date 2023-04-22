@@ -22,6 +22,10 @@ public class DialogueManager : MonoBehaviour
 
     public bool dialogueIsPlaying { get; private set; }
 
+    public GameObject[] activatableObject;
+
+    //private int selectedObject;
+
     private void Awake()
     {
         if (instance != null)
@@ -34,6 +38,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
@@ -78,6 +83,15 @@ public class DialogueManager : MonoBehaviour
     public void EnterDialogueMode(TextAsset inkJSON)
     {
         currentStory = new Story(inkJSON.text);
+        currentStory.BindExternalFunction("activateObject", (int selectedObject) => ActivateObject(selectedObject));
+        currentStory.BindExternalFunction("deactivateObject", (int selectedObject) => DeactivateObject(selectedObject));
+        /*
+        Story.BindExternalFunction("ActivateObject")=>
+        {
+            ActivateObject();
+            return null;
+        }
+        */
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
@@ -146,5 +160,28 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
+    }
+
+/*
+    private void SetGameObjectActive(bool isActive)
+    {
+        activatableObject[selectedObject].SetActive(isActive);
+    }
+*/
+
+    private void ActivateObject(int index)
+    {
+        //selectedObject = index;
+        //SetGameObjectActive(true);
+
+        activatableObject[index].SetActive(true);
+    }
+
+    private void DeactivateObject(int index)
+    {
+        //selectedObject = index;
+        //SetGameObjectActive(false);
+        
+        activatableObject[index].SetActive(false);
     }
 }
