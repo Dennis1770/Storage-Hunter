@@ -53,7 +53,7 @@ Anyway I shot at the damned thing but all I did was scare it off.
 I've got 'low vision' you see.
 Happens when you get older.
 It means I'm not as good a shot as I used to be.
-And that means this mosnter is out there putting people in danger!
+And that means this monster is out there putting people in danger!
 That's why I'm looking for an expert, understand?
 *[Yeah, I understand] Great.
 ->eighth
@@ -93,10 +93,11 @@ What a sick world.
 ==eleventh
 You want to help me?
 As in 'find the monster' help me?
-*[Let's show that monster who's boss]->twelfth
+*[Let's show that monster who's boss] Is that so?
+Well, ->twelfth
 *[The monster's not real, but your dilemma is] To be completely honest, I don't care what you think.
 ->twelfth
 
 ==twelfth
-Anyways, I'm leaving.
+I'm leaving.
 You can come with or stay here, it's all the same to me->DONE
