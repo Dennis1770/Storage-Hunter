@@ -8407,7 +8407,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inkJSON:
   - {fileID: 4900000, guid: b147fd7329c6c43488ed025e7ae3c9ef, type: 3}
-  - {fileID: 4900000, guid: 54efddf6b344fdd468f268eb8c0dc25c, type: 3}
+  - {fileID: 4900000, guid: 2e05af6548bb10540b87d73b5b5912bf, type: 3}
+  - {fileID: 4900000, guid: 81464b9f2e84b2840be0c386e4032462, type: 3}
+  - {fileID: 4900000, guid: caa95a7ee884ddc47afc3e62f1d2438f, type: 3}
   i: 0
 --- !u!1 &1868699642
 GameObject:

@@ -1,8 +1,8 @@
 Not many psychologists practice in rural areas.
 
-That's why you always do your best to help your clients.
+That's why you always do your best to help your clients!
 
-Small towns need licensed therapists as much as anywhere else does! 
+Small towns need licensed therapists as much as anywhere else does.
 
 You’ve got a few appointments today so don’t slack off.
 *[Start the day]-> start
@@ -13,21 +13,25 @@ You hear a knock on the door.
 *[Who's there?] -> first
 
 == first
-Good morning Dr. Montana. I'm here for my appointment.
+I'm here for my appointment.
 *[Come on in] -> fourth
 *[Who are you again?] -> second
 
 == second
-It's Sarah. I had an appointment with you last week. Can I come in?
+It's Sarah. 
+
+I had an appointment with you last week.
+
+Can I come in?
 *[Yes, of course! Come in Sarah] -> fourth
 *[Give me a few minutes. I'll call you in when I'm ready.] -> third
 
 == third
 {Um, okay | }
-*[Call Sarah in] -> fourth
 *[Clear off desk] Your desk is nice and clean. -> third
-*[Check the news] You read the local paper.  There's not much going on -> third
+*[Check the news] You read the local paper.  Apparently a hiker went missing last week. -> third
 *[Stare at the ceiling] You should probably call Sarah in soon. -> third
+*[Call Sarah in] -> fourth
 == fourth
 Hey Dr. Montana.
 *[Good morning. How're you feeling today?] -> fifth
@@ -43,12 +47,16 @@ I've been really stressed recently.
 *[It’s important to get enough sleep] -> seventh
 
 == seventh
-I have a midterm exam next week. Normally I'm confident but this class is really difficult.
+I have a midterm exam next week. 
+
+Normally I'm confident but this class is really difficult.
 *[It sounds like you've been working hard] -> eighth
 *[Are you worried?] -> eighth
 
 == eighth
-I just don't think I'm ready for this exam and I’m afraid of letting the class harm my gpa.
+I just don't think I'm ready for this exam.
+
+I’m afraid of letting the class harm my gpa.
 *[How would doing well make you feel?] -> ninth
 *[So, what happens if you don't do well on the exam?] ->tenth
 
@@ -64,25 +72,43 @@ I'd be angry with myself.
 
 == eleventh
 Okay Dr. Montana, I'm listening.
-*[I think you need to invest some more time into your mental health] ->twelfth
-*[You should acknowledge that you can only give this midterm your best effort] ->twelfth
+*[Your mental health is important] ->twelfth
+*[You can only give this midterm your best effort] ->twelfth
 
 == twelfth
-But the midterm is all I can think about! I can’t allow myself to get a bad grade by doing something else.
-*[Okay, tell me more about why you feel that way] -> thirteenth
+But the midterm is super important!
+
+I can’t allow myself to get a bad grade.
+
+Why shouldn't I sacrifice a little sleep to do better?
+*[Okay, tell me more about why you feel this way] -> thirteenth
 
 == thirteenth
-The truth is that I’m not a very good student. I have to spend a lot of time studying in order to get the results I want.  And I’m always studying because that’s what I need to do to maintain my grades. 
+I’m not a very good student. 
+
+I have to spend a lot of time studying in order to get the results I want.  
+
+And I’m always studying because that’s what I need to do to maintain my grades!
+
+How can I not be stressed?  
+
+I'm gonna fail this class!
 *[You've invested a lot of time into your academics. I think that's making this exam more stressful for you] -> fourteenth
 *[It's okay not to have perfect grades...] ->fifteenth
 
 ==fourteenth
-I guess the stress is more likely to harm my grade than help though, right? If I’m unable to focus because I’m not stressed it could put all my effort to waste..
+I guess the stress is more likely to harm my grade than help though, right? 
+
+If I’m unable to focus because I’m stressed it could put all my effort to waste..
 *[That's true] -> sixteenth
 *[Let's talk about ways to reduce your stress] -> sixteenth
 
 == fifteenth
-No, it’s important to me. Besides you went to medical school right?  How were your grades?
+No, it’s important to me. 
+
+Besides you went to medical school right?  
+
+How were your grades?
 *[I got a few A's...] -> sixteenth
 *[Let's not talk about that] -> sixteenth
 
@@ -103,7 +129,7 @@ Okay, I'll try it.
 *[Breathe out] -> twentieth
 
 ==twentieth
-Okay, but I'm still a littled stressed.
+Okay, but I'm still stressed.
 *[Don't think about your exam. Just focus on your breathing. How do you feel?] -> twentyfirst
 
 ==twentyfirst
@@ -117,5 +143,5 @@ Thanks Dr. Montana. I'll remember that.
 
 == twentythird
 Okay, bye Dr. Montana.
-*[Good luck on your exam!] ->END
-*[Take it easy Sarah] -> END
+*[Good luck on your exam!]->DONE
+*[Take it easy Sarah] ->DONE
