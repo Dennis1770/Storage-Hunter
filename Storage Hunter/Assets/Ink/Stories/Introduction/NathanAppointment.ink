@@ -1,3 +1,7 @@
+EXTERNAL activateObject(selectedObject)
+EXTERNAL deactivateObject(selectedObject)
+
+~deactivateObject(0)
 Hey doc, are you ready to see me?
 *[Is this Nathan?]->first
 *[Come in]->second
@@ -5,6 +9,7 @@ Hey doc, are you ready to see me?
 That's me
 *[Excellent, come in]->second
 == second
+~activateObject(2)
 Hey doc, I wanted to ask you some questions to get your opinion.
 *[Go ahead]->third
 *[What's up?]->third
@@ -105,11 +110,19 @@ How am I supposed to just relax?
 *[Here’s my best advice. Write down whatever causes you to feel haunted and we can talk about it next week.]->seventeenth
 ==seventeenth
 Okay doc, see you next week.
-*[Bye Nathan]->DONE
-*[See you then]->DONE
+*[Bye Nathan]
+~deactivateObject(2)
+->DONE
+*[See you then]
+~deactivateObject(2)
+->DONE
 ==seventeenthAlt
 I'm still feeling really stressed..
 
 But I'll see you next week doc, hopefully I can explain it better then.
-*[Bye Nathan]->DONE
-*[See you next week]->DONE
+*[Bye Nathan]
+~deactivateObject(2)
+->DONE
+*[See you next week]
+~deactivateObject(2)
+->DONE

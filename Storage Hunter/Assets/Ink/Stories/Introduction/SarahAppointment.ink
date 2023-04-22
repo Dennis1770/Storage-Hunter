@@ -12,12 +12,14 @@ You’ve got a few appointments today so don’t slack off.
 
 == start
 You hear a knock on the door.
-*[Please, come in] -> fourth
+*[Please, come in] 
+-> fourth
 *[Who's there?] -> first
 
 == first
 I'm here for my appointment.
-*[Come on in] -> fourth
+*[Come on in] 
+-> fourth
 *[Who are you again?] -> second
 
 == second
@@ -36,11 +38,9 @@ Can I come in?
 *[Stare at the ceiling] You should probably call Sarah in soon. -> third
 *[Call Sarah in] -> fourth
 == fourth
-~activateObject(0)
+~deactivateObject(0)
+~activateObject(1)
 Hey Dr. Montana.
-//activate sarah's model
-//deactivate closed door
-//activate open door
 *[Good morning. How're you feeling today?] -> fifth
 
 == fifth
@@ -150,5 +150,10 @@ Thanks Dr. Montana. I'll remember that.
 
 == twentythird
 Okay, bye Dr. Montana.
-*[Good luck on your exam!]->DONE
-*[Take it easy Sarah] ->DONE
+~ deactivateObject(1)
+*[Good luck on your exam!]
+~ activateObject(0)
+->DONE
+*[Take it easy Sarah] 
+~ activateObject(0)
+->DONE

@@ -1,3 +1,6 @@
+EXTERNAL activateObject(selectedObject)
+EXTERNAL deactivateObject(selectedObject)
+
 DARN IT!
 Does that woman think I'm a fool?
 I didn't come al'thuway out out here for some shrink!
@@ -7,6 +10,7 @@ Looks like I just wasted a bunch of time..
 *[You know I can hear you, right..]->first
 
 ==first
+~activateObject(3)
 Ughh, listen there's been a misunderstanding.
 I don't need your services, mister.
 I'll just be on my way..
@@ -100,4 +104,7 @@ Well, ->twelfth
 
 ==twelfth
 I'm leaving.
-You can come with or stay here, it's all the same to me->DONE
+You can come with or stay here, it's all the same to 
+~deactivateObject(3)
+~activateObject(4)
+->DONE
