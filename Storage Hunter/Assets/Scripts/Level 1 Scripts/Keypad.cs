@@ -37,7 +37,7 @@ public class Keypad : MonoBehaviour
 
     IEnumerator ResetKeypad()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Ans.text = "";
     }
 
