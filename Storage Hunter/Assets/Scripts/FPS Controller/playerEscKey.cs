@@ -16,6 +16,7 @@ public class playerEscKey : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(showEscapeMenu);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Esc Pressed!");
@@ -23,6 +24,7 @@ public class playerEscKey : MonoBehaviour
             if (showEscapeMenu == false) // if showEscapeMenu is false, unlock cursor, disable playerMovement script, showJournal to true, and show Journal Canvas
             {
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 showEscapeMenu = true;
                 escapeMenu.SetActive(true);
 
@@ -30,21 +32,22 @@ public class playerEscKey : MonoBehaviour
             }
             else // if showJournal is true, lock cursor, enable playerMovement script, showJournal to false, and not show Journal Canvas
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                Time.timeScale = 1; // resume game
+
+                //Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.visible = false;
                 showEscapeMenu = false;
                 escapeMenu.SetActive(false);
-
-                Time.timeScale = 1; // resume game
             }
         }
     }
-
     public void ResumeButton()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1; // resume game
+
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         showEscapeMenu = false;
         escapeMenu.SetActive(false);
-
-        Time.timeScale = 1; // resume game
     }
 }

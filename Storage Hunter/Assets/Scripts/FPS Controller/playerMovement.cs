@@ -79,25 +79,25 @@ public class playerMovement : MonoBehaviour
         }  */   
 
         //lock the cursor if the player left clicks when in game, without dialogue present
-        if(DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying == false && Input.GetKeyDown(KeyCode.Mouse0))
+        if(DialogueManager.GetInstance() != null)
         {
-            //check if the escape key is pressed
-            playerEscKey playerEscKeyInstance = FindObjectOfType<playerEscKey>();
-            if (playerEscKeyInstance != null)
+            if(DialogueManager.GetInstance().dialogueIsPlaying == false && Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if(playerEscKeyInstance.showEscapeMenu == true)
+                playerEscKey playerEscKeyInstance = FindObjectOfType<playerEscKey>();
+                if (playerEscKeyInstance != null)
                 {
-                    Cursor.visible = true;
-                    return;
-                }
-                else //if we aren't in dialogue or the escape menu, rehide the cursor
-                {
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false; // hide the cursor again
+                    if(playerEscKeyInstance.showEscapeMenu == true)
+                    {
+                        Cursor.visible = true;
+                    }
+                    else //if we aren't in dialogue or the escape menu, rehide the cursor
+                    {
+                        Cursor.lockState = CursorLockMode.Locked;
+                        Cursor.visible = false; // hide the cursor again
+                    }
                 }
             }
         }
-
     }
 
 
