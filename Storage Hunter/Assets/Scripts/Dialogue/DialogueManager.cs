@@ -112,12 +112,14 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = ""; // reset dialogue text
 
+/*
         //lock the cursor at the end of the story
         if (Cursor.lockState != CursorLockMode.Locked)
         {
         Cursor.lockState = CursorLockMode.Locked;
         }
         Cursor.visible = false; // hide the cursor again
+*/
     }
     
     private void ContinueStory()

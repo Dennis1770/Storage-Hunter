@@ -82,6 +82,12 @@ public class playerMovement : MonoBehaviour
         }  */   
 
         //this has been moved to the dialogue manager
+        //lock the cursor if the player left clicks when in game, without dialogue present
+        if(DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying == false && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false; // hide the cursor again
+        }
         /*
         if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying)
         {
