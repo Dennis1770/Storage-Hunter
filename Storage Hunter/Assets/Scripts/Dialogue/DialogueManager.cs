@@ -82,6 +82,12 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        if(Cursor.lockState != CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.None; // unlock the cursor
+            Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
+        }
+
         currentStory = new Story(inkJSON.text);
         currentStory.BindExternalFunction("activateObject", (int selectedObject) => ActivateObject(selectedObject));
         currentStory.BindExternalFunction("deactivateObject", (int selectedObject) => DeactivateObject(selectedObject));
