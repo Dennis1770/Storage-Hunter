@@ -24,8 +24,6 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject[] activatableObject;
 
-    //private int selectedObject;
-
     private void Awake()
     {
         if (instance != null)
@@ -67,12 +65,6 @@ public class DialogueManager : MonoBehaviour
                 ContinueStory();
             }
         }
-/*
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ContinueStory();
-        }
-*/
     }
 
     public static DialogueManager GetInstance()
@@ -82,22 +74,13 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
-        if(Cursor.lockState != CursorLockMode.None)
-        {
-            Cursor.lockState = CursorLockMode.None; // unlock the cursor
-            Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
-        }
+        Cursor.lockState = CursorLockMode.None; // unlock the cursor
+        Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
 
         currentStory = new Story(inkJSON.text);
         currentStory.BindExternalFunction("activateObject", (int selectedObject) => ActivateObject(selectedObject));
         currentStory.BindExternalFunction("deactivateObject", (int selectedObject) => DeactivateObject(selectedObject));
-        /*
-        Story.BindExternalFunction("ActivateObject")=>
-        {
-            ActivateObject();
-            return null;
-        }
-        */
+        
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
@@ -111,15 +94,6 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = ""; // reset dialogue text
-
-/*
-        //lock the cursor at the end of the story
-        if (Cursor.lockState != CursorLockMode.Locked)
-        {
-        Cursor.lockState = CursorLockMode.Locked;
-        }
-        Cursor.visible = false; // hide the cursor again
-*/
     }
     
     private void ContinueStory()
@@ -161,42 +135,21 @@ public class DialogueManager : MonoBehaviour
         //StartCoroutine(SelectFirstChoice());
     }
 
-/*
-    private IEnumerator SelectFirstChoice()
-    {
-        //Event system requires we clear it first, then wait for atleast one frame before we set the current selected object
-        EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
-    }
-*/
-
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
     }
 
-/*
-    private void SetGameObjectActive(bool isActive)
-    {
-        activatableObject[selectedObject].SetActive(isActive);
-    }
-*/
-
     private void ActivateObject(int index)
     {
-        //selectedObject = index;
-        //SetGameObjectActive(true);
-
+        //used to activate objects via ink
         activatableObject[index].SetActive(true);
     }
 
     private void DeactivateObject(int index)
     {
-        //selectedObject = index;
-        //SetGameObjectActive(false);
-        
+        //used to deactivate objects via ink
         activatableObject[index].SetActive(false);
     }
 }
