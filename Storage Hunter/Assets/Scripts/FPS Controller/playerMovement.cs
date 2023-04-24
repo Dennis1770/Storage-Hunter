@@ -87,6 +87,7 @@ public class playerMovement : MonoBehaviour
             {
                 if(playerEscKeyInstance.showEscapeMenu == true)
                 {
+                    Cursor.visible = true;
                     return;
                 }
                 else //if we aren't in dialogue or the escape menu, rehide the cursor

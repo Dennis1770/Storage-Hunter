@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class playerEscKey : MonoBehaviour
 {
-
     //public playerMovement playerMovement;
     //public sight Sight;
     public GameObject escapeMenu;
     public bool showEscapeMenu {get; private set;}
-
 
     private void Awake()
     {
@@ -38,9 +36,6 @@ public class playerEscKey : MonoBehaviour
 
                 Time.timeScale = 1; // resume game
             }
-
-
-
         }
     }
 

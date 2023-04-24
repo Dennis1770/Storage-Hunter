@@ -7,8 +7,6 @@ using TMPro;
 
 public class MenuController : MonoBehaviour
 {
-
-
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
