@@ -86,6 +86,7 @@ public class playerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None; // unlock the cursor
             Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
         }
+        /*
         else
         {
             // Check if the cursor is currently locked before setting it to "Locked"
@@ -94,7 +95,8 @@ public class playerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             }
             Cursor.visible = false; // hide the cursor again
-        }   
+        } 
+        */  
     }
 
 
