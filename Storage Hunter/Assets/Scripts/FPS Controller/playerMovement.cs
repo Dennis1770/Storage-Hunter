@@ -81,14 +81,18 @@ public class playerMovement : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
         }  */   
 
-        if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying) //freeze the player while they talk to npc's
+        if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying)
         {
             Cursor.lockState = CursorLockMode.None; // unlock the cursor
             Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked; // lock the cursor
+            // Check if the cursor is currently locked before setting it to "Locked"
+            if (Cursor.lockState != CursorLockMode.Locked)
+            {
+            Cursor.lockState = CursorLockMode.Locked;
+            }
             Cursor.visible = false; // hide the cursor again
         }   
     }
