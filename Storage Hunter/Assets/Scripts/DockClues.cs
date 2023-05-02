@@ -15,7 +15,7 @@ public class DockClues : MonoBehaviour
     public GameObject UIClue1Revealed;
     public GameObject UIClue2Revealed;
 
-    public GameObject pickableObject1;
+    public GameObject UIStorageFacilityButtonRevealed;
     private void Update()
     {
         if (dockClue1Achieved == true)
@@ -31,8 +31,22 @@ public class DockClues : MonoBehaviour
         }
 
 
-        // Checking to see if PickableObject1 doesn't exist in the scene 
-        if (pickableObject1 == null)
+
+
+        if (dockClue1Achieved == true &&
+            dockClue2Achieved == true)
+        {
+            UIStorageFacilityButtonRevealed.SetActive(true); 
+        }
+
+
+    }
+
+
+    private void OnTriggerEnter(Collider collider)
+    {
+
+        if (collider.gameObject.tag == "DockClue1")
         {
             Debug.Log("Interacted with DockClue1");
 
@@ -41,28 +55,19 @@ public class DockClues : MonoBehaviour
 
                 dockClue1Achieved = true;
 
-                // Player's first time interacting with DockClue1, audio plays
+                //Player's first time interacting with DockClue2, audio plays
                 audioSource.PlayOneShot(audioClip);
                 Debug.Log("Playing pencil sfx");
 
-
+                //UI pops up saying that the information is being added to the journal
                 UIClueConfirmation.SetActive(true);
                 StartCoroutine("ClueAcquired");
 
-
                 // Making the UI Clue Text visible
                 UIClue1Revealed.SetActive(true);
-
             }
 
         }
-    }
-
-
-    private void OnTriggerEnter(Collider collider)
-    {
-
-
 
         if (collider.gameObject.tag == "DockClue2")
         {
@@ -73,11 +78,11 @@ public class DockClues : MonoBehaviour
 
                 dockClue2Achieved = true;
 
-                // Player's first time interacting with DockClue2, audio plays
+                //Player's first time interacting with DockClue2, audio plays
                 audioSource.PlayOneShot(audioClip);
                 Debug.Log("Playing pencil sfx");
 
-                // UI pops up saying that the information is being added to the journal
+                //UI pops up saying that the information is being added to the journal
                 UIClueConfirmation.SetActive(true);
                 StartCoroutine("ClueAcquired");
 

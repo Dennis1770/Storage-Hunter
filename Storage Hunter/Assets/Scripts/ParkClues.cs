@@ -7,6 +7,7 @@ public class ParkClues : MonoBehaviour
 
     public static bool parkClue1Achieved;
     public static bool parkClue2Achieved;
+    public static bool parkClue3Achieved;
 
     public AudioSource audioSource;
     public AudioClip audioClip;
@@ -14,6 +15,9 @@ public class ParkClues : MonoBehaviour
     public GameObject UIClueConfirmation;
     public GameObject UIClue1Revealed;
     public GameObject UIClue2Revealed;
+    public GameObject UIClue3Revealed;
+
+    public GameObject UIDockButtonRevealed;
 
     public GameObject pickableObject1;
     private void Update()
@@ -28,6 +32,12 @@ public class ParkClues : MonoBehaviour
         {
             // Making the UI Clue Text visible
             UIClue2Revealed.SetActive(true);
+        }
+
+        if (parkClue3Achieved == true)
+        {
+            // Making the UI Clue Text visible
+            UIClue3Revealed.SetActive(true);
         }
 
 
@@ -56,6 +66,13 @@ public class ParkClues : MonoBehaviour
             }
 
         }
+
+        if (parkClue1Achieved == true &&
+            parkClue2Achieved == true &&
+            parkClue3Achieved == true)
+        {
+            UIDockButtonRevealed.SetActive(true);
+        }
     }
 
 
@@ -83,6 +100,29 @@ public class ParkClues : MonoBehaviour
 
                 // Making the UI Clue Text visible
                 UIClue2Revealed.SetActive(true);
+            }
+
+        }
+
+        if (collider.gameObject.tag == "ParkClue3")
+        {
+            Debug.Log("Interacted with ParkClue3");
+
+            if (parkClue3Achieved == false)
+            {
+
+                parkClue3Achieved = true;
+
+                // Player's first time interacting with DockClue2, audio plays
+                audioSource.PlayOneShot(audioClip);
+                Debug.Log("Playing pencil sfx");
+
+                // UI pops up saying that the information is being added to the journal
+                UIClueConfirmation.SetActive(true);
+                StartCoroutine("ClueAcquired");
+
+                // Making the UI Clue Text visible
+                UIClue3Revealed.SetActive(true);
             }
 
         }

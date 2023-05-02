@@ -107,6 +107,24 @@ public class playerRaycast : MonoBehaviour
                     pickUpUI.SetActive(false);
                 }
 
+                if (hit.transform.name == "PickableObject3")
+                {
+                    // Play pickup sfx
+                    audioSource.PlayOneShot(audioClip);
+                    Debug.Log("Playing pickup sfx");
+
+                    Debug.Log("SetActive false PickableObject2");
+                    Destroy(hit.transform.gameObject);
+
+
+                    // setting bool to true after picking up object
+                    pickableObject2Retrieved = true;
+
+
+                    // when destroyed set UI to false
+                    pickUpUI.SetActive(false);
+                }
+
             }
         }
 

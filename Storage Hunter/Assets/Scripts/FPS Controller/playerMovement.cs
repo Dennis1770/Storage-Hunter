@@ -81,6 +81,7 @@ public class playerMovement : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
         }  */   
 
+   /*
         if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying) //freeze the player while they talk to npc's
         {
             Cursor.lockState = CursorLockMode.None; // unlock the cursor
@@ -90,9 +91,11 @@ public class playerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked; // lock the cursor
             Cursor.visible = false; // hide the cursor again
-        }   
-    }
+        }  
 
+        */   
+    }
+ 
 
     void OnCollisionEnter(Collision collisionInfo)
     {
