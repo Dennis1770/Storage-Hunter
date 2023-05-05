@@ -56,6 +56,8 @@ public class MonsterPatrolState : MonsterBaseState
 
     public override void UpdateState(MonsterStateManager monster)
     {
+        Debug.Log(waypoints);
+        Debug.Log(currentWaypoint);
         Vector3 direction = currentWaypoint.transform.position;
         Vector3 playerDirection = (player.transform.position - monsterAgent.transform.position).normalized;
         monsterAgent.SetDestination(direction);

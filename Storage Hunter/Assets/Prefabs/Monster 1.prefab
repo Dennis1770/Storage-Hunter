@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4479795266947519280}
   - component: {fileID: 1682574423574739213}
   - component: {fileID: 7848143843415408640}
+  - component: {fileID: 6411078883004136054}
   m_Layer: 0
   m_Name: Monster 1
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 4728417035173601230}
   m_Father: {fileID: 0}
-  m_RootOrder: 49
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4479795266947519280
 Rigidbody:
@@ -85,6 +86,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75b4d29af46c8047924c60a950a336f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6411078883004136054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988430126522553751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6804657, y: 6.0140934, z: 2.536457}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &6221345325313965898
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +142,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9b8e0d7dc16efe14ea038eabf9ae9bea, type: 3}
       propertyPath: m_RootOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b8e0d7dc16efe14ea038eabf9ae9bea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b8e0d7dc16efe14ea038eabf9ae9bea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b8e0d7dc16efe14ea038eabf9ae9bea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b8e0d7dc16efe14ea038eabf9ae9bea, type: 3}
       propertyPath: m_LocalPosition.x
