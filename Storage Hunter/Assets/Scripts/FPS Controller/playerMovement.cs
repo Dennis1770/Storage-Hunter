@@ -17,6 +17,8 @@ public class playerMovement : MonoBehaviour
 
     public float noiseValue = 0; //this is used by the monster to find the player
 
+    public GameObject playerCamera;
+
     Vector3 velocity; //stores current velocity
 
     //sprint
@@ -30,11 +32,15 @@ public class playerMovement : MonoBehaviour
 
     private int currentSceneIndex; //current scene save
 
+    playerEscKey playerEscKeyInstance;
+
     private void Start()
     {
         //startYScale = transform.localScale.y; //starting y position
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //collects information on active scene
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex); //saves active scene
+
+        playerEscKeyInstance = FindObjectOfType<playerEscKey>();
 
     }
 
@@ -43,7 +49,35 @@ public class playerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {        
+        if(DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            Cursor.lockState = CursorLockMode.None; // unlock the cursor
+            Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
+            if(playerCamera != null)
+            {
+                playerCamera.transform.eulerAngles = new Vector3(0, playerCamera.transform.eulerAngles.y, 0); //prevent the player from looking at their feet when selecting dialogue
+            }
+            return;
+        }
+        else if(playerEscKeyInstance != null && playerEscKeyInstance.showEscapeMenu == true) //UNLOCK AND UNHIDE WHEN MENU IS OPEN
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        /*
+        else if(playerEscKeyInstance != null && playerEscKeyInstance.showEscapeMenu == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        */
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked; // lock the cursor
+            Cursor.visible = false; // hide the cursor again
+        }  
+
         //player movement
         float x = Input.GetAxis("Horizontal"); //input movement on x-axis
         float z = Input.GetAxis("Vertical"); //input movement on z-axis
@@ -79,21 +113,7 @@ public class playerMovement : MonoBehaviour
         else if(Input.GetKeyUp(crouchKey)) //if left control key is lifted, player will stand
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
-        }  */   
-
-   /*
-        if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying) //freeze the player while they talk to npc's
-        {
-            Cursor.lockState = CursorLockMode.None; // unlock the cursor
-            Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked; // lock the cursor
-            Cursor.visible = false; // hide the cursor again
-        }  
-
-        */   
+        }  */    
     }
  
 

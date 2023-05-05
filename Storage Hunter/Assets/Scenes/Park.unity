@@ -14579,9 +14579,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 797278182}
-        m_TargetAssemblyTypeName: SceneButtonLoader, Assembly-CSharp
-        m_MethodName: ReturnButton
+      - m_Target: {fileID: 1583480846}
+        m_TargetAssemblyTypeName: playerEscKey, Assembly-CSharp
+        m_MethodName: ResumeButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25350,6 +25350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escapeMenu: {fileID: 64918702}
+  showEscapeMenu: 0
 --- !u!4 &1583480847
 Transform:
   m_ObjectHideFlags: 0
@@ -39893,6 +39894,7 @@ MonoBehaviour:
   resetSpeed: 10
   resetSprint: 10
   noiseValue: 0
+  playerCamera: {fileID: 1831377291407549005}
   sprint: 10
 --- !u!143 &1831377293048041446
 CharacterController:
