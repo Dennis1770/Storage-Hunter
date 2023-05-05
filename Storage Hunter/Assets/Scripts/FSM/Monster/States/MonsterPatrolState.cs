@@ -71,11 +71,11 @@ public class MonsterPatrolState : MonsterBaseState
 
         //Monster Eyesight
         RaycastHit hit;
-        Ray sightRay = new Ray(monsterAgent.transform.position, playerDirection/*monsterAgent.transform.TransformDirection(Vector3.forward)*/);
-        Debug.DrawRay(monsterAgent.transform.position, playerDirection/*monsterAgent.transform.TransformDirection(Vector3.forward)*/ * 14f, Color.blue);
+        Ray sightRay = new Ray(monsterAgent.transform.position, playerDirection);
+        Debug.DrawRay(monsterAgent.transform.position, playerDirection/*monsterAgent.transform.TransformDirection(Vector3.forward)*/ * sightDistance, Color.blue);
         if (Physics.Raycast(sightRay, out hit, sightDistance))
         {
-            if (hit.collider.tag == "Player")
+            if(hit.collider.CompareTag("Player"))
             {
                 Debug.Log("Player has been spotted");
                 audioPlayer.cuedSound = 1;
@@ -84,13 +84,12 @@ public class MonsterPatrolState : MonsterBaseState
             }
         }
         
-
         //Monster Hearing
 
         //calculate capsule raycast's start and end points
-        Vector3 capsuleDirection = /*monsterAgent.transform.forward*/ playerDirection;
+        Vector3 capsuleDirection = playerDirection;
         Vector3 startPoint = monsterAgent.transform.position;
-        Vector3 endPoint = monsterAgent.transform.position + /*direction*/ player.transform.position * capsuleDistance;
+        Vector3 endPoint = monsterAgent.transform.position + player.transform.position * capsuleDistance;
         
         //calculate the axis of the capsule cast
         Vector3 capsuleAxis = Vector3.Cross(capsuleDirection, Vector3.up).normalized;
@@ -133,18 +132,9 @@ public class MonsterPatrolState : MonsterBaseState
                 }
                 else break;
             } 
-        }
-                //access the noise value from the playerMovement script
-                //if noise is 0 do nothing/ return;
-                //if noise is 1 play some audio to let the player know the monster is nearby
-                //if noise is 2 or greater, enter the chase state
-
-        //draw the capsule cast
-        Debug.DrawRay(startPoint, capsuleDirection * capsuleDistance, Color.red);
-        Debug.DrawRay(startPoint + capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.red);
-        Debug.DrawRay(startPoint - capsuleAxis * capsuleRadius, capsuleDirection * capsuleDistance, Color.red);    
+        } 
     }
-
+/*
     void OnDrawGizmos() 
     {
         Vector3 capsuleDirection = monsterAgent.transform.forward;
@@ -153,13 +143,16 @@ public class MonsterPatrolState : MonsterBaseState
         Gizmos.DrawWireSphere(startPoint, capsuleRadius);
         Gizmos.DrawWireSphere(endPoint, capsuleRadius);
     }
-
+*/
     public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
     {
+        /*
         GameObject other = collision.gameObject;
         if (other.CompareTag("Player"))
         {
             Debug.Log("game over"); //the player has been caught
         }
+        */
     }
+
 }
