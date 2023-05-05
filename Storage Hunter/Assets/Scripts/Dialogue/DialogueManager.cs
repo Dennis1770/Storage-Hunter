@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
@@ -12,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Header("Choices UI")]
-    [SerializeField] private GameObject[] choices;
+    [SerializeField] private Button[] choices;
 
     private TextMeshProUGUI[] choicesText;
 
@@ -45,7 +46,7 @@ public class DialogueManager : MonoBehaviour
         //get all of the choices text
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
-        foreach (GameObject choice in choices)
+        foreach (Button choice in choices)
         {
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
@@ -122,6 +123,7 @@ public class DialogueManager : MonoBehaviour
     
     private void DisplayChoices()
     {
+        UnselectButton();
         List<Choice> currentChoices = currentStory.currentChoices;
 
         if (currentChoices.Count > choices.Length)
@@ -183,5 +185,23 @@ public class DialogueManager : MonoBehaviour
         //SetGameObjectActive(false);
         
         activatableObject[index].SetActive(false);
+    }
+    private void UnselectButton()
+    {
+        //Call this to prevent choices from remaining highlighted during a conversation
+        foreach(Button choice in choices)
+        {
+            choice.interactable = false; // disable the button
+            StartCoroutine(ButtonDelay());
+        }
+    }
+
+    private IEnumerator ButtonDelay()
+    {
+        yield return new WaitForEndOfFrame();
+        foreach(Button choice in choices)
+        {
+            choice.interactable = true; // reenable the button
+        }
     }
 }

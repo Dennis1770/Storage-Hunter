@@ -34,11 +34,11 @@ I'm gonna stop you right there.
 What I'm dealing with?
 Trust me..
 You don't know wanna know nothin' about it.
-*[Tell me anyways]->fifth
+*[Tell me anyways.]->fifth
 
 ==fifth
-Hah, you're funny.
-I'll tell you, but only because you're persistent.
+Hah. Fine.
+I'll only tell you because you're persistent.
 A week ago I saw a monster.
 It was stalking me along one of the park trails near here.
 *[You saw a monster?]->sixth
@@ -49,7 +49,7 @@ Was a large beast with freakish eyes.
 Damned thing nearly gave me a heart attack.
 Luckily, Montana is open carry.
 *[Oh my god.  You killed it?]->seventh
-*[You're full of shit, aren't you]->seventh
+*[You're full of shit, aren't you.]->seventh
 
 ==seventh
 I wish.
@@ -59,7 +59,7 @@ Happens when you get older.
 It means I'm not as good a shot as I used to be.
 And that means this monster is out there putting people in danger!
 That's why I'm looking for an expert, understand?
-*[Yeah, I understand] Great.
+*[Yeah, I understand.] Great.
 ->eighth
 *[Wait, how'd you drive here with impaired vision?]->eighthAlt
 
@@ -82,8 +82,8 @@ They don't believe me though.
 Told me I saw a bear.
 They also revoked my license to carry a firearm. What a joke.
 I know what I saw.
-*[I believe you]->tenth
-*[I don't believe you]->tenth
+*[I believe you.]->tenth
+*[I don't believe you.]->tenth
 
 ==tenth
 It don't matter to me.
@@ -97,14 +97,14 @@ What a sick world.
 ==eleventh
 You want to help me?
 As in 'find the monster' help me?
-*[Let's show that monster who's boss] Is that so?
+*[Let's show that monster who's boss!] Is that so?
 Well, ->twelfth
-*[The monster's not real, but your dilemma is] To be completely honest, I don't care what you think.
+*[As in 'find the psych ward' help you.] To be completely honest, I don't care what you think.
 ->twelfth
 
 ==twelfth
 I'm leaving.
-You can come with or stay here, it's all the same to 
+You can come with or stay here, it's all the same to me.
 ~deactivateObject(3)
 ~activateObject(4)
 ->DONE

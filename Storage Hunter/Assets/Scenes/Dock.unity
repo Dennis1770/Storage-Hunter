@@ -5713,9 +5713,9 @@ MonoBehaviour:
   dialoguePanel: {fileID: 1383548204}
   dialogueText: {fileID: 1146103340}
   choices:
-  - {fileID: 445084426}
-  - {fileID: 425524878}
-  - {fileID: 1896747220}
+  - {fileID: 445084427}
+  - {fileID: 425524879}
+  - {fileID: 1896747222}
   activatableObject: []
 --- !u!4 &1163462343
 Transform:
