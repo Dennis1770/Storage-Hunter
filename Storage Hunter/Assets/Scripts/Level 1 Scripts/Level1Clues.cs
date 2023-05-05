@@ -13,6 +13,20 @@ public class Level1Clues : MonoBehaviour
     private Transform playerCameraTransform;
 
     [SerializeField]
+    private GameObject startingDialogueUI;
+
+    [SerializeField]
+    private GameObject darkDialogueUI;
+    [SerializeField]
+    private GameObject findLightsourceUI;
+
+    [SerializeField]
+    private GameObject foundLightsourceUI;
+
+    [SerializeField]
+    private GameObject flashlightInstructionUI;
+
+    [SerializeField]
     private GameObject crumbledPaperUI;
 
     [SerializeField]
@@ -36,6 +50,11 @@ public class Level1Clues : MonoBehaviour
     public sight Sight;
     public bool elevatorCardObtained = false;
 
+
+    private void Awake()
+    {
+        StartCoroutine(StartingDialogue());
+    }
     private void Update()
     {
 
@@ -76,8 +95,19 @@ public class Level1Clues : MonoBehaviour
                     ObtainedElevatorCardIEnumerator();
                 }
 
+                if (hit.transform.name == "Flashlight")
+                {
+                    // Play pickup sfx
+                    audioSource.PlayOneShot(audioClip);
+                    Debug.Log("Playing pickup sfx");
+
+                    StartCoroutine(foundLightsource());
+                }
+
             }
         }
+
+
 
     }
 
@@ -100,6 +130,36 @@ public class Level1Clues : MonoBehaviour
     {
         StartCoroutine(ObtainedElevatorCard());
     }
+
+    IEnumerator StartingDialogue()
+    {
+        yield return new WaitForSeconds(1);
+        startingDialogueUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        startingDialogueUI.SetActive(false);
+
+        yield return new WaitForSeconds(3);
+        darkDialogueUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        darkDialogueUI.SetActive(false);
+
+        findLightsourceUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        findLightsourceUI.SetActive(false);
+    }
+
+        IEnumerator foundLightsource()
+    {
+
+        foundLightsourceUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        foundLightsourceUI.SetActive(false);
+
+        flashlightInstructionUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        flashlightInstructionUI.SetActive(false);
+    }
+
     IEnumerator NoElevatorCard()
     {
         noElevatorCardUI.SetActive(true);
