@@ -19,6 +19,11 @@ public class capturePhoto : MonoBehaviour
     private Texture2D screenCapture; //screenshot
     private bool viewingPhoto; //is player looking at picture
 
+    public Transform player; //player position
+    public Transform monster; //monster position
+    public float sightDistance; //view between player and monster
+    public GameObject closeDoors; //close door game object
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,26 +35,34 @@ public class capturePhoto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(Input.GetKeyDown(KeyCode.Space)) //if player presses the space bar, take a screenshot
+
+       // Vector3 distanceToMonster = player.position - transform.position; //calculate monster position
+        //Vector3 distanceToPlayer = monster.position - transform.position; //calculate player position
+
+        if (Vector3.Distance(player.position, monster.position) < sightDistance)
         {
 
-            if(!viewingPhoto)
+            if (Input.GetKeyDown(KeyCode.Space)) //if player presses the space bar, take a screenshot
             {
 
-                StartCoroutine(CapturePhoto());
+                if (!viewingPhoto)
+                {
+
+                    StartCoroutine(CapturePhoto());
+
+                }
+                else
+                {
+
+                    RemovePhoto();
+
+                }
+
 
             }
-            else
-            {
-
-                RemovePhoto();
-
-            }
-            
 
         }
-
+        
     }
 
     IEnumerator CapturePhoto()
@@ -79,6 +92,8 @@ public class capturePhoto : MonoBehaviour
         StartCoroutine(CameraFlashEffect());
 
         fadingAnimation.Play("PhotoFade"); //play photo fade animation
+
+        closeDoors.SetActive(true); //activates closeDoors gameobject
 
     }
 

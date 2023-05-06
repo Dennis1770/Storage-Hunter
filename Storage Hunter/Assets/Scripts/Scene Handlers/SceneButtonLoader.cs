@@ -36,6 +36,11 @@ public class SceneButtonLoader : MonoBehaviour
         SceneManager.LoadScene("Gameplay Menu");
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void GraphicsMenu()
     {
         SceneManager.LoadScene("Graphics Menu");
