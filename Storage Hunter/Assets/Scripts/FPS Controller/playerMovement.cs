@@ -27,15 +27,27 @@ public class playerMovement : MonoBehaviour
     //crouch
     //public float crouchSpeed; //crouch speed
     //public float crouchYScale; //crouching height
-   // private float startYScale; //starting y position
-   // private KeyCode crouchKey = KeyCode.LeftControl; //key board key for crouching
+    // private float startYScale; //starting y position
+    // private KeyCode crouchKey = KeyCode.LeftControl; //key board key for crouching
+
+    //Scripts which pull up UI (used to manage when the player can and cannot see their cursor)
+    private OfficeDoorTrigger keypad;
+    private playerJournal journal;
+    private Level1Clues crumpledPaper;
 
     private int currentSceneIndex; //current scene save
 
     playerEscKey playerEscKeyInstance;
 
+
+
     private void Start()
     {
+        //references to scripts which handle UI elements
+        keypad = GameObject.FindObjectOfType<OfficeDoorTrigger>();
+        journal = GameObject.FindObjectOfType<playerJournal>();
+        crumpledPaper = GameObject.FindObjectOfType<Level1Clues>();
+
         //startYScale = transform.localScale.y; //starting y position
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //collects information on active scene
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex); //saves active scene
@@ -49,34 +61,30 @@ public class playerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
-        if(DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying)
+    {
+        //show mouse for dialogue
+        if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying)
         {
             Cursor.lockState = CursorLockMode.None; // unlock the cursor
             Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
-            if(playerCamera != null)
+            if (playerCamera != null)
             {
                 playerCamera.transform.eulerAngles = new Vector3(0, playerCamera.transform.eulerAngles.y, 0); //prevent the player from looking at their feet when selecting dialogue
             }
             return;
         }
-        else if(playerEscKeyInstance != null && playerEscKeyInstance.showEscapeMenu == true) //UNLOCK AND UNHIDE WHEN MENU IS OPEN
+        //show mouse of ui
+        else if ((playerEscKeyInstance != null && playerEscKeyInstance.showEscapeMenu == true) || (keypad != null && keypad.keypad_isOpen == true) || (journal != null && journal.showJournal == true) || (crumpledPaper != null && crumpledPaper.paper_isOpen == true))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        /*
-        else if(playerEscKeyInstance != null && playerEscKeyInstance.showEscapeMenu == false)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        */
+        //hide mouse otherwise
         else
         {
             Cursor.lockState = CursorLockMode.Locked; // lock the cursor
             Cursor.visible = false; // hide the cursor again
-        }  
+        }
 
         //player movement
         float x = Input.GetAxis("Horizontal"); //input movement on x-axis
@@ -90,7 +98,7 @@ public class playerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime); //velocity * time delta time
 
         float currentSpeed = move.magnitude * speed; //calculate the current speed of the player
-        noiseValue = currentSpeed < resetSpeed ? 0f: (currentSpeed >= (resetSpeed + sprint) ? 2f:1f); //this is a nested ternary operator.  it changes the noiseValue depending on how fast the player is moving.
+        noiseValue = currentSpeed < resetSpeed ? 0f : (currentSpeed >= (resetSpeed + sprint) ? 2f : 1f); //this is a nested ternary operator.  it changes the noiseValue depending on how fast the player is moving.
 
         //sprinting
         if (Input.GetKeyDown(KeyCode.LeftShift)) //if left shift is pressed down, add sprint to speed
@@ -103,23 +111,23 @@ public class playerMovement : MonoBehaviour
             speed = resetSpeed;
         }
 
-        
-       /* if(Input.GetKeyDown(crouchKey)) //if left control is pressed, player will crouch
-        {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z); //changes y scale of the player
-            //Rigidbody.AddForce(Vector3.down * 5f, ForceMode.Impulse); //pushes player model down
 
-        }
-        else if(Input.GetKeyUp(crouchKey)) //if left control key is lifted, player will stand
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
-        }  */    
+        /* if(Input.GetKeyDown(crouchKey)) //if left control is pressed, player will crouch
+         {
+             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z); //changes y scale of the player
+             //Rigidbody.AddForce(Vector3.down * 5f, ForceMode.Impulse); //pushes player model down
+
+         }
+         else if(Input.GetKeyUp(crouchKey)) //if left control key is lifted, player will stand
+         {
+             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
+         }  */
     }
- 
+
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        if(collisionInfo.collider.tag == "Monster") //if player makes contact with the monster game object, call on the EndGame function
+        if (collisionInfo.collider.tag == "Monster") //if player makes contact with the monster game object, call on the EndGame function
         {
 
             FindObjectOfType<gameManager>().EndGame(); //calls on EndGame funcation

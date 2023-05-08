@@ -41,6 +41,8 @@ public class Level1Clues : MonoBehaviour
 
     private RaycastHit hit;
 
+    public bool paper_isOpen;
+
 
     [Header("Pickup Audio Clip")]
     public AudioSource audioSource;
@@ -75,9 +77,12 @@ public class Level1Clues : MonoBehaviour
 
                     // Enable crumbledPaperUI to appear, cursor is visible, player unable to move
                     crumbledPaperUI.SetActive(true);
-                    Cursor.lockState = CursorLockMode.None;
-                    playerMovement.enabled = false;
+                    //we handle playermovement and cursor behaviors in the playerMovement script
+                    //Cursor.lockState = CursorLockMode.None;
+                    //playerMovement.enabled = false;
                     Sight.enabled = false;
+
+                    paper_isOpen = true;
                 }
 
                 if (hit.transform.name == "Elevator Card")
@@ -115,8 +120,10 @@ public class Level1Clues : MonoBehaviour
     {
         // resumes actions after crumbledPaperUI is closed
         crumbledPaperUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        playerMovement.enabled = true;
+        //we handle playermovement and cursor behaviors in the playerMovement script
+        //Cursor.lockState = CursorLockMode.Locked;
+        //playerMovement.enabled = true;
+        paper_isOpen = false;
         Sight.enabled = true;
     }
 
@@ -148,7 +155,7 @@ public class Level1Clues : MonoBehaviour
         findLightsourceUI.SetActive(false);
     }
 
-        IEnumerator foundLightsource()
+    IEnumerator foundLightsource()
     {
 
         foundLightsourceUI.SetActive(true);
