@@ -16,6 +16,7 @@ public class JoggerJogState : JoggerBaseState
     float minDistance = 1f;
     public Transform currentWaypoint;
     public int currentIndex;
+    private Animator animator;
 
     public override void EnterState(JoggerStateManager jogger)
     {
@@ -34,6 +35,9 @@ public class JoggerJogState : JoggerBaseState
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
 
         currentWaypoint = waypoints[currentIndex].transform;
+
+        animator = jogObject.GetComponent<Animator>();
+        animator.SetBool("isRunning", true);
     }
 
     public override void UpdateState(JoggerStateManager jogger)
@@ -43,19 +47,20 @@ public class JoggerJogState : JoggerBaseState
         Vector3 distanceToPlayer = player.transform.position - jogObject.transform.position;
         if (distanceToPlayer.magnitude <= interactRange && !DialogueManager.GetInstance().dialogueIsPlaying && Input.GetKeyDown(KeyCode.E))
         {
-            jogAgent.SetDestination(player.transform.position - 3*(distanceToPlayer.normalized)); //stop running when talking to the player
+            jogAgent.SetDestination(player.transform.position - 3 * (distanceToPlayer.normalized)); //stop running when talking to the player
             jogger.isJogging = false;
+            animator.SetBool("isRunning", false);
             jogger.switchState(jogger.talking);
         }
     }
 
     private void Jog()
     {
-        
+
         Vector3 direction = currentWaypoint.transform.position;
         jogAgent.SetDestination(direction);
 
-        if(Vector3.Distance(currentWaypoint.transform.position, jogObject.transform.position) < minDistance)
+        if (Vector3.Distance(currentWaypoint.transform.position, jogObject.transform.position) < minDistance)
         {
             ++currentIndex;
             if (currentIndex > waypoints.Length - 1)
