@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 49fb9a019fe62734aba91d98efa68d59, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 46be796e272238d49996ecd723e19d5d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -9662,7 +9662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1777572440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10963,7 +10963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2080250327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11338,7 +11338,7 @@ MonoBehaviour:
   resetSprint: 10
   noiseValue: 0
   playerCamera: {fileID: 0}
-  sprint: 10
+  sprint: 5
 --- !u!1 &1831377292202357537
 GameObject:
   m_ObjectHideFlags: 0
