@@ -28,6 +28,7 @@ public class MonsterPatrolState : MonsterBaseState
     private float capsuleRadius = 3f;
     private float capsuleDistance = 40f;
     private float capsuleAngle = 30f; //30 degrees
+    private float player_noiseValue;
 
     //raycast
     private float sightDistance = 60f;
@@ -63,7 +64,7 @@ public class MonsterPatrolState : MonsterBaseState
         monsterAgent.SetDestination(direction);
         //Debug.Log(currentWaypoint);
 
-        if(Vector3.Distance(currentWaypoint.transform.position, monsterAgent.transform.position) < minDistance)
+        if (Vector3.Distance(currentWaypoint.transform.position, monsterAgent.transform.position) < minDistance)
         {
             //pick a random waypoint each time
             int number = Random.Range(0, waypoints.Length);
@@ -77,7 +78,7 @@ public class MonsterPatrolState : MonsterBaseState
         Debug.DrawRay(monsterAgent.transform.position, playerDirection/*monsterAgent.transform.TransformDirection(Vector3.forward)*/ * sightDistance, Color.blue);
         if (Physics.Raycast(sightRay, out hit, sightDistance))
         {
-            if(hit.collider.CompareTag("Player"))
+            if (hit.collider.CompareTag("Player"))
             {
                 Debug.Log("Player has been spotted");
                 audioPlayer.cuedSound = 1;
@@ -85,14 +86,14 @@ public class MonsterPatrolState : MonsterBaseState
                 monster.switchState(monster.chase);
             }
         }
-        
+
         //Monster Hearing
 
         //calculate capsule raycast's start and end points
         Vector3 capsuleDirection = playerDirection;
         Vector3 startPoint = monsterAgent.transform.position;
         Vector3 endPoint = monsterAgent.transform.position + player.transform.position * capsuleDistance;
-        
+
         //calculate the axis of the capsule cast
         Vector3 capsuleAxis = Vector3.Cross(capsuleDirection, Vector3.up).normalized;
 
@@ -103,20 +104,21 @@ public class MonsterPatrolState : MonsterBaseState
         //perform the capsule cast
         RaycastHit[] hits = Physics.CapsuleCastAll(startPoint, endPoint, capsuleRadius, capsuleDirection, capsuleDistance);
 
-        foreach(RaycastHit hit2 in hits)
+        foreach (RaycastHit hit2 in hits)
         {
-            if(hit2.collider.tag == "Player")
+            if (hit2.collider.tag == "Player")
             {
-                float playerNoise_value = hit2.collider.GetComponent<playerMovement>().noiseValue;
-                if(playerNoise_value == 0)
+
+                player_noiseValue = GameObject.FindObjectOfType<playerMovement>().noiseValue;
+                if (player_noiseValue == 0)
                 {
                     Debug.Log("the monster doesn't hear you");
-                    
+
                     audioPlayer.cuedSound = 0;
                     audioPlayer.playAudio_oneShot();
                     break;
                 }
-                else if (playerNoise_value == 1)
+                else if (player_noiseValue == 1)
                 {
                     Debug.Log("the monster can kinda hear you");
                     audioPlayer.cuedSound = 0;
@@ -124,7 +126,7 @@ public class MonsterPatrolState : MonsterBaseState
                     //play audio for to let the player know the monster is close?
                     break;
                 }
-                else if (playerNoise_value == 2)
+                else if (player_noiseValue == 2)
                 {
                     Debug.Log("it heard you");
                     audioPlayer.cuedSound = 1;
@@ -133,19 +135,19 @@ public class MonsterPatrolState : MonsterBaseState
                     break;
                 }
                 else break;
-            } 
-        } 
+            }
+        }
     }
-/*
-    void OnDrawGizmos() 
-    {
-        Vector3 capsuleDirection = monsterAgent.transform.forward;
-        Vector3 startPoint = monsterAgent.transform.position;
-        Vector3 endPoint = monsterAgent.transform.position + capsuleDirection * capsuleDistance;
-        Gizmos.DrawWireSphere(startPoint, capsuleRadius);
-        Gizmos.DrawWireSphere(endPoint, capsuleRadius);
-    }
-*/
+    /*
+        void OnDrawGizmos() 
+        {
+            Vector3 capsuleDirection = monsterAgent.transform.forward;
+            Vector3 startPoint = monsterAgent.transform.position;
+            Vector3 endPoint = monsterAgent.transform.position + capsuleDirection * capsuleDistance;
+            Gizmos.DrawWireSphere(startPoint, capsuleRadius);
+            Gizmos.DrawWireSphere(endPoint, capsuleRadius);
+        }
+    */
     public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
     {
         /*
