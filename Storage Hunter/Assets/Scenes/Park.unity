@@ -18954,7 +18954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1209408345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18976,7 +18976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209408344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -137, z: 0}
+  m_LocalPosition: {x: -216, y: -144, z: 447}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39362,7 +39362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1119598435224592797, guid: 1df2e1aafea14f84db11f52d462543da, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1119598435224592799, guid: 1df2e1aafea14f84db11f52d462543da, type: 3}
       propertyPath: m_RootOrder
@@ -40362,7 +40362,7 @@ Camera:
   m_GameObject: {fileID: 1831377291407549005}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.45923817, g: 0.6898191, b: 0.754717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
