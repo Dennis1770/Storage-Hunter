@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class revealCursor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Use this script to initialize any scene without a character controller
+    void Awake()
     {
-        Cursor.lockState = CursorLockMode.None;
-        
+        ShowMouse();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ShowMouse()
     {
-        
+        Cursor.lockState = CursorLockMode.None; // unlock the cursor
+        Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
     }
 }

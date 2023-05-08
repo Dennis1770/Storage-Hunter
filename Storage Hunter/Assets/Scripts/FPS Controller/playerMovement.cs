@@ -73,7 +73,7 @@ public class playerMovement : MonoBehaviour
             }
             return;
         }
-        //show mouse of ui
+        //show mouse for ui
         else if ((playerEscKeyInstance != null && playerEscKeyInstance.showEscapeMenu == true) || (keypad != null && keypad.keypad_isOpen == true) || (journal != null && journal.showJournal == true) || (crumpledPaper != null && crumpledPaper.paper_isOpen == true))
         {
             Cursor.lockState = CursorLockMode.None;

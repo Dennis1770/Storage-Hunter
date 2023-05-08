@@ -7,7 +7,7 @@ public class SceneButtonLoader : MonoBehaviour
 
     public Animator animator; //fade in animation
     private int levelToLoad;
-    
+
     public void PlayGame()
     {
         SceneManager.LoadScene("Desk Intro");
@@ -55,19 +55,19 @@ public class SceneButtonLoader : MonoBehaviour
     {
         FadeToLevel(3);
         Debug.Log("Loading Dock");
-        
+
     }
 
     public void StorageScene()
     {
         FadeToLevel(4);
-        
+
     }
 
     public void ParkScene()
-    {    
+    {
         FadeToLevel(2);
-              
+
     }
 
 
@@ -97,5 +97,4 @@ public class SceneButtonLoader : MonoBehaviour
         SceneManager.LoadScene(levelToLoad);
 
     }
-
 }
