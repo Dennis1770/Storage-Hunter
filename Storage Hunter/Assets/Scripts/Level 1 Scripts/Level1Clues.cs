@@ -41,7 +41,7 @@ public class Level1Clues : MonoBehaviour
 
     private RaycastHit hit;
 
-    public bool paper_isOpen;
+    public bool paper_isOpen;   //public bool for player movement script 
 
 
     [Header("Pickup Audio Clip")]
