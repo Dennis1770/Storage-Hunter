@@ -50,7 +50,6 @@ public class CameraDialogue : MonoBehaviour
 
     public IEnumerator CameraTime()
     {
-        yield return new WaitForSeconds(1);
         foundCameraUI.SetActive(true);
         yield return new WaitForSeconds(3);
         foundCameraUI.SetActive(false);
