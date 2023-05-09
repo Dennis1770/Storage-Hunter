@@ -16364,9 +16364,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkJSON:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4900000, guid: ae6c2385d3218c145a086fe37cbf6b13, type: 3}
+  - {fileID: 4900000, guid: ae6c2385d3218c145a086fe37cbf6b13, type: 3}
+  - {fileID: 4900000, guid: ae6c2385d3218c145a086fe37cbf6b13, type: 3}
   hasClue1: 0
   hasClue2: 0
   hasClue3: 0

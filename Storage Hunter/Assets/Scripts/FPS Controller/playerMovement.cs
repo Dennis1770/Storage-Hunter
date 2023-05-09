@@ -130,7 +130,7 @@ public class playerMovement : MonoBehaviour
         if (collisionInfo.collider.tag == "Monster") //if player makes contact with the monster game object, call on the EndGame function
         {
 
-            FindObjectOfType<gameManager>().EndGame(); //calls on EndGame funcation
+            SceneManager.LoadScene("GameOver"); //calls on EndGame funcation
 
         }
     }

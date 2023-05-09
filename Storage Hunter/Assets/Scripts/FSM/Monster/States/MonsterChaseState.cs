@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 /*This is one of the concrete states
  * it is self-contained
@@ -66,6 +67,7 @@ public class MonsterChaseState : MonsterBaseState
         GameObject other = collision.gameObject;
         if (other.CompareTag("Player"))
         {
+            SceneManager.LoadScene("GameOver");
             Debug.Log("game over");
             //the player has been caught
         }
