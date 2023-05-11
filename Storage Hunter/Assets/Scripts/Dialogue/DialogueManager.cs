@@ -8,7 +8,8 @@ using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
-    [Header("Dialogue UI")] [SerializeField] private GameObject dialoguePanel;
+    //Michael
+    [Header("Dialogue UI")][SerializeField] private GameObject dialoguePanel;
 
     [SerializeField] private TextMeshProUGUI dialogueText;
 
@@ -61,19 +62,13 @@ public class DialogueManager : MonoBehaviour
         }
 
         //if there aren't any choices available, continue story when the player left clicks
-        if(currentStory.currentChoices.Count <= 0)
+        if (currentStory.currentChoices.Count <= 0)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 ContinueStory();
             }
         }
-/*
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ContinueStory();
-        }
-*/
     }
 
     public static DialogueManager GetInstance()
@@ -86,13 +81,7 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         currentStory.BindExternalFunction("activateObject", (int selectedObject) => ActivateObject(selectedObject));
         currentStory.BindExternalFunction("deactivateObject", (int selectedObject) => DeactivateObject(selectedObject));
-        /*
-        Story.BindExternalFunction("ActivateObject")=>
-        {
-            ActivateObject();
-            return null;
-        }
-        */
+
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
@@ -107,7 +96,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = ""; // reset dialogue text
     }
-    
+
     private void ContinueStory()
     {
         if (currentStory.canContinue)
@@ -120,7 +109,7 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(ExitDialogueMode());
         }
     }
-    
+
     private void DisplayChoices()
     {
         UnselectButton();
@@ -144,19 +133,7 @@ public class DialogueManager : MonoBehaviour
         {
             choices[i].gameObject.SetActive(false);
         }
-
-        //StartCoroutine(SelectFirstChoice());
     }
-
-/*
-    private IEnumerator SelectFirstChoice()
-    {
-        //Event system requires we clear it first, then wait for atleast one frame before we set the current selected object
-        EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
-    }
-*/
 
     public void MakeChoice(int choiceIndex)
     {
@@ -164,42 +141,28 @@ public class DialogueManager : MonoBehaviour
         ContinueStory();
     }
 
-/*
-    private void SetGameObjectActive(bool isActive)
-    {
-        activatableObject[selectedObject].SetActive(isActive);
-    }
-*/
-
     private void ActivateObject(int index)
     {
-        //selectedObject = index;
-        //SetGameObjectActive(true);
-
         activatableObject[index].SetActive(true);
     }
 
     private void DeactivateObject(int index)
     {
-        //selectedObject = index;
-        //SetGameObjectActive(false);
-        
         activatableObject[index].SetActive(false);
     }
     private void UnselectButton()
     {
         //Call this to prevent choices from remaining highlighted during a conversation
-        foreach(Button choice in choices)
+        foreach (Button choice in choices)
         {
             choice.interactable = false; // disable the button
-            StartCoroutine(ButtonDelay());
+            StartCoroutine(ButtonDelay()); //reenable the button
         }
     }
-
     private IEnumerator ButtonDelay()
     {
         yield return new WaitForEndOfFrame();
-        foreach(Button choice in choices)
+        foreach (Button choice in choices)
         {
             choice.interactable = true; // reenable the button
         }

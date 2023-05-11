@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Michael
 public class IntroductionActiveState : IntroductionBaseState
 {
     public override void EnterState(IntroductionStateManager introduction)
@@ -12,7 +12,7 @@ public class IntroductionActiveState : IntroductionBaseState
 
     public override void UpdateState(IntroductionStateManager introduction)
     {
-        if(!DialogueManager.GetInstance().dialogueIsPlaying)
+        if (!DialogueManager.GetInstance().dialogueIsPlaying)
         {
             introduction.switchState(introduction.sleeping);
         }

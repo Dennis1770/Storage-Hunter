@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FisherDialogue : MonoBehaviour
 {
+    //Michael
     FisherStateManager fisherFSM;
-    [Header("Ink JSON")] [SerializeField] private TextAsset inkJSON;
+    [Header("Ink JSON")][SerializeField] private TextAsset inkJSON;
 
     private int i;
 

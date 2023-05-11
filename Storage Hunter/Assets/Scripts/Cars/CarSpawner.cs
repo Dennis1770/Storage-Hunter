@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {
+    //Michael
     public GameObject[] vehicles;
     [SerializeField] private float timeSinceLastSpawn;
     [SerializeField] private float vehicleInterval;
-    
+
     private void Awake()
     {
         vehicleInterval = 1;
@@ -19,11 +20,11 @@ public class CarSpawner : MonoBehaviour
         Debug.Log("Instantiate");
         Instantiate(vehicles[Random.Range(0, vehicles.Length)], this.transform.position, Quaternion.identity);
     }
-    
+
     void Update()
     {
         timeSinceLastSpawn += Time.deltaTime;
-        if(timeSinceLastSpawn >= vehicleInterval)
+        if (timeSinceLastSpawn >= vehicleInterval)
         {
             timeSinceLastSpawn = 0;
             vehicleInterval = Random.Range(5, 20f);

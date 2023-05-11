@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+//Michael
 
 /*This is one of the concrete states
  * it is self-contained
@@ -150,6 +151,8 @@ public class MonsterPatrolState : MonsterBaseState
     */
     public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
     {
+        //We are currently using the player to check for this collision
+
         /*
         GameObject other = collision.gameObject;
         if (other.CompareTag("Player"))

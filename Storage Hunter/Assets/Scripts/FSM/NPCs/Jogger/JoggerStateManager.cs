@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Michael
 public class JoggerStateManager : MonoBehaviour
 {
     JoggerBaseState currentState;

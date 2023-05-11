@@ -1,4 +1,5 @@
 using UnityEngine;
+//Michael
 
 /* This is the context for our finite state machine
  * this script creates instances of concrete states (idle, patrol and chase)

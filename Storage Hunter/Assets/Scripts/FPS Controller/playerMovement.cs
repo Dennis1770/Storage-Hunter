@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
+    //Michael worked on integrating this script to work with the DialogueManager
 
     public CharacterController controller; //character controller
 

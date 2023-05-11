@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class JoggerDialogue : MonoBehaviour
 {
+    //Michael
     JoggerStateManager joggerFSM;
 
-    [Header("Ink JSON")] [SerializeField] private TextAsset inkJSON;
+    [Header("Ink JSON")][SerializeField] private TextAsset inkJSON;
 
     private int i;
 
@@ -18,15 +19,15 @@ public class JoggerDialogue : MonoBehaviour
 
     private void Update()
     {
-        if(joggerFSM.isTalking == true)
+        if (joggerFSM.isTalking == true)
         {
             if (i < 1)
             {
                 i++;
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
-            }   
+            }
         }
-        if(joggerFSM.isTalking == false)
+        if (joggerFSM.isTalking == false)
         {
             i = 0;
         }

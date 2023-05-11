@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+//Michael
 
 /*This is one of the concrete states
  * it is self-contained
@@ -36,7 +37,7 @@ public class MonsterChaseState : MonsterBaseState
         {
             elapsedTime += Time.deltaTime;
             //Debug.Log("distance: " + elapsedTime);
-            if(elapsedTime >= delay)
+            if (elapsedTime >= delay)
             {
                 elapsedTime = 0f;
                 monster.switchState(monster.idle);
@@ -53,7 +54,7 @@ public class MonsterChaseState : MonsterBaseState
             {
                 elapsedTime += Time.deltaTime;
                 //Debug.Log("LOS: " + elapsedTime);
-                if(elapsedTime >= delay)
+                if (elapsedTime >= delay)
                 {
                     elapsedTime = 0f;
                     monster.switchState(monster.idle);
