@@ -13023,7 +13023,7 @@ MonoBehaviour:
   resetSpeed: 10
   resetSprint: 10
   noiseValue: 0
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 1831377292727164552}
   sprint: 5
 --- !u!1 &1831377292202357537
 GameObject:

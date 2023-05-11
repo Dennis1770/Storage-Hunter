@@ -19,6 +19,10 @@ public class playerMovement : MonoBehaviour
     public float noiseValue = 0; //this is used by the monster to find the player
 
     public GameObject playerCamera;
+    private bool isLocked; //used to lock the camera when the player selects dialogue
+    private float cameraXAngle;
+    private float cameraYAngle;
+    private float cameraZAngle;
 
     Vector3 velocity; //stores current velocity
 
@@ -70,8 +74,17 @@ public class playerMovement : MonoBehaviour
             Cursor.visible = true; // show the cursor to make it easier for the player to select dialogue
             if (playerCamera != null)
             {
-                playerCamera.transform.eulerAngles = new Vector3(0, playerCamera.transform.eulerAngles.y, 0); //prevent the player from looking at their feet when selecting dialogue
+                if (isLocked == false)
+                {
+                    cameraXAngle = playerCamera.transform.eulerAngles.x;
+                    cameraYAngle = playerCamera.transform.eulerAngles.y;
+                    cameraZAngle = playerCamera.transform.eulerAngles.z;
+                    isLocked = true;
+                }
+                playerCamera.transform.eulerAngles = new Vector3(cameraXAngle, cameraYAngle, cameraZAngle);
+                //playerCamera.transform.eulerAngles = new Vector3(0, playerCamera.transform.eulerAngles.y, 0); //prevent the player from looking at their feet when selecting dialogue
             }
+            else Debug.LogError("playerCamera not found");
             return;
         }
         //show mouse for ui
@@ -85,6 +98,7 @@ public class playerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked; // lock the cursor
             Cursor.visible = false; // hide the cursor again
+            isLocked = false;
         }
 
         //player movement
@@ -130,9 +144,7 @@ public class playerMovement : MonoBehaviour
     {
         if (collisionInfo.collider.tag == "Monster") //if player makes contact with the monster game object, call on the EndGame function
         {
-
             SceneManager.LoadScene("GameOver"); //calls on EndGame funcation
-
         }
     }
 }
