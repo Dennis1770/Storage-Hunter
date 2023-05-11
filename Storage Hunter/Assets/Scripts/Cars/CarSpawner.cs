@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Michael
 public class CarSpawner : MonoBehaviour
 {
-    //Michael
     public GameObject[] vehicles;
     [SerializeField] private float timeSinceLastSpawn;
     [SerializeField] private float vehicleInterval;

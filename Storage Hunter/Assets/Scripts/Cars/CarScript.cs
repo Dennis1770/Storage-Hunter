@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Michael
 public class CarScript : MonoBehaviour
 {
-    //Michael
     [Tooltip("One speed is randomly selected")][SerializeField] private float[] speeds;
     private float speed;
     [Tooltip("Set true if the car is parked")][SerializeField] private bool isParked;
     private Color[] colors = new Color[]
     {
+        //array of possible colors
         Color.red,
         Color.green,
         Color.blue,
@@ -22,12 +22,12 @@ public class CarScript : MonoBehaviour
 
     void Start()
     {
-        Color randomColor = colors[Random.Range(0, colors.Length)];
+        Color randomColor = colors[Random.Range(0, colors.Length)]; //select a random color
         Transform carBody = transform.Find("MainCarBody");
         if (carBody != null)
         {
             Renderer renderer = carBody.GetComponent<Renderer>();
-            renderer.material.color = randomColor;
+            renderer.material.color = randomColor; //apply the selected color
         }
 
         if (isParked) speed = 0;
