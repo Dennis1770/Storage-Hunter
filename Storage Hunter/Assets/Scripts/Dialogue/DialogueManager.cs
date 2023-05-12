@@ -40,7 +40,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 

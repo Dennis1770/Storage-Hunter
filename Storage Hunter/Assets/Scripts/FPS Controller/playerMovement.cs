@@ -55,7 +55,6 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isLocked);
         //show mouse for dialogue
         if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying)
         {
@@ -71,7 +70,7 @@ public class playerMovement : MonoBehaviour
                     cameraZAngle = playerCamera.transform.eulerAngles.z;
                     isLocked = true;
                 }
-                Debug.Log($"The camera should be locked at {cameraXAngle}, {cameraYAngle}, {cameraZAngle}");
+                //Debug.Log($"The camera should be locked at {cameraXAngle}, {cameraYAngle}, {cameraZAngle}");
                 playerCamera.transform.eulerAngles = new Vector3(cameraXAngle, cameraYAngle, cameraZAngle); //lock the camera while talking to npc's
             }
             else Debug.LogError("playerCamera not found");
