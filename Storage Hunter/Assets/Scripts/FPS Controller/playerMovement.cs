@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
-    //Michael worked on integrating this script to work with the DialogueManager
+    //Michael made edits to this script to have it work cohesively with the DialogueManager
 
     public CharacterController controller; //character controller
 
@@ -14,7 +14,7 @@ public class playerMovement : MonoBehaviour
     public float gravity = -9.81f; //gravity of earth;
 
     public float resetSpeed = 10f;
-    public float resetSprint = 10f;
+    public float resetSprint = 5f;
 
     public float noiseValue = 0; //this is used by the monster to find the player
 
@@ -29,12 +29,6 @@ public class playerMovement : MonoBehaviour
     //sprint
     public float sprint = 10f; //sprint increase
 
-    //crouch
-    //public float crouchSpeed; //crouch speed
-    //public float crouchYScale; //crouching height
-    // private float startYScale; //starting y position
-    // private KeyCode crouchKey = KeyCode.LeftControl; //key board key for crouching
-
     //Scripts which pull up UI (used to manage when the player can and cannot see their cursor)
     private OfficeDoorTrigger keypad;
     private playerJournal journal;
@@ -43,8 +37,6 @@ public class playerMovement : MonoBehaviour
     private int currentSceneIndex; //current scene save
 
     playerEscKey playerEscKeyInstance;
-
-
 
     private void Start()
     {
@@ -58,15 +50,12 @@ public class playerMovement : MonoBehaviour
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex); //saves active scene
 
         playerEscKeyInstance = FindObjectOfType<playerEscKey>();
-
     }
-
-
-
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isLocked);
         //show mouse for dialogue
         if (DialogueManager.GetInstance() != null && DialogueManager.GetInstance().dialogueIsPlaying)
         {
@@ -76,13 +65,14 @@ public class playerMovement : MonoBehaviour
             {
                 if (isLocked == false)
                 {
+                    //save the camera position
                     cameraXAngle = playerCamera.transform.eulerAngles.x;
                     cameraYAngle = playerCamera.transform.eulerAngles.y;
                     cameraZAngle = playerCamera.transform.eulerAngles.z;
                     isLocked = true;
                 }
-                playerCamera.transform.eulerAngles = new Vector3(cameraXAngle, cameraYAngle, cameraZAngle);
-                //playerCamera.transform.eulerAngles = new Vector3(0, playerCamera.transform.eulerAngles.y, 0); //prevent the player from looking at their feet when selecting dialogue
+                Debug.Log($"The camera should be locked at {cameraXAngle}, {cameraYAngle}, {cameraZAngle}");
+                playerCamera.transform.eulerAngles = new Vector3(cameraXAngle, cameraYAngle, cameraZAngle); //lock the camera while talking to npc's
             }
             else Debug.LogError("playerCamera not found");
             return;
@@ -125,18 +115,6 @@ public class playerMovement : MonoBehaviour
         {
             speed = resetSpeed;
         }
-
-
-        /* if(Input.GetKeyDown(crouchKey)) //if left control is pressed, player will crouch
-         {
-             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z); //changes y scale of the player
-             //Rigidbody.AddForce(Vector3.down * 5f, ForceMode.Impulse); //pushes player model down
-
-         }
-         else if(Input.GetKeyUp(crouchKey)) //if left control key is lifted, player will stand
-         {
-             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z); //changes y scale of the player
-         }  */
     }
 
 

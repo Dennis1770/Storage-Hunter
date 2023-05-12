@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &54938802
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3687,7 +3687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &217491486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5523,7 +5523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &320020117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7521,7 +7521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &482256803
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12447,7 +12447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &811731464
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15509,7 +15509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &956690595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15814,7 +15814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &974966542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16357,7 +16357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1009553423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16492,7 +16492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1022390603
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22124,7 +22124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1349399164
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23513,7 +23513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1450912939
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23670,7 +23670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1459841653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24218,7 +24218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1491487597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25843,7 +25843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1553930769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27431,7 +27431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1623756502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28157,7 +28157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1634832511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30609,6 +30609,7 @@ GameObject:
   - component: {fileID: 1800365577}
   - component: {fileID: 1800365579}
   - component: {fileID: 1800365578}
+  - component: {fileID: 1800365580}
   m_Layer: 0
   m_Name: bushes2Leaf (22)
   m_TagString: Untagged
@@ -30681,6 +30682,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800365576}
   m_Mesh: {fileID: 6790437069314801880, guid: 9a50a07beb123aa46acf33cedf5219ac, type: 3}
+--- !u!114 &1800365580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800365576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64304568cc505c458aba6aef2769d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grassSpeed: 3
+  grassSprint: 3
 --- !u!1 &1800429975
 GameObject:
   m_ObjectHideFlags: 0
@@ -31969,7 +31984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1860210465
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32152,7 +32167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1861211487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33262,7 +33277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1894571079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33570,7 +33585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &1913657239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37919,7 +37934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grassSpeed: 3
-  grassSprint: 5
+  grassSprint: 3
 --- !u!65 &2130351851
 BoxCollider:
   m_ObjectHideFlags: 0

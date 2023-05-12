@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+//Michael
 
 public class DialogueManager : MonoBehaviour
 {
-    //Michael
     [Header("Dialogue UI")][SerializeField] private GameObject dialoguePanel;
 
     [SerializeField] private TextMeshProUGUI dialogueText;

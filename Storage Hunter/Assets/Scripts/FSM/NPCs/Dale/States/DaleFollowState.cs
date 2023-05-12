@@ -14,7 +14,7 @@ public class DaleFollowState : DaleBaseState
 
     public override void EnterState(DaleStateManager dale)
     {
-        Debug.Log($"Dale is now in the follow state");
+        //Debug.Log($"Dale is now in the follow state");
         dale.isFollowing = true;
         daleObject = GameObject.FindGameObjectWithTag("Dale");
         player = GameObject.FindGameObjectWithTag("Player");
