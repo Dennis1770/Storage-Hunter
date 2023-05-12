@@ -89,7 +89,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForEndOfFrame();
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
@@ -98,6 +98,8 @@ public class DialogueManager : MonoBehaviour
 
     private void ContinueStory()
     {
+        //Debug.Log($"canContinue is {currentStory.canContinue}");
+
         if (currentStory.canContinue)
         {
             dialogueText.text = currentStory.Continue(); //set text for the current dialogue line
@@ -105,6 +107,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            //Debug.LogError("Story ran out of content");
             StartCoroutine(ExitDialogueMode());
         }
     }

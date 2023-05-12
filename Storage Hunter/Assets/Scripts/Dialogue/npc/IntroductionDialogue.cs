@@ -9,34 +9,36 @@ public class IntroductionDialogue : MonoBehaviour
     IntroductionDialogue inkLoader;
     [Header("Ink JSON")] public TextAsset[] inkJSON;
 
-    [SerializeField] private int i;
+    [SerializeField] private bool hasStarted;
 
     private void Start()
     {
-        i = 0;
-        Debug.Log("start: " + i);
+        hasStarted = false;
         introFSM = FindObjectOfType<IntroductionStateManager>();
-        inkLoader = GameObject.FindObjectOfType<IntroductionDialogue>();
+        //inkLoader = GameObject.FindObjectOfType<IntroductionDialogue>();
+        inkLoader = this;
     }
 
     private void Update()
     {
         if (introFSM.isActive == true)
         {
-            if (i < 1)
+            if (hasStarted == false) //if we call EnterDialogueMode every frame, it won't work
             {
-                i++;
+                hasStarted = true;
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON[introFSM.storyIndex]);
             }
         }
         if (introFSM.isSleeping == true)
         {
+            hasStarted = false; //reset
+            /*
             if (introFSM.storyIndex < inkLoader.inkJSON.Length - 1)
             {
-                i = 0;
-                Debug.Log("sleep: " + i);
+               
             }
             else return;
+            */
         }
     }
 }
