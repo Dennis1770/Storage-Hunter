@@ -120,7 +120,9 @@ public class Generator : MonoBehaviour
                     {
                         SwitchLightsAllOn = true;
                         SwitchLightCheck.GetComponent<MeshRenderer>().material = NeonGreen;
-                    closeDoors.SetActive(true);
+                        closeDoors.SetActive(true);
+
+                        genDialogue.ReturnToElevatorObjective();
                     }
 
                 if (SwitchLightsAllOn == false)

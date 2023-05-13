@@ -4,36 +4,34 @@ using UnityEngine;
 
 public class GenDialogue : MonoBehaviour
 {
-
+    [Header("Generator and Switches")]
     public GenSwitch1 genSwitch1;
     public GenSwitch2 genSwitch2;
     public GenSwitch3 genSwitch3;
     public GenSwitch4 genSwitch4;
     public GenSwitch5 genSwitch5;
     public GenSwitch6 genSwitch6;
-
     public Generator generator;
-
-    [SerializeField]
-    private GameObject PowerOutUI;
-
-    [SerializeField]
-    private GameObject NeedAllUI;
-
-        [SerializeField]
-    private GameObject LastOneUI;
-
-        [SerializeField]
-    private GameObject ElevatorTimeUI;
-    // Start is called before the first frame update
-
     bool lastOne = false;
+
+    [Header("Generator Dialogue")]
+    [SerializeField] private GameObject PowerOutUI;
+    [SerializeField] private GameObject NeedAllUI;
+    [SerializeField] private GameObject LastOneUI;
+    [SerializeField] private GameObject ElevatorTimeUI;
+
+    [Header("Objective Dialogue")]
+    [SerializeField] private GameObject flipallSwitchesObjectiveUI;
+    [SerializeField] private GameObject startGeneratorObjectiveUI;
+    [SerializeField] private GameObject returnToElevatorObjectiveUI;
+
     void Start()
     {
         StartCoroutine(PowerOut());
+        flipallSwitchesObjectiveUI.SetActive(true);
+
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -47,6 +45,7 @@ public class GenDialogue : MonoBehaviour
             {
 
                 StartCoroutine(LastOne());
+                StartGeneratorObjective();
                 lastOne = true;
             }
     }
@@ -78,4 +77,17 @@ public class GenDialogue : MonoBehaviour
         ElevatorTimeUI.SetActive(false);
         
     }
+
+    private void StartGeneratorObjective()
+    {
+        flipallSwitchesObjectiveUI.SetActive(false);
+        startGeneratorObjectiveUI.SetActive(true);
+    }
+
+    public void ReturnToElevatorObjective()
+    {
+        startGeneratorObjectiveUI.SetActive(false);
+        returnToElevatorObjectiveUI.SetActive(true);
+    }
+
 }

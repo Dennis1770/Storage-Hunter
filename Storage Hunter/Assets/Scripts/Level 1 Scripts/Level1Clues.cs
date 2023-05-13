@@ -6,56 +6,44 @@ using UnityEngine.UI;
 public class Level1Clues : MonoBehaviour
 {
 
-    [SerializeField]
-    private LayerMask pickableLayerMask;
+    [Header("Dialogue UI")]
+    [SerializeField] private GameObject startingDialogueUI;
+    [SerializeField] private GameObject darkDialogueUI;
+    [SerializeField] private GameObject findLightsourceUI;
+    [SerializeField] private GameObject foundLightsourceUI;
+    [SerializeField] private GameObject flashlightInstructionUI;
+    [SerializeField] private GameObject crumbledPaperUI;
+    [SerializeField] private GameObject noElevatorCardUI;
+    [SerializeField] private GameObject obtainedElevatorCardUI;
 
-    [SerializeField]
-    private Transform playerCameraTransform;
+    [Header("Objective UI")]
+    [SerializeField] private GameObject findLightsourceObjectiveUI;
+    [SerializeField] private GameObject accessElevatorObjectiveUI;
 
-    [SerializeField]
-    private GameObject startingDialogueUI;
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
-    [SerializeField]
-    private GameObject darkDialogueUI;
-    [SerializeField]
-    private GameObject findLightsourceUI;
-
-    [SerializeField]
-    private GameObject foundLightsourceUI;
-
-    [SerializeField]
-    private GameObject flashlightInstructionUI;
-
-    [SerializeField]
-    private GameObject crumbledPaperUI;
-
-    [SerializeField]
-    private GameObject noElevatorCardUI;
-
-    [SerializeField]
-    private GameObject obtainedElevatorCardUI;
-
+    [Header("Raycast")]
+    public playerMovement playerMovement;
+    public sight Sight;
+    [SerializeField] private LayerMask pickableLayerMask;
+    [SerializeField] private Transform playerCameraTransform;
+    private RaycastHit hit;
     [SerializeField]
     [Min(1)]
     private float hitRange = 5;
 
-    private RaycastHit hit;
-
-    public bool paper_isOpen;   //public bool for player movement script 
-
-
-    [Header("Pickup Audio Clip")]
-    public AudioSource audioSource;
-    public AudioClip audioClip;
-
-    public playerMovement playerMovement;
-    public sight Sight;
+    [Header("Booleans")]
+    public bool flashlightObtained = false;
     public bool elevatorCardObtained = false;
-
+    public bool paper_isOpen;
 
     private void Awake()
     {
         StartCoroutine(StartingDialogue());
+        findLightsourceObjectiveUI.SetActive(true);
+
     }
     private void Update()
     {
@@ -106,6 +94,9 @@ public class Level1Clues : MonoBehaviour
                     audioSource.PlayOneShot(audioClip);
                     Debug.Log("Playing pickup sfx");
 
+                    flashlightObtained = true;
+                    FlashlightObtainedObjective();
+                    
                     StartCoroutine(foundLightsource());
                 }
 
@@ -183,7 +174,15 @@ public class Level1Clues : MonoBehaviour
 
     }
 
+    private void FlashlightObtainedObjective()
+    {
+        if (flashlightObtained == true)
+        {
+            findLightsourceObjectiveUI.SetActive(false);
+            accessElevatorObjectiveUI.SetActive(true);
+        }
 
+    }
 
 
 }
