@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Michael
 
 public class DaleDialogue : MonoBehaviour
 {
-    //Michael
     DaleStateManager daleFSM;
 
     [Header("Ink JSON")][SerializeField] private TextAsset[] inkJSON;
 
-    private bool isTalking;
+    private bool isDialoguing;
     private int count; //use this to change the dialogue after the player has talked to Dale once
     private int foundClues; //how many of the three clues the player has found
     public bool hasClue1;
@@ -19,7 +19,7 @@ public class DaleDialogue : MonoBehaviour
 
     private void Start()
     {
-        isTalking = false;
+        isDialoguing = false;
         index = 0;
         daleFSM = FindObjectOfType<DaleStateManager>();
     }
@@ -29,16 +29,16 @@ public class DaleDialogue : MonoBehaviour
         ChooseDialogue();
         if (daleFSM.isTalking == true)
         {
-            if (isTalking == false)
+            if (isDialoguing == false)
             {
-                isTalking = true;
+                isDialoguing = true;
                 count++;
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON[index]);
             }
         }
         if (daleFSM.isTalking == false)
         {
-            isTalking = false;
+            isDialoguing = false;
         }
     }
 

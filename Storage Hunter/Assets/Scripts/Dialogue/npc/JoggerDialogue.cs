@@ -9,11 +9,11 @@ public class JoggerDialogue : MonoBehaviour
 
     [Header("Ink JSON")][SerializeField] private TextAsset inkJSON;
 
-    private bool isTalking;
+    private bool isDialoguing;
 
     private void Start()
     {
-        isTalking = false;
+        isDialoguing = false;
         joggerFSM = FindObjectOfType<JoggerStateManager>();
     }
 
@@ -21,15 +21,15 @@ public class JoggerDialogue : MonoBehaviour
     {
         if (joggerFSM.isTalking == true)
         {
-            if (isTalking == false)
+            if (isDialoguing == false)
             {
-                isTalking = true;
+                isDialoguing = true;
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
         }
         if (joggerFSM.isTalking == false)
         {
-            isTalking = false;
+            isDialoguing = false;
         }
     }
 }

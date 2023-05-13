@@ -41,7 +41,7 @@ public class DaleFollowState : DaleBaseState
     {
         if (Vector3.Distance(currentWaypoint_Dale.transform.position, daleObject.transform.position) > followDistance)
         {
-            Debug.Log($"Dale is {Vector3.Distance(currentWaypoint_Dale.transform.position, daleObject.transform.position)} units away from the player");
+            //Debug.Log($"Dale is {Vector3.Distance(currentWaypoint_Dale.transform.position, daleObject.transform.position)} units away from the player");
             Vector3 direction = currentWaypoint_Dale.transform.position;
             daleAgent.SetDestination(direction);
             animator.SetBool("isWalking", true);

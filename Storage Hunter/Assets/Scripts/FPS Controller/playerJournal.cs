@@ -15,6 +15,7 @@ public class playerJournal : MonoBehaviour
         // journal = GetComponent<GameObject>(); 
         journal.SetActive(false);
         showJournal = false;
+        Sight = FindObjectOfType<sight>();
     }
     private void Update()
     {
@@ -24,22 +25,26 @@ public class playerJournal : MonoBehaviour
 
             if (showJournal == false) // if showJournal is false, unlock cursor, disable playerMovement script, showJournal to true, and show Journal Canvas
             {
+                //Sight.enabled = false;
+
+                Sight.allowRotation = false;
+                showJournal = true;
+                journal.SetActive(true);
+
                 //we handle playermovement and cursor behaviors in the playerMovement script
                 //Cursor.lockState = CursorLockMode.None;
                 //playerMovement.enabled = false;
-                Sight.enabled = false;
-                showJournal = true;
-                journal.SetActive(true);
             }
             else // if showJournal is true, lock cursor, enable playerMovement script, showJournal to false, and not show Journal Canvas
             {
-                Sight.enabled = true;
+                //Sight.enabled = true;
+                Sight.allowRotation = true;
+                showJournal = false;
+                journal.SetActive(false);
 
                 //we handle playermovement and cursor behaviors in the playerMovement script
                 //playerMovement.enabled = true;
                 //Cursor.lockState = CursorLockMode.Locked;
-                showJournal = false;
-                journal.SetActive(false);
             }
 
 

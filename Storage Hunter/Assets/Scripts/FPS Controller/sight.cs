@@ -14,6 +14,7 @@ public class sight : MonoBehaviour
     public Transform player; //player model
     float xRotation;
     string activeScene;
+    public bool allowRotation = true; //use this to freeze camera rotation without triggering the start function each time
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class sight : MonoBehaviour
         slider.value = PlayerPrefs.GetFloat("saveSenseSlider");
         activeScene = SceneManager.GetActiveScene().name;
         Debug.Log("Active Scene:" + activeScene);
+
         if (activeScene == "MainMenu")
         {
             // do nothing with the cursor
@@ -30,29 +32,27 @@ public class sight : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked; //locks and hides mouse cursor to the center of the screen
         }
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (allowRotation == true)
+        {
+            //mouse input
+            float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime; // mouse position * mouse sensitivity * every updated frame
+            float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime; // mouse position * mouse sensitivity * every updated frame
 
-        //mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime; // mouse position * mouse sensitivity * every updated frame
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime; // mouse position * mouse sensitivity * every updated frame
+            xRotation -= mouseY; //rotation on x-axis
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f); //rotation doesnt go pass minimum or maximum
 
-        xRotation -= mouseY; //rotation on x-axis
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); //rotation doesnt go pass minimum or maximum
+            //rotate camera and orientation
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            player.Rotate(Vector3.up * mouseX); //rotates player model
 
-        //rotate camera and orientation
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        player.Rotate(Vector3.up * mouseX); //rotates player model
-
-
-        //Updating Sense Value constantly
-        mouseSensTextValue.text = mouseSensitivity.ToString("");
-
-
+            //Updating Sense Value constantly
+            mouseSensTextValue.text = mouseSensitivity.ToString("");
+        }
     }
 
     public void AdjustSensitivity(float sensSpeed)
@@ -64,5 +64,4 @@ public class sight : MonoBehaviour
         sliderSenseValue = sensSpeed;
         PlayerPrefs.SetFloat("saveSenseSlider", sliderSenseValue);
     }
-
 }
