@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ParkClues : MonoBehaviour
 {
+    private DaleDialogue dale; //Dale's ink dialogue loader, used here to help him react to the player's progress
 
     public static bool parkClue1Achieved;
     public static bool parkClue2Achieved;
@@ -20,24 +21,31 @@ public class ParkClues : MonoBehaviour
     public GameObject UIDockButtonRevealed;
 
     public GameObject pickableObject1;
+    private void Start()
+    {
+        dale = GameObject.FindObjectOfType<DaleDialogue>();
+    }
     private void Update()
     {
         if (parkClue1Achieved == true)
         {
             // Making the UI Clue Text visible
             UIClue1Revealed.SetActive(true);
+            dale.hasClue1 = true;
         }
 
         if (parkClue2Achieved == true)
         {
             // Making the UI Clue Text visible
             UIClue2Revealed.SetActive(true);
+            dale.hasClue2 = true;
         }
 
         if (parkClue3Achieved == true)
         {
             // Making the UI Clue Text visible
             UIClue3Revealed.SetActive(true);
+            dale.hasClue3 = true;
         }
 
 

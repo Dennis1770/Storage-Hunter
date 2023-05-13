@@ -9,11 +9,11 @@ public class OfficerDialogue : MonoBehaviour
 
     [Header("Ink JSON")][SerializeField] private TextAsset inkJSON;
 
-    private int i;
+    private bool isTalking;
 
     private void Start()
     {
-        i = 0;
+        isTalking = false;
         officerFSM = FindObjectOfType<OfficerStateManager>();
     }
 
@@ -21,16 +21,16 @@ public class OfficerDialogue : MonoBehaviour
     {
         if (officerFSM.isTalking == true)
         {
-            if (i < 1)
+            if (isTalking == false)
             {
-                i++;
+                isTalking = true;
                 //Debug.Log(inkJSON.text);
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON); //ONLY CALL THIS ONCE AT THE START OF EACH CONVERSATION, otherwise it will endlessly restart the same conversation which is very bad
             }
         }
         if (officerFSM.isTalking == false)
         {
-            i = 0; //resetting this allows us to talk to the npc again
+            isTalking = false; //resetting this allows us to talk to the npc again
         }
     }
 

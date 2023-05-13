@@ -9,15 +9,17 @@ public class DaleDialogue : MonoBehaviour
 
     [Header("Ink JSON")][SerializeField] private TextAsset[] inkJSON;
 
-    private int i;
-    [SerializeField] private bool hasClue1;
-    [SerializeField] private bool hasClue2;
-    [SerializeField] private bool hasClue3;
+    private bool isTalking;
+    private int count; //use this to change the dialogue after the player has talked to Dale once
+    private int foundClues; //how many of the three clues the player has found
+    public bool hasClue1;
+    public bool hasClue2;
+    public bool hasClue3;
     [SerializeField] private int index;
 
     private void Start()
     {
-        i = 0;
+        isTalking = false;
         index = 0;
         daleFSM = FindObjectOfType<DaleStateManager>();
     }
@@ -27,32 +29,51 @@ public class DaleDialogue : MonoBehaviour
         ChooseDialogue();
         if (daleFSM.isTalking == true)
         {
-            if (i < 1)
+            if (isTalking == false)
             {
-                i++;
+                isTalking = true;
+                count++;
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON[index]);
             }
         }
         if (daleFSM.isTalking == false)
         {
-            i = 0;
+            isTalking = false;
         }
     }
 
     private void ChooseDialogue()
     {
-        if (hasClue1 == true && hasClue2 == true && hasClue3 == true)
+        foundClues = 0; //reset each time we check
+        if (hasClue1 == true)
+        {
+            foundClues += 1;
+        }
+        if (hasClue2 == true)
+        {
+            foundClues += 1;
+        }
+        if (hasClue3 == true)
+        {
+            foundClues += 1;
+        }
+
+        if (foundClues == 3)
+        {
+            index = 4;
+        }
+        else if (foundClues == 2)
+        {
+            index = 3;
+        }
+        else if (foundClues == 1)
         {
             index = 2;
-            //tell the player about heading to the dock
         }
-        else if (hasClue1 == true || hasClue2 == true || hasClue3 == true)
-        {
-            index = 1;
-        }
-        else
+        else if (count == 0)
         {
             index = 0;
         }
+        else index = 1;
     }
 }
