@@ -14,7 +14,7 @@ public class JoggerJogState : JoggerBaseState
     int interactRange = 10;
 
     float minDistance = 1f;
-    public Transform currentWaypoint;
+    public GameObject currentWaypoint;
     public int currentIndex;
     private Animator animator;
 
@@ -32,9 +32,12 @@ public class JoggerJogState : JoggerBaseState
         //navmesh
         jogAgent = jogObject.GetComponent<NavMeshAgent>();
 
+        /*
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
-
         currentWaypoint = waypoints[currentIndex].transform;
+        */
+        waypoints = GameObject.FindGameObjectsWithTag("Waypoint"); //compile an array of waypoint
+        currentWaypoint = GameObject.Find($"Waypoint{currentIndex}");
 
         animator = jogObject.GetComponent<Animator>();
         animator.SetBool("isRunning", true);
@@ -57,10 +60,6 @@ public class JoggerJogState : JoggerBaseState
 
     private void Jog()
     {
-
-        Vector3 direction = currentWaypoint.transform.position;
-        jogAgent.SetDestination(direction);
-
         if (Vector3.Distance(currentWaypoint.transform.position, jogObject.transform.position) < minDistance)
         {
             ++currentIndex;
@@ -68,7 +67,10 @@ public class JoggerJogState : JoggerBaseState
             {
                 currentIndex = 0;
             }
-            currentWaypoint = waypoints[currentIndex].transform;
+            currentWaypoint = GameObject.Find($"Waypoint{currentIndex}"); //The waypoints must be named Waypoint0, Waypoint1, Waypoint2, etc. for this to work
         }
+
+        Vector3 direction = currentWaypoint.transform.position;
+        jogAgent.SetDestination(direction);
     }
 }
