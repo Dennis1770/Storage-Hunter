@@ -17,7 +17,8 @@ I saw footprints in the mud near the parking lot.
 They must have been yours.
 ->Footprints
 *[What?] Nevermind.
-Your feet aren't big enough to be the one's I saw near the parking lot.->END
+Your feet aren't big enough.
+The footprints I saw at the parking lot were way bigger.->END
 
 ==Footprints
 *[Haha! Yeah!]->Goodbye

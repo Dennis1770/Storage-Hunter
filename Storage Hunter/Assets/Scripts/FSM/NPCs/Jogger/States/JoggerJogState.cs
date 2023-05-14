@@ -47,7 +47,7 @@ public class JoggerJogState : JoggerBaseState
         Vector3 distanceToPlayer = player.transform.position - jogObject.transform.position;
         if (distanceToPlayer.magnitude <= interactRange && !DialogueManager.GetInstance().dialogueIsPlaying && Input.GetKeyDown(KeyCode.E))
         {
-            jogAgent.SetDestination(player.transform.position - 5 * (distanceToPlayer.normalized)); //stop running when talking to the player
+            jogAgent.SetDestination(jogAgent.transform.position); //stop running
             jogObject.transform.LookAt(player.transform);
             jogger.isJogging = false;
             animator.SetBool("isRunning", false);
