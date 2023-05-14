@@ -2,7 +2,7 @@ EXTERNAL activateObject(selectedObject)
 EXTERNAL deactivateObject(selectedObject)
 
 DARN IT!
-Does that woman think I'm a fool?
+Does Hannah think I'm a fool?
 I didn't come al'thuway out out here for some shrink!
 She said I was gonna see an expert!
 Looks like I just wasted a bunch of time..
@@ -10,6 +10,7 @@ Looks like I just wasted a bunch of time..
 *[You know I can hear you, right..]->first
 
 ==first
+~deactivateObject(0)
 ~activateObject(3)
 Ughh, listen there's been a misunderstanding.
 I don't need your services, mister.

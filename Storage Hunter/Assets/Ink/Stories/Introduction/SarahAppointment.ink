@@ -9,7 +9,8 @@ Small towns need licensed therapists as much as anywhere else does.
 
 You’ve got a few appointments today so don’t slack off.
 
-*[Start the day]-> start
+*[Start the day]
+-> start
 
 == start
 You hear a knock on the door.
@@ -29,15 +30,17 @@ It's Sarah.
 I had an appointment with you last week.
 
 Can I come in?
-*[Yes, of course! Come in Sarah.] -> fourth
+*[Yes, of course! Come in Sarah.] 
+->fourth
 *[Give me a few minutes. I'll call you in when I'm ready.] -> third
 
 == third
 {Um, okay.. | }
-*[Clear off desk.] Your desk is nice and clean. -> third
+*[Clear off desk.] Your desk is nice and clean. ->third
 *[Check the news.] You read the local paper.  Apparently a hiker went missing last week. -> third
 *[Stare at the ceiling.] You should probably call Sarah in soon. -> third
-*[Call Sarah in.] -> fourth
+*[Call Sarah in.] 
+->fourth
 == fourth
 ~deactivateObject(0)
 ~activateObject(1)
@@ -50,127 +53,120 @@ I don't know. I'm kinda tired.
 *[That’s unfortunate.] Yeah, it is. -> sixth
 
 == sixth
-*[What's causing you to feel stressed?] -> seventh
+*[So what's going on?] -> seventh
 
 == seventh
-I have a midterm exam next week. 
+I have a midterm exam next week and it's stressing me out. 
 
-The class is really difficult and I don't think I'm going to do well.
-*[It sounds like you're a good student.] That doesn't mean I'm going to do well on this test. -> eighth
-*[Are you worried?] I am. -> eighth
+The class is really difficult... I don't think I'm going to do well.
+*[So you're worried?] I am. -> eighth
 
 == eighth
+*[Why do you want to do well on this exam?] -> ninth
 *[How would failing make you feel?] ->tenth
-*[How would getting an A make you feel?] -> ninth
 
 == ninth
-I'd feel relieved.
+I want to get a good job after school.
 
-This exam has been stressing me out for a whole week.
+That means having good grades, good recommendations, good everything.
 
-I don't want to think about it, but I can't NOT think about it.
+But the problem is that I know I'm not going to do well.
 
-Do you know what I mean Dr. Montana?
-*[Let's come up with a goal to help you succeed.] -> eleventh
-*[Let's talk about some ways we can deal with stress.] ->eleventh
+*[Let's talk about dealing with stress.] ->eleventh
 
 == tenth
-I'd feel terrible!
+Failing would be terrible!
 
-And I'd be angry.
+I'd be angry with myself.
 
-I've worked hard to maintain my GPA.
+I've worked hard to maintain my grades!
 
-I can't just throw that away.
+I can't let myself throw that away.
 *[I think I know how to help.] -> eleventh
 
 == eleventh
 Okay Dr. Montana, I'm listening.
-*[Your mental health is very important.] ->twelfth
-*[Give the exam your best effort..] ->twelfth
+*[You should focus on your mental health.] I know that mental health is important...
+But my->twelfth
+*[You should study more.] That's what I've been trying to do...
+My->twelfth
 
 == twelfth
-I'm not so sure Dr. Montana.
-
-I know that mental health is important.
-
-But my grades are super important!
+grades are super important!
 
 I can’t allow myself to get a bad grade.
 
-Even if it means sacrificing a little sleep to study more.
+I'm willing to sacrifice sleep in order to study as much as possible.
 
-*[You shouldn't sacrifice your sleep!] -> thirteenth
-*[You should study less.] -> thirteenth
+*[You shouldn't do that...] -> thirteenth
+*[I admire your willpower.] -> thirteenth
 
 == thirteenth
-I’m not a very good student Dr. Montana. 
+It's not like I have a choice!
 
-I have to spend a lot of time studying!
+I’m not a very good student so I have to spend a lot of time studying!
 
-I'm not like other kids, who can just memorize things and do well.
+I'm not like other kids who can quickly memorize things and do well.
 
 Studying hard is the only way for me to maintain my grades!
 
-*[You can do both.] -> fourteenth
+*[You do have a choice.] -> fourteenth
 *[It's okay not to have perfect grades...] ->fifteenth
 
 ==fourteenth
-Can I really?
+Do I really?
 
-It feels like I never have enough time to do everything I want to do.
+It feels like I never have enough time.
 
-That's why I've been sleeping only four hours each night.
+That's why I've only been sleeping four or five hours each night.
 
-But I guess that might be harming me too.
+But sometimes I can't focus because I'm so tired.
 
-Sometimes I can't focus because I'm so tired.
+I fell asleep in class yesterday..
 
-And I fell asleep in class yesterday..
+It was really embarrassing.
 
-That was really embarrassing.
+But can I afford to take the time to sleep a full eight hours?
 
-So maybe I should start taking better care of my health.
-
-*[That's great to hear Sarah!] -> sixteenth
-*[Maybe you should go home and take a nap, you don't look so good.] -> twentyThirdAlt
+*[Getting more sleep will help you study.] You just -> sixteenth
+*[My professional opinion? You should go home and take a nap.] -> twentyThirdAlt
 
 == fifteenth
-No, it’s important to me. 
+No, grades are important to me. 
 
 Besides you went to medical school right?  
 
 How were your grades?
-*[I got a few A's...] -> sixteenth
-*[Let's not talk about that.] -> sixteenth
+*[I got a few A's...] Okay, so what? You just -> sixteenth
+*[Let's not talk about that.] Okay, so what? You just -> sixteenth
 
 == sixteenth
-Mhm. So what should I do?
-*[Do whatever makes you feel better.] -> seventeenth
-*[Sleep.] -> seventeenth
+want me to sleep more?
+*[I do.] -> seventeenth
 
 == seventeenth
 I'm still worried about this exam though.
-*[Let's do some breathing exercises. Next time you feel stressed out, I want you to use them.] -> eighteenth
+*[Let's do some breathing exercises.] -> eighteenth
 
 == eighteenth
-Okay, I'll try it.
-*[Breathe in..] -> nineteenth
+Okay, I'll try the exercise.
+*[Breathe in..] *inhales*-> nineteenth
 
 ==nineteenth
-*[Breathe out..] -> twentieth
+*[Breathe out..] *exhales*
+-> twentieth
 
 ==twentieth
 I'm still stressed.
 
 But I think I understand.
 
-Taking care of myself is just as important as taking care of this exam.
+Taking care of myself is important.
 
-*[Don't think about your exam. Just focus on your breathing. How do you feel?] -> twentyfirst
+*[Did the breathing help?] -> twentyfirst
 
 ==twentyfirst
-I feel a little better.
+It helped a little.
 *[It's important to slow down and breathe, especially when things get stressful.] -> twentysecond
 
 ==twentysecond
@@ -180,22 +176,24 @@ Thanks Dr. Montana.
 
 == twentythird
 Okay, bye Dr. Montana.
-~ deactivateObject(1)
 *[Good luck on your exam!]
+~ deactivateObject(1)
 ~ activateObject(0)
 ->DONE
-*[Get some sleep, okay!] 
+*[Get some sleep, okay!]
+~ deactivateObject(1)
 ~ activateObject(0)
 ->DONE
 
 ==twentyThirdAlt
 Yeah, maybe you're right.  I feel terrible.
-
 Bye Dr. Montana.
-~ deactivateObject(1)
+
 *[Good luck on your exam!]
+~ deactivateObject(1)
 ~ activateObject(0)
 ->DONE
 *[Take it easy Sarah.] 
+~ deactivateObject(1)
 ~ activateObject(0)
 ->DONE
