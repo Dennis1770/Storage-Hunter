@@ -27,7 +27,10 @@ public class playerMovement : MonoBehaviour
     Vector3 velocity; //stores current velocity
 
     //sprint
-    public float sprint = 10f; //sprint increase
+    public float sprint = 20f; //sprint increase
+
+    sprintBar stamina; //sprintBar script
+    private float takeStamina = 0.4f;
 
     //Scripts which pull up UI (used to manage when the player can and cannot see their cursor)
     private OfficeDoorTrigger keypad;
@@ -50,6 +53,8 @@ public class playerMovement : MonoBehaviour
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex); //saves active scene
 
         playerEscKeyInstance = FindObjectOfType<playerEscKey>();
+
+        stamina = GetComponent<sprintBar>(); //get components from the sprintBar script
     }
 
     // Update is called once per frame
@@ -105,12 +110,14 @@ public class playerMovement : MonoBehaviour
         noiseValue = currentSpeed < resetSpeed ? 0f : (currentSpeed >= (resetSpeed + sprint) ? 2f : 1f); //this is a nested ternary operator.  it changes the noiseValue depending on how fast the player is moving.
 
         //sprinting
-        if (Input.GetKeyDown(KeyCode.LeftShift)) //if left shift is pressed down, add sprint to speed
+        if (Input.GetKey(KeyCode.LeftShift) && stamina.currentSprint > 3f) //if left shift is pressed down, and the current stamina >= 10, add sprint to speed
         {
-            speed += sprint;
+            
+            speed = sprint;
+            stamina.TakeStamina(takeStamina); //remove stamina from player
 
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) //if left shift is released, subtract sprint from speed
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || stamina.currentSprint <= 3f) //if left shift is released, subtract sprint from speed
         {
             speed = resetSpeed;
         }
