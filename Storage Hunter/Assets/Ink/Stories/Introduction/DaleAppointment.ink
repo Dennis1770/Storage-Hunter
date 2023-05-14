@@ -83,7 +83,7 @@ They don't believe me though.
 Told me I saw a bear.
 They also revoked my license to carry a firearm. What a joke.
 I know what I saw.
-*[I believe you.]->tenth
+*[I believe you.]->tenthAlt
 *[I don't believe you.]->tenth
 
 ==tenth
@@ -94,6 +94,12 @@ You're not even a real doctor are you?
 What a sick world.
 *[Let me help]->eleventh
 
+==tenthAlt
+My wife thinks I'm crazy.
+She sent me here! What the hell..
+People have been going missing for almost two weeks now.
+I know you've seen the stories.
+*[Let me help]->eleventh
 
 ==eleventh
 You want to help me?
@@ -105,7 +111,9 @@ Well, ->twelfth
 
 ==twelfth
 I'm leaving.
-You can come with or stay here, it's all the same to me.
+You should read this.
+It's what I came to investigate.
+Only a ten minute drive from here.
 ~deactivateObject(3)
 ~activateObject(4)
 ->DONE
