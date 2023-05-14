@@ -98,17 +98,24 @@ I can’t allow myself to get a bad grade.
 
 I'm willing to sacrifice sleep in order to study as much as possible.
 
-*[You shouldn't do that...] -> thirteenth
-*[I admire your willpower.] -> thirteenth
+*[You shouldn't do that...] 
+It's not like I have a choice!
+-> thirteenth
+*[I admire your willpower.] 
+It's what I need to do.
+-> thirteenth
 
 == thirteenth
-It's not like I have a choice!
 
-I’m not a very good student so I have to spend a lot of time studying!
+I’m not a very good student.
 
-I'm not like other kids who can quickly memorize things and do well.
+I can't memorize things quickly...
 
-Studying hard is the only way for me to maintain my grades!
+And I have to spend a lot of time studying concepts before I understand them.
+
+So I need to study a lot.
+
+I don't have a choice, I'd fail otherwise.
 
 *[You do have a choice.] -> fourteenth
 *[It's okay not to have perfect grades...] ->fifteenth
