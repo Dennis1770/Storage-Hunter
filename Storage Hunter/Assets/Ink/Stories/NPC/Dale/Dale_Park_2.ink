@@ -5,7 +5,7 @@ What is it kid?
 
 ==one
 What do you mean?
-*[Well, if the girl died..] Look, b-> two
+*[A girl died.] Look, b-> two
 *[I heard a hiker went missing too.] B-> two
 
 ==two

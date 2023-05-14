@@ -7,4 +7,4 @@ Great, me too.
 
 Use that notebook of yours and we can go.
 *[Great.] You're gonna love this next place.->END
-*[Where are we going?] The docks.->END
+*[How do I use the notebook?] Press tab. ->END

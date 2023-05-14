@@ -28,11 +28,12 @@ I saw a small toy next to the slide.
 ->Goodbye
 *[No, that's not what I meant.] 
 Sorry, I don't understand what you're looking for.
+The only odd thing I've seen is a lost toy at the playground.
 ->Goodbye
 
 ==TheCrime
 Oh, I didn't know a kid was missing.
 I'm sorry to hear that.
 *[I'm hoping to find out more info.]
-Sorry but I don't know anything.
+Sorry, but the only odd thing I've seen today is a lost toy at the playground.
 ->Goodbye
