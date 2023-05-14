@@ -20,9 +20,31 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'QuickRigCharacter_LeftUpLeg'
+      : position error = 41.239635 mm\n\t'QuickRigCharacter_LeftLeg' : position error
+      = 24.875544 mm\n\t'QuickRigCharacter_LeftFoot' : position error = 45.082741
+      mm\n\t'QuickRigCharacter_LeftToeBase' : position error = 34.998528 mm\n\t'QuickRigCharacter_RightUpLeg'
+      : position error = 41.239635 mm\n\t'QuickRigCharacter_RightLeg' : position
+      error = 24.875895 mm\n\t'QuickRigCharacter_RightFoot' : position error = 45.082809
+      mm\n\t'QuickRigCharacter_RightToeBase' : position error = 34.998791 mm\n\t'QuickRigCharacter_Spine'
+      : position error = 23.582142 mm\n\t'QuickRigCharacter_Spine1' : position error
+      = 24.012321 mm\n\t'QuickRigCharacter_Spine2' : position error = 24.012331 mm\n\t'QuickRigCharacter_LeftShoulder'
+      : position error = 86.916817 mm\n\t'QuickRigCharacter_LeftArm' : position error
+      = 104.743729 mm\n\t'QuickRigCharacter_LeftForeArm' : position error = 67.463676
+      mm\n\t'QuickRigCharacter_LeftHand' : position error = 124.681755 mm\n\t'QuickRigCharacter_RightShoulder'
+      : position error = 93.390694 mm\n\t'QuickRigCharacter_RightArm' : position
+      error = 108.689209 mm\n\t'QuickRigCharacter_RightForeArm' : position error
+      = 84.601456 mm\n\t'QuickRigCharacter_RightHand' : position error = 115.378876
+      mm\n\t'QuickRigCharacter_Neck' : position error = 67.567284 mm\n\t'QuickRigCharacter_Head'
+      : position error = 43.540634 mm\nCopied Avatar Rig Configuration mis-match.
+      Inbetween bone rotation in copied configuration does not match rotation in
+      animation file:\n\t'QuickRigCharacter_Spine' : rotation error = 4.801674 deg\n"
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'QuickRigCharacter_LeftForeArm' has translation
+      animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -48,14 +70,14 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []

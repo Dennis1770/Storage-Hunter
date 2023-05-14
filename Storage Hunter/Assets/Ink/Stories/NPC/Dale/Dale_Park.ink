@@ -1,22 +1,25 @@
 ->noClue
 
 === noClue ===
-Betcha came running as soon as you saw the paper I left on your desk. 
-*[Good to see you too, Dale.] ->one
-*[Mhm.] Alright, don't just stand there. 
+You must have read the paper I left on your desk. 
+*[Hey Dale.] ->one
+*[This is pretty bad.] You're right. 
 ->one
 
 ==one
-We need to be quick. There're already police here...
+We need to be quick. 
+There're already police here...
 *[Police?] Yeah, cops. 
 
 Listen up.->two
 *[What are we doing?]->two
 
 ==two
-We're tracking the freak.
+We're tracking the beast.
 
-Keep your eyes open and let me know if you see any tracks or blood.
+Keep your eyes open and tell me if you find something interesting.
+
+And don't touch the blood, the cops are watching it.
 
 *[Sure thing.] Oh and one last thing.
 ->three
@@ -24,15 +27,15 @@ Keep your eyes open and let me know if you see any tracks or blood.
 
 
 ==three
-The less the cops know, the better. Don't tell them about our investigation.
-
-I don't want them meddling.
+The less the cops know, the better. 
+Don't tell them about our investigation.
 ->END
 
 ==four
 You read the paper, right?
 
-That girl is probably dead.
-*[She's not dead.] Let's start looking then.->END
-*[...] Yeah. ->END
+That girl is dead.
+*[I don't think she's dead.] No kid could survive an encounter with creature like this one.->END
+*[She's dead?] Yeah, most likely.
+No kid could survive an encounter with creature like this one.->END
 

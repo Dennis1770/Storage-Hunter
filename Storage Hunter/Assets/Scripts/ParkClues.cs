@@ -139,7 +139,7 @@ public class ParkClues : MonoBehaviour
 
     IEnumerator ClueAcquired()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         UIClueConfirmation.SetActive(false);
 
     }

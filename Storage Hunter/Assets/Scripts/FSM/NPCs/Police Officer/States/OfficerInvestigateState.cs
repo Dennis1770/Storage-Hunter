@@ -6,7 +6,7 @@ public class OfficerInvestigateState : OfficerBaseState
 
     GameObject player;
 
-    int interactRange = 4; //how close you must be to talk to the npc
+    int interactRange = 8; //how close you must be to talk to the npc
 
     public override void EnterState(OfficerStateManager officer)
     {

@@ -1,0 +1,1 @@
+﻿{"inkVersion":20,"root":[["^You again?","\n","ev","str","^I know you're in the middle of something, but...","/str","/ev",{"*":"0.c-0","flg":20},{"c-0":["\n","^Can you leave me alone?","\n","^I'm trying to train.","\n","end",{"->":"0.g-0"},{"#f":5}],"g-0":["done",{"#f":5}]}],"done",{"#f":1}],"listDefs":{}}

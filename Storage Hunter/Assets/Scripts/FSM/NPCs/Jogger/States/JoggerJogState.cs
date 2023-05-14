@@ -11,7 +11,7 @@ public class JoggerJogState : JoggerBaseState
 
     GameObject player;
 
-    int interactRange = 4;
+    int interactRange = 10;
 
     float minDistance = 1f;
     public Transform currentWaypoint;
@@ -47,7 +47,8 @@ public class JoggerJogState : JoggerBaseState
         Vector3 distanceToPlayer = player.transform.position - jogObject.transform.position;
         if (distanceToPlayer.magnitude <= interactRange && !DialogueManager.GetInstance().dialogueIsPlaying && Input.GetKeyDown(KeyCode.E))
         {
-            jogAgent.SetDestination(player.transform.position - 3 * (distanceToPlayer.normalized)); //stop running when talking to the player
+            jogAgent.SetDestination(player.transform.position - 5 * (distanceToPlayer.normalized)); //stop running when talking to the player
+            jogObject.transform.LookAt(player.transform);
             jogger.isJogging = false;
             animator.SetBool("isRunning", false);
             jogger.switchState(jogger.talking);

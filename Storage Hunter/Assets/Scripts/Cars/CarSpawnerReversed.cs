@@ -16,7 +16,7 @@ public class CarSpawnerReversed : MonoBehaviour
 
     public void InstantiateVehicle()
     {
-        Debug.Log("Instantiate");
+        //Debug.Log("Instantiate");
         Instantiate(vehicles[Random.Range(0, vehicles.Length)], this.transform.position, Quaternion.Euler(0f, 180f, 0f)); //Spawn the car facing the other direction
     }
 

@@ -16,7 +16,7 @@ public class CarSpawner : MonoBehaviour
 
     public void InstantiateVehicle()
     {
-        Debug.Log("Instantiate");
+        //Debug.Log("Instantiate");
         Instantiate(vehicles[Random.Range(0, vehicles.Length)], this.transform.position, Quaternion.identity);
     }
 

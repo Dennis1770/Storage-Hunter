@@ -6,8 +6,8 @@ public class DaleFollowState : DaleBaseState
     GameObject daleObject;
     GameObject player;
     private NavMeshAgent daleAgent;
-    private int interactRange = 4;
-    float followDistance = 8;
+    private int interactRange = 6;
+    float followDistance = 10;
     public Transform currentWaypoint_Dale;
     private Animator animator;
 
