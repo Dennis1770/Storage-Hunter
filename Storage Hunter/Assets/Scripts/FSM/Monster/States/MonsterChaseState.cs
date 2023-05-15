@@ -12,12 +12,15 @@ public class MonsterChaseState : MonsterBaseState
     //GameObject monster;
 
     GameObject player;
-
     NavMeshAgent monsterAgent;
 
-    float escapeDistance = 70f;
-    private float elapsedTime;
-    private float delay = 10; //the monster will wait this many seconds before changing from chase to idle
+    private bool isSeen; //does the monster see the player?
+    private Vector3 playerDirection; //the direction the player is in
+    private Vector3 direction; //the player's position
+    private float elapsedTime; //used to keep track of how long the monster has lost sight of the player for
+    private float delay = 10; //the monster will wait this many seconds after loosing sight before changing from chase to patrol
+
+    private Animator animator;
 
     public override void EnterState(MonsterStateManager monster)
     {
@@ -30,47 +33,53 @@ public class MonsterChaseState : MonsterBaseState
 
     public override void UpdateState(MonsterStateManager monster)
     {
-        Vector3 direction = player.transform.position;
-        monsterAgent.SetDestination(direction);
+        direction = player.transform.position; //used for walking into the player
+        playerDirection = (direction - monsterAgent.transform.position); //used for raycasting from the mosnter to the player
 
-        if (Vector3.Distance(player.transform.position, monsterAgent.transform.position) >= escapeDistance) //If the player runs far enough away from the monster, it will lose interest
+        if (isSeen == true)
         {
-            elapsedTime += Time.deltaTime;
-            //Debug.Log("distance: " + elapsedTime);
+            monsterAgent.speed = 15;
+            monsterAgent.stoppingDistance = 1;
+            monsterAgent.SetDestination(direction); //when player is in sight, walk to them
+
+            if (monsterAgent.pathStatus == NavMeshPathStatus.PathPartial) //player isn't reachable and is in sight
+            {
+                monsterAgent.SetDestination(monsterAgent.transform.position); //stand still
+            }
+        }
+        else if (isSeen == false)
+        {
+            monsterAgent.speed = 12;
+            monsterAgent.stoppingDistance = 6;
+            elapsedTime += Time.deltaTime; //keep track of how long player is out of sight
             if (elapsedTime >= delay)
             {
-                elapsedTime = 0f;
-                monster.switchState(monster.idle);
+                elapsedTime = 0f; //reset timer
+                monster.switchState(monster.patrol); //patrol
             }
+
+            if (monsterAgent.pathStatus == NavMeshPathStatus.PathPartial) //player isn't reachable and is out of sight
+            {
+                monster.switchState(monster.patrol); //patrol
+            }
+            else monsterAgent.SetDestination(direction);
         }
 
         //Monster Eyesight
         RaycastHit hit;
-        Ray sightRay = new Ray(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward));
-        Debug.DrawRay(monsterAgent.transform.position, monsterAgent.transform.TransformDirection(Vector3.forward) * 14f, Color.green);
+        Ray sightRay = new Ray(monsterAgent.transform.position, playerDirection);
+        Debug.DrawRay(monsterAgent.transform.position, playerDirection, Color.green);
         if (Physics.Raycast(sightRay, out hit))
         {
-            if (hit.collider.tag != "Player") //When the player is in a storage locker, the monster will lose interest.
+            if (hit.collider.tag == "Player")
             {
-                elapsedTime += Time.deltaTime;
-                //Debug.Log("LOS: " + elapsedTime);
-                if (elapsedTime >= delay)
-                {
-                    elapsedTime = 0f;
-                    monster.switchState(monster.idle);
-                }
+                isSeen = true; //keep track of when the monster can see the player
+            }
+            else if (hit.collider.tag != "Player")
+            {
+                isSeen = false;
             }
         }
-    }
-
-    public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
-    {
-        GameObject other = collision.gameObject;
-        if (other.CompareTag("Player"))
-        {
-            SceneManager.LoadScene("GameOver");
-            Debug.Log("game over");
-            //the player has been caught
-        }
+        else isSeen = false;
     }
 }

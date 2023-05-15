@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
-    //Michael made edits to this script to have it work cohesively with the DialogueManager
+    //Michael made edits to this script to have it work cohesively with the DialogueManager.  Also added noiseValue for the monster to use.
 
     public CharacterController controller; //character controller
 

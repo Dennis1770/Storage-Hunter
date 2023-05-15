@@ -21,23 +21,15 @@ public class MonsterPatrolState : MonsterBaseState
     private playerMovement movement;
 
     //waypoints
-    float minDistance = 1f;
+    float minDistance = 6f;
     public Transform currentWaypoint;
     public int currentIndex;
 
-    /* this is too expensive on the cpu
-        //capsulecast
-        private float capsuleRadius = 3f;
-        private float capsuleDistance = 40f;
-        private float capsuleAngle = 30f; //30 degrees
-        private float player_noiseValue;
-    */
-
     //hearing
-    private float hearingDistance = 100f;
+    private float hearingDistance = 40f;
 
     //raycast
-    private float sightDistance = 60f;
+    private float sightDistance = 40f;
 
     //audio
     private AudioPlayer audioPlayer;
@@ -61,6 +53,10 @@ public class MonsterPatrolState : MonsterBaseState
         player = GameObject.FindGameObjectWithTag("Player");
 
         movement = GameObject.FindObjectOfType<playerMovement>();
+
+        monsterAgent.speed = 8;
+
+        monsterAgent.stoppingDistance = 1;
     }
 
     public override void UpdateState(MonsterStateManager monster)
@@ -122,81 +118,5 @@ public class MonsterPatrolState : MonsterBaseState
             }
         }
 
-        /*
-                //Monster Hearing
-
-                //calculate capsule raycast's start and end points
-                Vector3 capsuleDirection = playerDirection;
-                Vector3 startPoint = monsterAgent.transform.position;
-                Vector3 endPoint = monsterAgent.transform.position + player.transform.position * capsuleDistance;
-
-
-                        //calculate the axis of the capsule cast
-                        Vector3 capsuleAxis = Vector3.Cross(capsuleDirection, Vector3.up).normalized;
-
-                        //calculate the height and radius of the capsule
-                        float capsuleHeight = Mathf.Sin(capsuleAngle * Mathf.Deg2Rad) * capsuleDistance;
-                        Vector3 capsuleSize = new Vector3(capsuleRadius * 2f, capsuleHeight, capsuleRadius * 2f);
-
-                        //perform the capsule cast
-                        RaycastHit[] hits = Physics.CapsuleCastAll(startPoint, endPoint, capsuleRadius, capsuleDirection, capsuleDistance);
-
-                        foreach (RaycastHit hit2 in hits)
-                        {
-                            if (hit2.collider.tag == "Player")
-                            {
-
-                                player_noiseValue = GameObject.FindObjectOfType<playerMovement>().noiseValue;
-                                if (player_noiseValue == 0)
-                                {
-                                    Debug.Log("the monster doesn't hear you");
-
-                                    audioPlayer.cuedSound = 0;
-                                    audioPlayer.playAudio_oneShot();
-                                    break;
-                                }
-                                else if (player_noiseValue == 1)
-                                {
-                                    Debug.Log("the monster can kinda hear you");
-                                    audioPlayer.cuedSound = 0;
-                                    audioPlayer.playAudio_oneShot();
-                                    //play audio for to let the player know the monster is close?
-                                    break;
-                                }
-                                else if (player_noiseValue == 2)
-                                {
-                                    Debug.Log("it heard you");
-                                    audioPlayer.cuedSound = 1;
-                                    audioPlayer.playAudio();
-                                    monster.switchState(monster.chase);
-                                    break;
-                                }
-                                else break;
-                            }
-                        }
-                */
     }
-    /*
-        void OnDrawGizmos() 
-        {
-            Vector3 capsuleDirection = monsterAgent.transform.forward;
-            Vector3 startPoint = monsterAgent.transform.position;
-            Vector3 endPoint = monsterAgent.transform.position + capsuleDirection * capsuleDistance;
-            Gizmos.DrawWireSphere(startPoint, capsuleRadius);
-            Gizmos.DrawWireSphere(endPoint, capsuleRadius);
-        }
-    */
-    public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
-    {
-        //We are currently using the player to check for this collision
-
-        /*
-        GameObject other = collision.gameObject;
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("game over"); //the player has been caught
-        }
-        */
-    }
-
 }
