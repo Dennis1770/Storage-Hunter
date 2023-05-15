@@ -68,7 +68,7 @@ public class MonsterChaseState : MonsterBaseState
         //Monster Eyesight
         RaycastHit hit;
         Ray sightRay = new Ray(monsterAgent.transform.position, playerDirection);
-        Debug.DrawRay(monsterAgent.transform.position, playerDirection, Color.green);
+        //Debug.DrawRay(monsterAgent.transform.position, playerDirection, Color.green);
         if (Physics.Raycast(sightRay, out hit))
         {
             if (hit.collider.tag == "Player")

@@ -49,7 +49,7 @@ public class playerRaycast : MonoBehaviour
     }
     private void Update()
     {
-        Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.red);
+        //Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.red);
         if (hit.collider != null)
         {
 
