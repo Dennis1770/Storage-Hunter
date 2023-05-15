@@ -5,6 +5,8 @@ using UnityEngine;
 public class openDoors : MonoBehaviour
 {
 
+    //Script written by Andrew
+
     private bool doorsOpen; //are the doors open
     public Animator elevator; //elevator animator
     public GameObject openDoorObject; //game object script is attached to

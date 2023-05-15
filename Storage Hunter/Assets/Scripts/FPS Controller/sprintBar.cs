@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class sprintBar : MonoBehaviour
 {
 
+   //Script written by Andrew
+    
     private float startSprint = 100; //bar starting value
     public float currentSprint; //bar current value
     public Slider staminaBar; //sprint bar component

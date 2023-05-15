@@ -5,6 +5,8 @@ using UnityEngine;
 public class Flashlight : MonoBehaviour
 {
 
+    //Script written by Andrew
+    
     public GameObject on; //on sphere
     public GameObject off; //off sphere
     private bool isON; //is the flashlight on

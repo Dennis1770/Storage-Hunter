@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class capturePhoto : MonoBehaviour
 {
+    
+    //Script written by Andrew
+    
     [Header("Photo Taker")]
     [SerializeField] private Image photoDisplayArea; //display area of the picture
     [SerializeField] private GameObject photoFrame; //photo frame UI object

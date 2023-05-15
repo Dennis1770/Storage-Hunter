@@ -7,6 +7,9 @@ using TMPro;
 
 public class sight : MonoBehaviour
 {
+    
+    //Script written by Andrew
+    
     public TMP_Text mouseSensTextValue = null;
     public Slider slider;
     public float sliderSenseValue;

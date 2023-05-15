@@ -5,6 +5,8 @@ using UnityEngine;
 public class pickUpItem : MonoBehaviour
 {
 
+    //script written by Andrew
+    
     public Flashlight flashlightScript; //calls on flashlight script
     public Rigidbody rb; //item rigidbody
     public Collider coll; //object box collider

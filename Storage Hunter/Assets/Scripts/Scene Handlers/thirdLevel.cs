@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class thirdLevel : MonoBehaviour
 {
+   
+    //Scriot wirtten by Andrew
+    
     private bool playerInElevator; //is the player in the elevator
     private bool doorsClosed; //are the doors closed
     public Animator elevator; //elevator animator

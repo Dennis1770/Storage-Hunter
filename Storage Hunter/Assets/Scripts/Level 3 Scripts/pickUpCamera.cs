@@ -5,6 +5,8 @@ using UnityEngine;
 public class pickUpCamera : MonoBehaviour
 {
 
+   //Script written by Andrew
+    
     public GameObject playerCamera; //camera game object
     public Transform player; //player position
     public float pickUpRange; //how far player is to pick up object

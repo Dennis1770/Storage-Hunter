@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class SceneButtonLoader : MonoBehaviour
 {
 
+    //Script written by Aaron, and updated by Andrew
+
     public Animator animator; //fade in animation
     private int levelToLoad;
 

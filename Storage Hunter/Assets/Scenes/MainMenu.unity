@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &32579437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5201,6 +5201,7 @@ MonoBehaviour:
   slider: {fileID: 971989692}
   sliderSenseValue: 0
   player: {fileID: 519420032}
+  allowRotation: 1
 --- !u!1 &536375069
 GameObject:
   m_ObjectHideFlags: 0
@@ -10790,7 +10791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1780207367
 RectTransform:
   m_ObjectHideFlags: 0

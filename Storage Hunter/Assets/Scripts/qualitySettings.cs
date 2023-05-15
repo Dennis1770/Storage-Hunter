@@ -5,6 +5,8 @@ using UnityEngine;
 public class qualitySettings : MonoBehaviour
 {
     
+    //Script written by Andrew
+
     public void SetQuality(int qualityIndex)
     {
 
