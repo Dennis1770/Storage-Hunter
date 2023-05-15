@@ -152,6 +152,13 @@ public class DialogueManager : MonoBehaviour
     {
         activatableObject[index].SetActive(false);
     }
+
+    /* work in progress for playing phone sound effect
+        private void PlaySound(AudioClip clip)
+        {
+            AudioSource.PlayClipAtPoint(clip, transform.position);
+        }
+    */
     private void UnselectButton()
     {
         //Call this to prevent choices from remaining highlighted during a conversation

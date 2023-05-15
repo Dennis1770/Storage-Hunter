@@ -59,7 +59,7 @@ I don't know. I'm kinda tired.
 I have a midterm exam next week and it's stressing me out. 
 
 The class is really difficult... I don't think I'm going to do well.
-*[So you're worried?] I am. -> eighth
+*[So you're worried?] Yeah, I'm worried. -> eighth
 
 == eighth
 *[Why do you want to do well on this exam?] -> ninth
@@ -98,8 +98,10 @@ I can’t allow myself to get a bad grade.
 
 I'm willing to sacrifice sleep in order to study as much as possible.
 
-*[You shouldn't do that...] It's not like I have a choice!-> thirteenth
-*[I admire your willpower.] It's what I need to do.-> thirteenth
+*[You shouldn't do that...] It's not like I have a choice!
+-> thirteenth
+*[I admire your willpower.] It's what I need to do.
+-> thirteenth
 
 == thirteenth
 I’m not a very good student.

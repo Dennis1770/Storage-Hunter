@@ -50,7 +50,7 @@ Was a large beast with freakish eyes.
 Damned thing nearly gave me a heart attack.
 Luckily, Montana is open carry.
 *[Oh my god.  You killed it?]->seventh
-*[You're full of shit, aren't you.]->seventh
+*[You're full of it, aren't you.]->seventh
 
 ==seventh
 I wish.
