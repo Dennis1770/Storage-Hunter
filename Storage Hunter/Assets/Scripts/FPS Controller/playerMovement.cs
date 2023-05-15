@@ -10,11 +10,11 @@ public class playerMovement : MonoBehaviour
     public CharacterController controller; //character controller
 
     //basic movement
-    public float speed = 10f; //player speed
+    public float speed; //player speed
     public float gravity = -9.81f; //gravity of earth;
 
-    public float resetSpeed = 10f;
-    public float resetSprint = 5f;
+    public float resetSpeed;
+    public float resetSprint;
 
     public float noiseValue = 0; //this is used by the monster to find the player
 
@@ -107,12 +107,12 @@ public class playerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime); //velocity * time delta time
 
         float currentSpeed = move.magnitude * speed; //calculate the current speed of the player
-        noiseValue = currentSpeed < resetSpeed ? 0f : (currentSpeed >= (resetSpeed + sprint) ? 2f : 1f); //this is a nested ternary operator.  it changes the noiseValue depending on how fast the player is moving.
+        noiseValue = currentSpeed < resetSpeed ? 0f : (currentSpeed >= (sprint) ? 2f : 1f); //this is a nested ternary operator.  it changes the noiseValue depending on how fast the player is moving.
 
         //sprinting
         if (Input.GetKey(KeyCode.LeftShift) && stamina.currentSprint > 3f) //if left shift is pressed down, and the current stamina >= 10, add sprint to speed
         {
-            
+
             speed = sprint;
             stamina.TakeStamina(takeStamina); //remove stamina from player
 
