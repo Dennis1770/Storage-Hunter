@@ -6,6 +6,8 @@ using UnityEngine;
 //Scripted by Aaron Lee
 public class DockClues : MonoBehaviour
 {
+    private DaleDockDialogue dale; //Dale's ink loader, used here to help him react to the player's progress (Michael)
+    private GameObject daleObject; //used to kill dale
 
     [Header("Journal & Instruction UI")]
     public GameObject UIClueConfirmation;
@@ -31,6 +33,8 @@ public class DockClues : MonoBehaviour
     {
         // Start scene with first Objective UI
         findAllCluesObjectiveUI.SetActive(true);
+        dale = GameObject.FindObjectOfType<DaleDockDialogue>();
+        daleObject = GameObject.FindGameObjectWithTag("Dale");
     }
 
 
@@ -40,12 +44,14 @@ public class DockClues : MonoBehaviour
         {
             // Making the UI Clue Text visible
             UIClue1Revealed.SetActive(true);
+            dale.hasClue1 = true;
         }
 
         if (dockClue2Achieved == true)
         {
             // Making the UI Clue Text visible
             UIClue2Revealed.SetActive(true);
+            dale.hasClue2 = true;
         }
 
 
@@ -54,10 +60,13 @@ public class DockClues : MonoBehaviour
         if (dockClue1Achieved == true &&
             dockClue2Achieved == true)
         {
-            UIStorageFacilityButtonRevealed.SetActive(true); 
+            UIStorageFacilityButtonRevealed.SetActive(true);
 
             findAllCluesObjectiveUI.SetActive(false);
             travelToStorageFacilityObjectiveUI.SetActive(true);
+
+            //kill dale?? lmao
+            daleObject.SetActive(false);
         }
 
 

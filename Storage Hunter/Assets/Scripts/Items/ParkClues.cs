@@ -6,7 +6,7 @@ using UnityEngine;
 //Scripted by Aaron Lee
 public class ParkClues : MonoBehaviour
 {
-    private DaleDialogue dale; //Dale's ink dialogue loader, used here to help him react to the player's progress
+    private DaleDialogue dale; //Dale's ink dialogue loader, used here to help him react to the player's progress (Michael)
 
     [Header("Journal & Instructions UI")]
     public GameObject UIDockButtonRevealed;
