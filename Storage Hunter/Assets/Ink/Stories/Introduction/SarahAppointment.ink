@@ -110,9 +110,9 @@ I can't memorize things quickly...
 
 And I have to spend a lot of time studying concepts before I understand them.
 
-So I need to study a lot.
+So I don't have a choice.
 
-I don't have a choice, I'd fail otherwise.
+I need to study a lot.
 
 *[You do have a choice.] -> fourteenth
 *[It's okay not to have perfect grades...] ->fifteenth
@@ -130,10 +130,10 @@ I fell asleep in class yesterday..
 
 It was really embarrassing.
 
-But can I afford to take the time to sleep a full eight hours?
+But can I afford to sleep more?
 
 *[Getting more sleep will help you study.] You just -> sixteenth
-*[My professional opinion? You should go home and take a nap.] -> twentyThirdAlt
+*[Please go home and take a nap.] -> twentyThirdAlt
 
 == fifteenth
 No, grades are important to me. 
@@ -193,7 +193,7 @@ Okay, bye Dr. Montana.
 Yeah, maybe you're right.  I feel terrible.
 Bye Dr. Montana.
 
-*[Good luck on your exam!]
+*[You're gonna do great, ok?]
 ~ deactivateObject(1)
 ~ activateObject(0)
 ->DONE
