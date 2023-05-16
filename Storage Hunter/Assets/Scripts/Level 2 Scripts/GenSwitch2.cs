@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 public class GenSwitch2 : MonoBehaviour
 {
     [SerializeField]
@@ -48,7 +49,7 @@ public class GenSwitch2 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && hit.collider.gameObject.tag == "Switch2") // Checking if player Presses E on Storage Room Handle
             {
                 Switch2On = true;
-
+                // turn Lightning mesh NeonYellow material
                 Debug.Log("Switch2 is On");
                 GenSwitchAnim.SetTrigger("SwitchedOn");
                 Lightning2.GetComponent<MeshRenderer>().material = NeonYellow;

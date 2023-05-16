@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+//Scripted by Aaron Lee
 public class MenuController : MonoBehaviour
 {
 

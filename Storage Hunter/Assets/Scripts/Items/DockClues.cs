@@ -2,20 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Scripted by Aaron Lee
 public class DockClues : MonoBehaviour
 {
 
-    public static bool dockClue1Achieved;
-    public static bool dockClue2Achieved;
-
-    public AudioSource audioSource;
-    public AudioClip audioClip;
-
+    [Header("Journal & Instruction UI")]
     public GameObject UIClueConfirmation;
     public GameObject UIClue1Revealed;
     public GameObject UIClue2Revealed;
 
     public GameObject UIStorageFacilityButtonRevealed;
+
+    [Header("Objective Dialogue")]
+    [SerializeField] private GameObject findAllCluesObjectiveUI;
+    [SerializeField] private GameObject travelToStorageFacilityObjectiveUI;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+
+    [Header("Booleans")]
+    public static bool dockClue1Achieved;
+    public static bool dockClue2Achieved;
+
+
+    private void Awake()
+    {
+        // Start scene with first Objective UI
+        findAllCluesObjectiveUI.SetActive(true);
+    }
+
+
     private void Update()
     {
         if (dockClue1Achieved == true)
@@ -32,11 +50,14 @@ public class DockClues : MonoBehaviour
 
 
 
-
+        // If all clues are found in the dock scene, show Storage Facility Button in Journal UI, and update Objective
         if (dockClue1Achieved == true &&
             dockClue2Achieved == true)
         {
             UIStorageFacilityButtonRevealed.SetActive(true); 
+
+            findAllCluesObjectiveUI.SetActive(false);
+            travelToStorageFacilityObjectiveUI.SetActive(true);
         }
 
 
@@ -45,7 +66,7 @@ public class DockClues : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-
+        // If player collides with an object named DockClue1, run code below
         if (collider.gameObject.tag == "DockClue1")
         {
             Debug.Log("Interacted with DockClue1");
@@ -69,6 +90,7 @@ public class DockClues : MonoBehaviour
 
         }
 
+        // If player collides with an object named DockClue2, run code below
         if (collider.gameObject.tag == "DockClue2")
         {
             Debug.Log("Interacted with DockClue2");
@@ -96,6 +118,7 @@ public class DockClues : MonoBehaviour
 
     IEnumerator ClueAcquired()
     {
+        // Wait 3 seconds and then turn UIClueConfirmation off
         yield return new WaitForSeconds(3);
         UIClueConfirmation.SetActive(false);
 

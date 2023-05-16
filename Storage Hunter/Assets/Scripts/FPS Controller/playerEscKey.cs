@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 public class playerEscKey : MonoBehaviour
 {
-    //public playerMovement playerMovement;
-    //public sight Sight;
+
     public GameObject escapeMenu;
     public bool showEscapeMenu;
 
@@ -17,14 +17,12 @@ public class playerEscKey : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) // If Esc is pressed, show EscapeMenu UI
         {
             Debug.Log("Esc Pressed!");
 
-            if (showEscapeMenu == false) // if showEscapeMenu is false, unlock cursor, disable playerMovement script, showJournal to true, and show Journal Canvas
+            if (showEscapeMenu == false)
             {
-                //Cursor.lockState = CursorLockMode.None;
-                //Cursor.visible = true;
                 showEscapeMenu = true;
                 escapeMenu.SetActive(true);
             }
@@ -41,10 +39,8 @@ public class playerEscKey : MonoBehaviour
 
     }
 
-    public void ResumeButton()
+    public void ResumeButton() // Close Escape Menu and resume game
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        
         showEscapeMenu = false;
         escapeMenu.SetActive(false);
     }

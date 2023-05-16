@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 public class Highlight : MonoBehaviour
 {
 
@@ -24,7 +25,7 @@ public class Highlight : MonoBehaviour
 
     }
 
-    public void ToggleHighlight(bool val)
+    public void ToggleHighlight(bool val) // Highlight mesh
     {
         if (val)
         {

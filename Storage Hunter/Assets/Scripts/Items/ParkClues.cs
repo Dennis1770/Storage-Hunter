@@ -2,28 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Scripted by Aaron Lee
 public class ParkClues : MonoBehaviour
 {
     private DaleDialogue dale; //Dale's ink dialogue loader, used here to help him react to the player's progress
 
-    public static bool parkClue1Achieved;
-    public static bool parkClue2Achieved;
-    public static bool parkClue3Achieved;
-
-    public AudioSource audioSource;
-    public AudioClip audioClip;
-
+    [Header("Journal & Instructions UI")]
+    public GameObject UIDockButtonRevealed;
     public GameObject UIClueConfirmation;
     public GameObject UIClue1Revealed;
     public GameObject UIClue2Revealed;
     public GameObject UIClue3Revealed;
-
-    public GameObject UIDockButtonRevealed;
-
     public GameObject pickableObject1;
+
+    [Header("Objective Dialogue")]
+    [SerializeField] private GameObject findAllCluesObjectiveUI;
+    [SerializeField] private GameObject travelToDockObjectiveUI;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+
+    [Header("Booleans")]
+    public static bool parkClue1Achieved;
+    public static bool parkClue2Achieved;
+    public static bool parkClue3Achieved;
     private void Start()
     {
         dale = GameObject.FindObjectOfType<DaleDialogue>();
+        findAllCluesObjectiveUI.SetActive(true);
     }
     private void Update()
     {
@@ -75,10 +83,13 @@ public class ParkClues : MonoBehaviour
 
         }
 
+        // if player found all park clues, show Dock Button in Journal UI, and update Objective
         if (parkClue1Achieved == true &&
             parkClue2Achieved == true &&
             parkClue3Achieved == true)
         {
+            findAllCluesObjectiveUI.SetActive(false);
+            travelToDockObjectiveUI.SetActive(true);
             UIDockButtonRevealed.SetActive(true);
         }
     }
@@ -88,7 +99,7 @@ public class ParkClues : MonoBehaviour
     {
 
 
-
+        // if player collides with gameobject ParkClue2, run code below
         if (collider.gameObject.tag == "ParkClue2")
         {
             Debug.Log("Interacted with ParkClue2");
@@ -112,6 +123,7 @@ public class ParkClues : MonoBehaviour
 
         }
 
+        // if player collides with gameobject ParkClue3, run code below
         if (collider.gameObject.tag == "ParkClue3")
         {
             Debug.Log("Interacted with ParkClue3");
@@ -139,6 +151,7 @@ public class ParkClues : MonoBehaviour
 
     IEnumerator ClueAcquired()
     {
+        // Wait 2 seconds and then set UIClueConfirmation to false
         yield return new WaitForSeconds(2);
         UIClueConfirmation.SetActive(false);
 

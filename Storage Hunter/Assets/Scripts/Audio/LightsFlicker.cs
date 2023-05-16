@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 // This script controls when lights flicker On/Off and handles SFX depending if the light is On/Off
 
 public class LightsFlicker : MonoBehaviour

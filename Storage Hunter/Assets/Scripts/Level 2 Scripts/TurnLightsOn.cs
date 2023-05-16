@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Scripted by Aaron Lee
 public class TurnLightsOn : MonoBehaviour
 {
 
@@ -24,6 +25,7 @@ public class TurnLightsOn : MonoBehaviour
 
     void TurningLightsOn()
     {
+        // turn light on if all switches are on and player presses generator switch
         if (generator.SwitchLightsAllOn == true)
         {
             light.enabled = true;

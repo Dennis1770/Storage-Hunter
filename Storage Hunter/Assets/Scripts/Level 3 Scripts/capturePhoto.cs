@@ -24,10 +24,14 @@ public class capturePhoto : MonoBehaviour
     private Texture2D screenCapture; //screenshot
     private bool viewingPhoto; //is player looking at picture
 
+    public bool capturedPhoto;
+
     public Transform player; //player position
     public Transform monster; //monster position
     public float sightDistance; //view between player and monster
     public GameObject closeDoors; //close door game object
+
+    [SerializeField]  CameraDialogue cameraDialogue; //CameraDialogue script
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +79,8 @@ public class capturePhoto : MonoBehaviour
 
         //Camera UI set false;
         viewingPhoto = true; //player is looking at photo
+
+        capturedPhoto = true; //player is looking at photo
         
         yield return new WaitForEndOfFrame(); //make sure everything has ended
 
@@ -101,6 +107,11 @@ public class capturePhoto : MonoBehaviour
         closeDoors.SetActive(true); //activates closeDoors gameobject
 
         closePhotoFrameUI.SetActive(true);
+
+        if (capturedPhoto == true)
+        {
+            cameraDialogue.ReturnToElevatorMethod();
+        }
 
     }
 

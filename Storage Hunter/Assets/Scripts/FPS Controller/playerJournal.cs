@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 public class playerJournal : MonoBehaviour
 {
     public playerMovement playerMovement;
@@ -12,43 +13,29 @@ public class playerJournal : MonoBehaviour
 
     private void Awake()
     {
-        // journal = GetComponent<GameObject>(); 
         journal.SetActive(false);
         showJournal = false;
         Sight = FindObjectOfType<sight>();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab)) // If Tab was pressed, turn On/Off Journal UI
         {
             Debug.Log("Tab Pressed!");
 
-            if (showJournal == false) // if showJournal is false, unlock cursor, disable playerMovement script, showJournal to true, and show Journal Canvas
+            if (showJournal == false) 
             {
-                //Sight.enabled = false;
-
                 Sight.allowRotation = false;
                 showJournal = true;
                 journal.SetActive(true);
-
-                //we handle playermovement and cursor behaviors in the playerMovement script
-                //Cursor.lockState = CursorLockMode.None;
-                //playerMovement.enabled = false;
             }
-            else // if showJournal is true, lock cursor, enable playerMovement script, showJournal to false, and not show Journal Canvas
+            else 
             {
-                //Sight.enabled = true;
                 Sight.allowRotation = true;
                 showJournal = false;
                 journal.SetActive(false);
 
-                //we handle playermovement and cursor behaviors in the playerMovement script
-                //playerMovement.enabled = true;
-                //Cursor.lockState = CursorLockMode.Locked;
             }
-
-
-
         }
     }
 

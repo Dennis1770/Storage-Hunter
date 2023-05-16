@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Scripted by Aaron Lee
 public class HidableStorageRoom5 : MonoBehaviour
 {
     [SerializeField]

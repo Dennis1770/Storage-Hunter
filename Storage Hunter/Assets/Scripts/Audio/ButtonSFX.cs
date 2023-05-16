@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 public class ButtonSFX : MonoBehaviour
 {
     public AudioSource myFx;

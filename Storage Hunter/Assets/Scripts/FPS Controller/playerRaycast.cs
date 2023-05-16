@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 public class playerRaycast : MonoBehaviour
 {
 
@@ -49,25 +50,21 @@ public class playerRaycast : MonoBehaviour
     }
     private void Update()
     {
-        //Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * hitRange, Color.red);
+
         if (hit.collider != null)
         {
-
-
             hit.collider.GetComponent<Highlight>()?.ToggleHighlight(false);
             pickUpUI.SetActive(false);
-
-
         }
 
-        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out hit, hitRange, pickableLayerMask))
+        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out hit, hitRange, pickableLayerMask)) // Player raycast check
         {
             hit.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
             pickUpUI.SetActive(true);
 
 
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)) // if player presses E, run code below
             {
                 Debug.Log(hit.transform.name);
 
@@ -77,6 +74,7 @@ public class playerRaycast : MonoBehaviour
                     audioSource.PlayOneShot(audioClip);
                     Debug.Log("Playing pickup sfx");
 
+                    // Destroy object from scene
                     Debug.Log("SetActive false PickableObject1");
                     Destroy(hit.transform.gameObject);
 
@@ -95,6 +93,7 @@ public class playerRaycast : MonoBehaviour
                     audioSource.PlayOneShot(audioClip);
                     Debug.Log("Playing pickup sfx");
 
+                    // Destroy object from scene
                     Debug.Log("SetActive false PickableObject2");
                     Destroy(hit.transform.gameObject);
 
@@ -113,6 +112,7 @@ public class playerRaycast : MonoBehaviour
                     audioSource.PlayOneShot(audioClip);
                     Debug.Log("Playing pickup sfx");
 
+                    // Destroy object from scene
                     Debug.Log("SetActive false PickableObject2");
                     Destroy(hit.transform.gameObject);
 

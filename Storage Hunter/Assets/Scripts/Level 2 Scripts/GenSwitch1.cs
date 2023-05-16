@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 public class GenSwitch1 : MonoBehaviour
 {
     [SerializeField]
@@ -49,6 +50,7 @@ public class GenSwitch1 : MonoBehaviour
             {
                 Switch1On = true;
 
+                // turn Lightning mesh NeonYellow material
                 Debug.Log("Switch1 is On");
                 GenSwitchAnim.SetTrigger("SwitchedOn");
                 Lightning1.GetComponent<MeshRenderer>().material = NeonYellow;

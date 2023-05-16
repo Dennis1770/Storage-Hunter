@@ -18,9 +18,6 @@ public class pickUpCamera : MonoBehaviour
     void Start()
     {
 
-        
-
-        
         if(!holding) //if the player isn't holding the camera, set script false
         {
 

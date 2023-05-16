@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// Scripted by Aaron Lee
 public class Level1Clues : MonoBehaviour
 {
 
@@ -57,22 +59,21 @@ public class Level1Clues : MonoBehaviour
             {
                 Debug.Log(hit.transform.name);
 
+                // if player finds an object named Crumbled Paper, run code below
                 if (hit.transform.name == "Crumbled Paper")
                 {
                     // Play pickup sfx
                     audioSource.PlayOneShot(audioClip);
                     Debug.Log("Playing pickup sfx");
 
-                    // Enable crumbledPaperUI to appear, cursor is visible, player unable to move
+                    // show crumbledPaperUI
                     crumbledPaperUI.SetActive(true);
-                    //we handle playermovement and cursor behaviors in the playerMovement script
-                    //Cursor.lockState = CursorLockMode.None;
-                    //playerMovement.enabled = false;
                     Sight.enabled = false;
 
                     paper_isOpen = true;
                 }
 
+                // if player finds an object named Elevator Card, run code below
                 if (hit.transform.name == "Elevator Card")
                 {
                     // Play pickup sfx
@@ -88,6 +89,7 @@ public class Level1Clues : MonoBehaviour
                     ObtainedElevatorCardIEnumerator();
                 }
 
+                // if player finds an object named Flashlight, run code below
                 if (hit.transform.name == "Flashlight")
                 {
                     // Play pickup sfx
@@ -111,9 +113,6 @@ public class Level1Clues : MonoBehaviour
     {
         // resumes actions after crumbledPaperUI is closed
         crumbledPaperUI.SetActive(false);
-        //we handle playermovement and cursor behaviors in the playerMovement script
-        //Cursor.lockState = CursorLockMode.Locked;
-        //playerMovement.enabled = true;
         paper_isOpen = false;
         Sight.enabled = true;
     }
@@ -131,6 +130,7 @@ public class Level1Clues : MonoBehaviour
 
     IEnumerator StartingDialogue()
     {
+        // Turns On/Off UI after a few seconds
         yield return new WaitForSeconds(1);
         startingDialogueUI.SetActive(true);
         yield return new WaitForSeconds(3);
@@ -148,7 +148,7 @@ public class Level1Clues : MonoBehaviour
 
     IEnumerator foundLightsource()
     {
-
+        // Turns On/Off UI after a few seconds
         foundLightsourceUI.SetActive(true);
         yield return new WaitForSeconds(3);
         foundLightsourceUI.SetActive(false);
@@ -160,6 +160,7 @@ public class Level1Clues : MonoBehaviour
 
     IEnumerator NoElevatorCard()
     {
+        // Turns On/Off UI after a few seconds
         noElevatorCardUI.SetActive(true);
         yield return new WaitForSeconds(3);
         noElevatorCardUI.SetActive(false);
@@ -168,6 +169,7 @@ public class Level1Clues : MonoBehaviour
 
     IEnumerator ObtainedElevatorCard()
     {
+        // Turns On/Off UI after a few seconds
         obtainedElevatorCardUI.SetActive(true);
         yield return new WaitForSeconds(3);
         obtainedElevatorCardUI.SetActive(false);
@@ -176,6 +178,7 @@ public class Level1Clues : MonoBehaviour
 
     private void FlashlightObtainedObjective()
     {
+        // Turns On/Off UI after a few seconds
         if (flashlightObtained == true)
         {
             findLightsourceObjectiveUI.SetActive(false);

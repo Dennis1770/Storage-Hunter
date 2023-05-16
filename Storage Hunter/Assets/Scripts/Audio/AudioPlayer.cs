@@ -1,5 +1,7 @@
 using UnityEngine;
 
+//Scripted by Aaron Lee
+
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour
 {

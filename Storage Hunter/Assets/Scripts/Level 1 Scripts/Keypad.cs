@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Scripted by Aaron Lee
 public class Keypad : MonoBehaviour
 {
 
@@ -20,6 +21,7 @@ public class Keypad : MonoBehaviour
 
     public void Enter()
     {
+        // If player enters the correct code, change text to ACCESS GRANTED and open door animation begins
         if (Ans.text == Answer)
         {
             Ans.text = "ACCESS GRANTED";
@@ -29,6 +31,7 @@ public class Keypad : MonoBehaviour
         }
         else
         {
+            // if player enters the wrong code, change text to ACCESS DENIED and play ResetKeypad Coroutine
             Ans.text = "ACCESS DENIED";
             StartCoroutine(ResetKeypad());
         }
@@ -37,6 +40,7 @@ public class Keypad : MonoBehaviour
 
     IEnumerator ResetKeypad()
     {
+        // wait 1 second and keypad will reset to blank
         yield return new WaitForSeconds(1);
         Ans.text = "";
     }

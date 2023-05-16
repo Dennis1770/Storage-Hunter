@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Scripted by Aaron Lee
 public class GenDialogue : MonoBehaviour
 {
     [Header("Generator and Switches")]
@@ -34,7 +35,7 @@ public class GenDialogue : MonoBehaviour
 
     void Update()
     {
-
+        // if all switches are on, run code below
         if (genSwitch1.Switch1On == true && 
             genSwitch2.Switch2On == true &&
             genSwitch3.Switch3On == true &&
@@ -43,7 +44,6 @@ public class GenDialogue : MonoBehaviour
             genSwitch6.Switch6On == true &&
             !lastOne)
             {
-
                 StartCoroutine(LastOne());
                 StartGeneratorObjective();
                 lastOne = true;
@@ -51,7 +51,8 @@ public class GenDialogue : MonoBehaviour
     }
 
     IEnumerator PowerOut()
-    {
+    { 
+        //Turning On/Off UI after a few seconds
         yield return new WaitForSeconds(2);
         PowerOutUI.SetActive(true);
         yield return new WaitForSeconds(3);
@@ -61,6 +62,7 @@ public class GenDialogue : MonoBehaviour
 
     public IEnumerator NeedAll()
     {
+        //Turning On/Off UI after a few seconds
         NeedAllUI.SetActive(true);
         yield return new WaitForSeconds(3);
         NeedAllUI.SetActive(false);
@@ -68,6 +70,7 @@ public class GenDialogue : MonoBehaviour
     }
     IEnumerator LastOne()
     {
+        //Turning On/Off UI after a few seconds
         LastOneUI.SetActive(true);
         yield return new WaitForSeconds(3);
         LastOneUI.SetActive(false);
@@ -80,12 +83,14 @@ public class GenDialogue : MonoBehaviour
 
     private void StartGeneratorObjective()
     {
+        //Change Objective after player completes previous one
         flipallSwitchesObjectiveUI.SetActive(false);
         startGeneratorObjectiveUI.SetActive(true);
     }
 
     public void ReturnToElevatorObjective()
     {
+        //Change Objective after player completes previous one
         startGeneratorObjectiveUI.SetActive(false);
         returnToElevatorObjectiveUI.SetActive(true);
     }

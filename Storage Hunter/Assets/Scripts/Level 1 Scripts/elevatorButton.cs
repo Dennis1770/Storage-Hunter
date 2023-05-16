@@ -5,7 +5,7 @@ using UnityEngine;
 public class elevatorButton : MonoBehaviour
 {
     
-    //script written by Andrew
+    //script written by Andrew & Aaron Lee
     
     [SerializeField]
     private LayerMask pickableLayerMask;
@@ -68,27 +68,7 @@ public class elevatorButton : MonoBehaviour
             }
         }
 
-        /*
-        if (playerInZone && Input.GetKeyDown(KeyCode.E)) //if the player is in the zone and pushes down E, play the following animations
-        {
 
-
-            if (level1Clues.elevatorCardObtained == true)
-            {
-                Debug.Log("Player has elevator card!");
-                Debug.Log("Button is pressed");
-                buttonPressed = true; //button is pressed
-                gameObject.GetComponent<Animator>().Play("pushButton");
-            }
-            else if (level1Clues.elevatorCardObtained == false)
-            {
-                Debug.Log("Player doesn't have elevator card");
-            }
-                
-            
-
-        }
-        */
 
        if(buttonPressed == true) //if button is pressed, play animation
         {
@@ -107,33 +87,5 @@ public class elevatorButton : MonoBehaviour
 
 
     }
-
-    /*
-    private void OnTriggerEnter(Collider other) //if player is in zone
-    {
-        
-        if(other.gameObject.tag == "Player") //if collider detects player tag, player is in zone
-        {
-
-            playerInZone = true;
-        }
-
-    }
-
-    private void OnTriggerExit(Collider other) //if player exits zone
-    {
-        
-        if(other.gameObject.tag == "Player") //if collider doesn't detect player, player isn't in zone
-        {
-
-            playerInZone = false;
-
-        }
-
-    }
-
-    */
-    
-
 
 }

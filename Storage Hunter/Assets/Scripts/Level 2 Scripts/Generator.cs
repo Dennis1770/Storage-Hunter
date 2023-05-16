@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+//Scripted by Aaron Lee
 
 public class Generator : MonoBehaviour
 {
@@ -24,6 +24,8 @@ public class Generator : MonoBehaviour
     public sight Sight;
 
     public GenDialogue genDialogue;
+
+    [Header("Generator Switches")]
     public GenSwitch1 genSwitch1;
     public GenSwitch2 genSwitch2;
     public GenSwitch3 genSwitch3;
@@ -31,7 +33,7 @@ public class Generator : MonoBehaviour
     public GenSwitch5 genSwitch5;
     public GenSwitch6 genSwitch6;
 
-
+    [Header("Generator Lights")]
     public GameObject SwitchLight1;
     public GameObject SwitchLight2;
     public GameObject SwitchLight3;
@@ -39,14 +41,14 @@ public class Generator : MonoBehaviour
     public GameObject SwitchLight5;
     public GameObject SwitchLight6;
 
-    public GameObject SwitchLightCheck;
-
+    [Header("Material")]
     public Material NeonGreen;
     public Material NeonRed;
     public Material Silver;
 
+    [Header("GameObject and Booleans")]
+    public GameObject SwitchLightCheck;
     public bool SwitchLightsAllOn = false;
-
     public GameObject closeDoors;
 
     // Start is called before the first frame update
@@ -56,7 +58,7 @@ public class Generator : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void GeneratorSwitch()
+    public void GeneratorSwitch() // Changes material color to NeonGreen if switch is turned on
     {
         if (genSwitch1.Switch1On == true)
         {
@@ -107,10 +109,11 @@ public class Generator : MonoBehaviour
         {
             hit.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
 
-            if (Input.GetKeyDown(KeyCode.E) && hit.collider.gameObject.tag == "SwitchStarter") // Checking if player Presses E on Storage Room Handle
+            if (Input.GetKeyDown(KeyCode.E) && hit.collider.gameObject.tag == "SwitchStarter") // Checking if player Presses E on the Generator SwitchStarter
             {
                 Debug.Log("Switch Starter is being pressed");
 
+                // if all switches are turned on, turn SwitchLightCheck to turn Green and begin ReturnToElevator Objective in GenDialogue script
                 if (genSwitch1.Switch1On == true && 
                     genSwitch2.Switch2On == true &&
                     genSwitch3.Switch3On == true &&
@@ -124,7 +127,7 @@ public class Generator : MonoBehaviour
 
                         genDialogue.ReturnToElevatorObjective();
                     }
-
+                // if not all switches are on, start the SwitchStarterErrorCoroutine and tell the player they need all switches to be on to start the generator in the NeedAll Coroutine
                 if (SwitchLightsAllOn == false)
                     {
                         Debug.Log("SwitchLightsAllOn is false");
@@ -138,6 +141,7 @@ public class Generator : MonoBehaviour
 
     IEnumerator SwitchStarterErrorCoroutine()
     {
+        // make SwitchLightCheck material to NeonRed to indicate error and then after 2 seconds, return to Silver material
         Debug.Log("Not all switches are on!");
         SwitchLightCheck.GetComponent<MeshRenderer>().material = NeonRed;
         yield return new WaitForSeconds(2f);

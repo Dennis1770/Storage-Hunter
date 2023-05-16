@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Scripted by Aaron Lee
 public class HidableStorageRoom1 : MonoBehaviour
 {
     [SerializeField]
@@ -38,7 +39,8 @@ public class HidableStorageRoom1 : MonoBehaviour
         {
             hit.collider.GetComponent<Highlight>()?.ToggleHighlight(false);
         }
-
+        
+        // Checking player's raycast
         if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out hit, hitRange, pickableLayerMask))
         {
             hit.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
