@@ -11,7 +11,7 @@ It's starting to get cold.  Fish don't like the cold.->END
 
 =story
 Why ask me that?
-+[Someone heard a strange noise near here.]
++[I don't know.]
 Ah, there wasn't anything strange goin' on here last night.
 ->END
 +[I was just curious about your fishing spot]

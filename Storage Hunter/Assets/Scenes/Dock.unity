@@ -21532,7 +21532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7276640a40793a74c880cbb6474e2f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: 493209e26584fd24eac9b841d49f21c5, type: 3}
+  inkJSON: []
+  index: 0
 --- !u!1 &1686774698
 GameObject:
   m_ObjectHideFlags: 0
@@ -25086,7 +25087,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7276640a40793a74c880cbb6474e2f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: 493209e26584fd24eac9b841d49f21c5, type: 3}
+  inkJSON:
+  - {fileID: 4900000, guid: 493209e26584fd24eac9b841d49f21c5, type: 3}
+  - {fileID: 4900000, guid: 79bed9f893e72e845b7cb1c2057a3701, type: 3}
+  index: 0
 --- !u!1 &1955795536
 GameObject:
   m_ObjectHideFlags: 0

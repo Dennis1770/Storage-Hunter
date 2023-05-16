@@ -6,13 +6,15 @@ public class FisherDialogue : MonoBehaviour
 {
     //Michael
     FisherStateManager fisherFSM;
-    [Header("Ink JSON")][SerializeField] private TextAsset inkJSON;
+    [Header("Ink JSON")][SerializeField] private TextAsset[] inkJSON;
 
-    private int i;
+    private bool isDialoguing;
+    private int count;
+    [SerializeField] private int index; //use this to load the correct inkJSON file
 
     private void Start()
     {
-        i = 0;
+        isDialoguing = false;
         fisherFSM = FindObjectOfType<FisherStateManager>();
     }
 
@@ -20,15 +22,29 @@ public class FisherDialogue : MonoBehaviour
     {
         if (fisherFSM.isTalking == true)
         {
-            if (i < 1)
+            if (isDialoguing == false)
             {
-                i++;
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                ChooseDialogue();
+                count++;
+                isDialoguing = true;
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON[index]);
             }
         }
         if (fisherFSM.isTalking == false)
         {
-            i = 0;
+            isDialoguing = false;
+        }
+    }
+
+    private void ChooseDialogue()
+    {
+        if (count == 0)
+        {
+            index = 0;
+        }
+        else
+        {
+            index = 1;
         }
     }
 }
